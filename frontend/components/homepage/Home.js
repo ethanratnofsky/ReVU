@@ -37,7 +37,7 @@ const DINING_HALLS = [
     }
 ]
 
-const Home = () => {
+const Home = ({navigation}) => {
     const renderDiningHallButton = ({ item }) => (
         <DiningHallButton {...item} />
     );

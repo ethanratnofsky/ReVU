@@ -1,8 +1,11 @@
 import { Image, Pressable, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import navbarStyles from './NavbarStyles';
+import navbarStyles from './NavbarStyles'
 
 const Navbar = () => {
+
+    const navigation = useNavigation();
 
     // TODO: Add navigation to the icons
     
@@ -20,7 +23,7 @@ const Navbar = () => {
             <Pressable onPress={() => alert('Hours')}>
                 <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-hours.png')} />
             </Pressable>
-            <Pressable onPress={() => alert('Complaints')}>
+            <Pressable onPress={() => navigation.navigate('Complaints')}>
                 <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-complaints.png')} />
             </Pressable>
         </View>

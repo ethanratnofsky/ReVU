@@ -1,11 +1,13 @@
 import { Image, Pressable, Text, View } from 'react-native';
 
 import diningHallButtonStyles from './DiningHallButtonStyles';
+import { useNavigation } from '@react-navigation/native';
 
 const DiningHallButton = ({ id, name, overallRating }) => {
+    const navigation = useNavigation();
     const handlePress = () => {
         // TODO: Navigate to dining hall page
-        alert(`You pressed ${name} (id: ${id})!`);
+        navigation.navigate({name});
     }
 
     return (
