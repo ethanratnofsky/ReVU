@@ -33,7 +33,7 @@ export default function App() {
                     options={{headerShown: false}}
                 />
                 <Stack.Screen
-                    name="E. B. I. Dining Hall'"
+                    name="E. B. I. Dining Hall"
                     component={EBI}
                     options={{headerShown: false}}
                 />
