@@ -17,7 +17,7 @@ const Navbar = () => {
             <Pressable onPress={() => alert('Menus')}>
                 <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-menus.png')} />
             </Pressable>
-            <Pressable onPress={() => alert('Home')}>
+            <Pressable onPress={() => navigation.navigate("Main")}>
                 <Image style={navbarStyles.icon} source={require('../../assets/images/gold-icon-home.png')} />
             </Pressable>
             <Pressable onPress={() => alert('Hours')}>
