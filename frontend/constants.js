@@ -4,6 +4,8 @@ import { StyleSheet } from 'react-native';
 export const VU_BLACK = '#1C1C1C';
 export const VU_GOLD = '#CFAE70';
 export const VU_WHITE = '#FFFFFF';
+export const VU_METALLIC_GOLD_START = '#FEEEB6';
+export const VU_METALLIC_GOLD_END = '#B49248';
 
 // Styles
 export const THEME_STYLES = StyleSheet.create({
