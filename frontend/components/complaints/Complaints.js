@@ -1,8 +1,10 @@
-import { StatusBar, View, Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { StyleSheet, Keyboard } from 'react-native';
-import { THEME_STYLES, VU_BLACK, VU_GOLD, VU_WHITE } from '../../constants';
+import { THEME_STYLES, VU_BLACK, VU_GOLD, VU_METALLIC_GOLD_START, VU_WHITE } from '../../constants';
 import { useState } from 'react';
 import SearchableDropdown from 'react-native-searchable-dropdown';
+import { useHeaderHeight } from '@react-navigation/elements';
+import { useNavigation } from '@react-navigation/native';
 
 const DINING_HALLS = [
     {
@@ -67,129 +69,121 @@ const Complaints = () => {
     const [issue, setIssue] = useState(null);
     const [diningHall, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
+    const height = useHeaderHeight();
+    const navigation = useNavigation();
+
+    const infoString = "Here, you may file a complaint about a dining issue to VSG. However, please make sure your response is appropriate as improper complaints will be filtered out and rejected."
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <KeyboardAvoidingView
+                keyboardVerticalOffset={height - 300}
+                behavior={Platform.OS === "ios" ? "padding" : null}
+                style={{ flex: 1, backgroundColor: VU_BLACK }}
+            >
+            <SafeAreaView style={{flex:1}}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-            <SafeAreaView style={complaintStyles.container}>
-                
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <View style={complaintStyles.infoContainer}>
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: 'bold'
-                        }}>File a Complaint</Text>
+                    <View style={complaintStyles.inner}>
+
+                        <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+
+                            <TouchableOpacity style={complaintStyles.buttonStyle} onPress={() => navigation.navigate("Main")}><Text style={{fontSize: 25, color: VU_WHITE, fontWeight: 'bold'}}>{"\u2190"}</Text></TouchableOpacity>
+                            <View style={complaintStyles.infoContainer}>
+                                <Text style={{
+                                    fontSize: 20,
+                                    fontWeight: 'bold'
+                                }}>File a Complaint</Text>
+                            </View>
+                            <TouchableOpacity style={complaintStyles.buttonStyle} onPress={() => alert(infoString)}><Text style={{fontSize: 25, color: VU_WHITE, fontWeight: 'bold'}}>!</Text></TouchableOpacity>
+                        </View>
+
+                        <View style={{marginTop: 20}}>
+                            <SearchableDropdown
+                                multi={false}
+                                resetValue={false}
+                                chip={true}
+                                items={DINING_HALLS}
+                                selectedItems={diningHall}
+                                onItemSelect={(item) => {setDH(item)}}
+                                itemStyle={complaintStyles.itemStyles}
+                                itemTextStyle={{ color: VU_BLACK }}
+                                containerStlye={{padding: 5}}
+                                textInputProps={{
+                                    placeholder: "Select Dining Hall...",
+                                    placeholderTextColor: 'gray',
+                                    underlineColorAndroid: "transparent",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        borderColor: VU_GOLD,
+                                        borderRadius: 5,
+                                        backgroundColor: VU_WHITE,
+                                        
+                                    }
+                                }}
+                            />
+                        </View>
+
+                        <View style={{marginTop: 20}}>
+                            <SearchableDropdown
+                                multi={false}
+                                resetValue={false}
+                                chip={true}
+                                items={URGENCIES}
+                                selectedItems={urgency}
+                                onItemSelect={(item) => {setUrgency(item);}}
+                                itemStyle={complaintStyles.itemStyles}
+                                itemTextStyle={{ color: VU_BLACK }}
+                                containerStlye={{padding: 5}}
+                                textInputProps={{
+                                    placeholder: "Select urgency...",
+                                    placeholderTextColor: 'gray',
+                                    underlineColorAndroid: "transparent",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        borderColor: VU_GOLD,
+                                        borderRadius: 5,
+                                        backgroundColor: VU_WHITE
+                                    }
+                                }}
+                            />
+
+                        </View>
+                        
+                        <TextInput
+                            style={complaintStyles.emailInput}
+                            onChangeText={setContact}
+                            placeholder="Enter contact"
+                            placeholderTextColor='gray'
+                            multiline={false}
+                            scrollEnabled={true}
+                            />
+
+                        <TextInput
+                            style={complaintStyles.issueInput}
+                            onChangeText={setIssue}
+                            placeholder="Enter description of issue..."
+                            placeholderTextColor='gray'
+                            multiline={true}
+                            />
+                        <View style={{ flex : 1 }} />
+
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <TouchableOpacity 
+                            style={complaintStyles.submitButtonContainer}
+                            onPress={() => alert("Complaint successfully submitted!")}
+                            >
+                            <Text style={{fontSize: 20, fontWeight: 'bold', color: VU_WHITE}}>Submit Complaint</Text>
+                        </TouchableOpacity>
                     </View>
-                </View>
+                    </View>
 
-                <View style={complaintStyles.dropDownContainer}>
-                    <SearchableDropdown
-                        multi={false}
-                        resetValue={false}
-                        chip={true}
-                        items={DINING_HALLS}
-                        selectedItems={diningHall}
-                        onItemSelect={(item) => {setDH(item)}}
-                        itemStyle={complaintStyles.itemStyles}
-                        itemTextStyle={{ color: VU_BLACK }}
-                        containerStlye={{padding: 5}}
-                        textInputProps={{
-                            placeholder: "Select Dining Hall...",
-                            placeholderTextColor: 'gray',
-                            underlineColorAndroid: "transparent",
-                            style: {
-                                padding: 12,
-                                borderWidth: 1,
-                                borderColor: VU_GOLD,
-                                borderRadius: 5,
-                                backgroundColor: VU_WHITE,
-                                
-                            }
-                        }}
-                    />
-                </View>
 
-                <View style={complaintStyles.dropDownContainer}>
                     
-                    <SearchableDropdown
-                        multi={false}
-                        resetValue={false}
-                        chip={true}
-                        items={URGENCIES}
-                        selectedItems={urgency}
-                        onItemSelect={(item) => {setUrgency(item);}}
-                        itemStyle={complaintStyles.itemStyles}
-                        itemTextStyle={{ color: VU_BLACK }}
-                        containerStlye={{padding: 5}}
-                        textInputProps={{
-                            placeholder: "Select urgency...",
-                            placeholderTextColor: 'gray',
-                            underlineColorAndroid: "transparent",
-                            style: {
-                                padding: 12,
-                                borderWidth: 1,
-                                borderColor: VU_GOLD,
-                                borderRadius: 5,
-                                backgroundColor: VU_WHITE
-                            }
-                        }}
-                        />
-
-                </View>
-
-
-
-                <View>
-                    <Text style={{
-                        color: VU_WHITE,
-                        fontWeight: 'bold',
-                        paddingTop: 10,
-                        paddingLeft: 10,
-                        paddingRight: 10
-                    }}>
-                        Contact Information
-                    </Text>
-                    <TextInput
-                    style={complaintStyles.emailInput}
-                    onChangeText={setContact}
-                    placeholder="Enter contact"
-                    placeholderTextColor='gray'
-                    multiline={true}
-                    scrollEnabled={true}
-                    />
-                </View>
-
-
-                <View>
-                <Text style={{
-                        color: VU_WHITE,
-                        fontWeight: 'bold',
-                        paddingTop: 10,
-                        paddingLeft: 10,
-                        paddingRight: 10
-                    }}>
-                        Issue Description
-                    </Text>
-                    <TextInput
-                    style={complaintStyles.issueInput}
-                    onChangeText={setIssue}
-                    placeholder="Enter description of issue..."
-                    placeholderTextColor='gray'
-                    multiline={true}
-                    />
-                </View>
-
-                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-                    <TouchableOpacity 
-                        style={complaintStyles.submitButtonContainer}
-                        onPress={() => alert("Complaint successfully submitted!")}
-                        >
-                        <Text style={{fontSize: 20, fontWeight: 'bold', color: VU_WHITE}}>Submit Complaint</Text>
-                    </TouchableOpacity>
-                </View>
-
+                </TouchableWithoutFeedback>
             </SafeAreaView>
-        </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -201,7 +195,7 @@ const complaintStyles = StyleSheet.create({
     },
     infoContainer: {
         ...THEME_STYLES.whiteBackground,
-        width: 300,
+        width: 220,
         height: 55,
         borderWidth: 2,
         borderStyle: 'solid',
@@ -211,23 +205,23 @@ const complaintStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
-        margin: 10,
+        margin: 12,
     },
     emailInput: {
         ...THEME_STYLES.whiteBackground,
         height: 40,
-        margin: 12,
+        marginTop: 20,
         borderWidth: 1,
         padding: 10,
         paddingTop: 10
     },
     issueInput: {
         ...THEME_STYLES.whiteBackground,
-        height: 150,
-        margin: 12,
+        height: 175,
+        marginTop: 20,
         borderWidth: 1,
         padding: 10,
-        paddingTop: 10
+        paddingTop: 10,
     },
     itemStyles: {
         padding: 10,
@@ -252,9 +246,24 @@ const complaintStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 15,
-        margin: 10,
+        marginTop: 12
     },
+    inner: {
+        padding: 24,
+        flex: 1,
+        justifyContent: "flex-end",
+    },
+    buttonStyle: {
+        backgroundColor: VU_GOLD,
+        width: 50,
+        height: 55,
+        padding: 15,
+        margin: 12,
+        borderRadius: 10, 
+        borderColor: VU_WHITE,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
  
 
