@@ -8,7 +8,9 @@ const RatingModel = require('../models/rating_model');
 
 module.exports = router;
 
-// Ratings
+/**
+ * RATINGS
+ */
 router.post('/post/newRating', async (req, res) => {
     const data = new RatingModel({
         userId: req.body.userId,
@@ -68,6 +70,7 @@ router.put('/put/updateRating', async (req, res) => {
             .findByIdAndUpdate(req.params.ratingId,
                                req.params.rating,
                                {new: true});
+        res.send(result);
     }
     catch (error) {
         res.status(500).json({ message: error.message })
@@ -85,7 +88,68 @@ router.delete('/delete/allRatings', async (req, res) => {
     }
 });
 
-// Complaints
+
+/**
+ * COMMENTS
+*/
+router.post('/post/createComment', async (req, res) => {
+    const data = new CommentModel({
+        userId: req.body.userId,
+        diningHall: req.body.diningHall,
+        content: req.body.content,
+        timestamp: Date.now()
+    });
+
+    try {
+        const dataToSave = await data.save();
+        res.status(200).json(dataToSave)
+    }
+    catch (error) {
+        res.status(500).json({message: error.message})
+    }
+});
+
+router.get('/getAll/diningComments/:diningHall', async (req, res) => {
+    try{
+        const data = await CommentModel
+            .find({diningHall: req.params.diningHall});
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+});
+
+router.put('/put/updateComment', async (req, res) => {
+    try {
+        const result = await CommentModel
+            .find(req.params.userId)
+            .findByIdAndUpdate(req.params.commentId,
+                               req.params.newContent,
+                               {new: true});
+        
+        res.send(result);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+});
+
+router.delete('/delete/delComment', async (req, res) => {
+    try {
+        const data = await CommentModel
+            .find({userId: req.params.userId})
+            .deleteOne({commentId: req.params.commentId});
+        res.send('The comment has been deleted');
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+/**
+ * COMPLAINTS
+ */
 router.post('/post/newComplaint', async (req, res) => {
     const data = new ComplaintModel({
         userId: req.body.userId,
@@ -106,9 +170,63 @@ router.post('/post/newComplaint', async (req, res) => {
 router.get('/getAll/complaints', async (req, res) => {
     try{
         const data = await ComplaintModel.find();
-        res.json(data)
+        res.json(data);
     }
     catch(error){
-        res.status(500).json({message: error.message})
+        res.status(500).json({message: error.message});
+    }
+});
+
+
+/**
+ * DINING HALLS
+*/
+
+async function getRatingHelper(req) {
+    const foodData = await RatingModel
+        .find({diningHall: req.params.diningHall});
+
+    finFood = 0.0;
+    finTraffic = 0.0
+    numFood = 0;
+    numTraffic = 0;
+
+    foodData.forEach(element => {
+        if(element.type == 'food') {
+            finFood += element.rating;
+            numFood += 1;
+        } else {
+            finTraffic += element.rating;
+            numTraffic += 1;
+        }
+    });
+    
+    if(numFood) {
+        finFood /= numFood;
+    }
+    if(numTraffic) {
+        finTraffic /= numTraffic;
+    }
+
+    data = {finFood, finTraffic};
+    return data;
+}
+
+router.get('/getAll/ratings/:diningHall', async (req, res) => {
+    try {
+        const data = await getRatingHelper(req);
+        res.json(data)
+    } catch(error){
+        res.status(500).json({message: error.message});
+    }
+});
+
+router.put('/put/getNewRating', async (req, res) => {
+    try {
+        const result = await getRatingHelper(req);
+        res.send(result);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
     }
 });
