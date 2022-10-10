@@ -14,13 +14,11 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-//require('dotenv').config({
-//    path: "./config.env"
-//});
+require('dotenv').config({
+    path: "./config.env"
+});
 
-// const mongoString = //process.env.DATABASE_URL
-
-const mongoString = <name></name>
+const mongoString = process.env.DATABASE_URL
 
 mongoose.connect(mongoString);
 const database = mongoose.connection
@@ -32,11 +30,6 @@ database.on('error', (error) => {
 database.once('connected', () => {
     console.log('Database Connected');
 })
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 
 const routes = require('./routes/routes');
 

@@ -38,7 +38,7 @@ router.get('/getAll/:userId', async (req, res) => {
 
 router.get('/getAll/:diningHall', async (req, res) => {
     try{
-        const data = await RatingModel.findById(req.params.userId).find({type: 'food'});
+        const data = await RatingModel.and([{type: 'food'}, {diningHall: req.params.diningHall}]);
         res.json(data)
     }
     catch(error){
