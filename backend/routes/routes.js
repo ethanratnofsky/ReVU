@@ -75,10 +75,15 @@ router.put('/put/updateRating', async (req, res) => {
 });
 
 router.delete('/delete/allRatings', async (req, res) => {
-    const data = await RatingModel
-        .find();
-    res.send('All ratings have been deleted');
-})
+    try {
+        const data = await RatingModel
+            .find()
+            .deleteMany();
+        res.send('All ratings have been deleted');
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // Complaints
 router.post('/post/newComplaint', async (req, res) => {
