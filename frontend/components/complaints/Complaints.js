@@ -6,6 +6,9 @@ import SearchableDropdown from 'react-native-searchable-dropdown';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useNavigation } from '@react-navigation/native';
 
+
+const Filter = require('bad-words');
+
 const DINING_HALLS = [
     {
         id: 0,
@@ -72,7 +75,27 @@ const Complaints = () => {
     const height = useHeaderHeight();
     const navigation = useNavigation();
 
-    const infoString = "Here, you may file a complaint about a dining issue to VSG. However, please make sure your response is appropriate as improper complaints will be filtered out and rejected."
+
+    const filter = new Filter({'placeHolder': '*'});
+
+    const checkInput = () => {
+        if (issue == null || contact == null || diningHall == null || urgency == null) {
+            alert("Please fill out all fields. It seems there are some that were left empty.")
+        } else if (!(/\S+@\S+\.\S+/.test(email))) {
+            alert("Email does not have proper format. Please re-enter email address.");
+        } else if (filter.isProfane(issue)) {
+            alert("You're issue has inappropriate language. Please re-enter your issue input.");
+        } else if (filter.isProfane(email)) {
+            alert("Your email has inappropriate language. Please re-enter your email.");
+        }
+        else {
+            alert("You submitted a proper complaint.")
+        }
+    }
+
+
+
+    const infoString = "Here, you may file a complaint about a dining issue to VSG. However, please make sure your response is appropriate as improper complaints will be filtered out and rejected. Please also provide required contact information (i.e. Vanderbilt EDU email)."
 
     return (
         <KeyboardAvoidingView
@@ -172,7 +195,7 @@ const Complaints = () => {
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity 
                             style={complaintStyles.submitButtonContainer}
-                            onPress={() => alert("Complaint successfully submitted!")}
+                            onPress={checkInput}
                             >
                             <Text style={{fontSize: 20, fontWeight: 'bold', color: VU_WHITE}}>Submit Complaint</Text>
                         </TouchableOpacity>
