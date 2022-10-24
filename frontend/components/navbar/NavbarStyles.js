@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { THEME_STYLES, VU_GOLD } from '../../constants';
+import { THEME_STYLES } from '../../constants';
 
 const navbarStyles = StyleSheet.create({
     gradient: {
