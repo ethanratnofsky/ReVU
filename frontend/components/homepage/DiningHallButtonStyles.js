@@ -28,6 +28,7 @@ const diningHallButtonStyles = StyleSheet.create({
     },
     rating: {
         ...THEME_STYLES.blackText,
+        ...THEME_STYLES.libreCaslonFont,
         fontSize: 16,
     },
     star: {

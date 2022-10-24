@@ -29,4 +29,10 @@ export const THEME_STYLES = StyleSheet.create({
     whiteText: {
         color: VU_WHITE,
     },
+    // Font
+    libreCaslonFont: {
+        fontFamily: 'LibreCaslonText_400Regular',
+    }
 });
+
+export const SPLASH_SCREEN_TIME = 2000; // milliseconds
