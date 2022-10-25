@@ -37,7 +37,7 @@ const URGENCIES = [
     }
 ]
 
-const Complaints = () => {
+const Complaints = ({navigation}) => {
 
     // TODO: Create individual components for each section here and pass in props.
     // TODO: Check for input validity before sending to API
@@ -47,8 +47,6 @@ const Complaints = () => {
     const [diningHall, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
     const height = useHeaderHeight();
-    const navigation = useNavigation();
-
 
     const filter = new Filter({'placeHolder': '*'});
 

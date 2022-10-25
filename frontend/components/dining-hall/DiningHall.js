@@ -6,7 +6,7 @@ import OverallRating from './OverallRating';
 import Subratings from './Subratings';
 import Comments from './Comments';
 
-const DiningHall = ({ navigation, route }) => {
+const DiningHall = ({ route }) => {
     const { id } = route.params; // TODO: use id to fetch dining hall data
 
     // TODO: use dining hall data to render dining hall info
