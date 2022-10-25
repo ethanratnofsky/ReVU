@@ -1,21 +1,19 @@
-import { Image, Pressable, View } from 'react-native';
+import { Image, Pressable, View, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import navbarStyles from './NavbarStyles'
 
-import { VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END } from '../../constants';
+import { VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END, TERMS_AND_CONDITIONS } from '../../constants';
 
 const Navbar = () => {
 
     const navigation = useNavigation();
-
-    const terms = "By using this application, you agree to posting appropriate content with proper language or risk having your comments/complaints removed."
     
     return (
         <LinearGradient colors={[VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }} style={navbarStyles.gradient}>
             <View style={navbarStyles.container}>
-                <Pressable onPress={() => alert(terms)}>
+                <Pressable onPress={() => Alert.alert("Terms & Conditions", TERMS_AND_CONDITIONS)}>
                     <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-tc.png')} />
                 </Pressable>
                 <Pressable onPress={() => alert('Menus')}>
