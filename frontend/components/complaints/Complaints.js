@@ -6,35 +6,9 @@ import SearchableDropdown from 'react-native-searchable-dropdown';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useNavigation } from '@react-navigation/native';
 
+import { DINING_HALLS } from '../../constants';
 
 const Filter = require('bad-words');
-
-const DINING_HALLS = [
-    {
-        id: 0,
-        name: 'Rand Dining Hall'
-    },
-    {
-        id: 1,
-        name: 'Kissam Dining Hall'
-    },
-    {
-        id: 2,
-        name: 'Rothschild Dining Hall'
-    },
-    {
-        id: 3,
-        name: 'E. B. I. Dining Hall'
-    },
-    {
-        id: 4,
-        name: 'Zeppos Dining Hall'
-    },
-    {
-        id: 5,
-        name: 'Commons Dining Hall'
-    }
-]
 
 const URGENCIES = [
     {

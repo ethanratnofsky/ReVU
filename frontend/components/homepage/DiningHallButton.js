@@ -6,8 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const DiningHallButton = ({ id, name, overallRating }) => {
     const navigation = useNavigation();
     const handlePress = () => {
-        // TODO: Navigate to dining hall page
-        navigation.navigate({name});
+        navigation.navigate('Dining Hall', { id, name });
     }
 
     return (
