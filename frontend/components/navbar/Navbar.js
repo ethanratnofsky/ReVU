@@ -10,12 +10,12 @@ const Navbar = () => {
 
     const navigation = useNavigation();
 
-    // TODO: Add navigation to the icons
+    const terms = "By using this application, you agree to posting appropriate content with proper language or risk having your comments/complaints removed."
     
     return (
         <LinearGradient colors={[VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }} style={navbarStyles.gradient}>
             <View style={navbarStyles.container}>
-                <Pressable onPress={() => alert('Terms & Conditions')}>
+                <Pressable onPress={() => alert(terms)}>
                     <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-tc.png')} />
                 </Pressable>
                 <Pressable onPress={() => alert('Menus')}>
