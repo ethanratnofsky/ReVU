@@ -4,7 +4,7 @@ import commentsStyles from './CommentsStyles';
 
 const Comment = ({ comment }) => {
     return (
-        <View style={commentsStyles.commentContainer}>
+        <View style={commentsStyles.commentContainer} onStartShouldSetResponder={() => true}>
             <View style={commentsStyles.commentHeader}>
                 <Text style={commentsStyles.commentAuthor}>{comment.author}</Text>
                 <Text style={commentsStyles.commentTime}>{comment.time}</Text>
