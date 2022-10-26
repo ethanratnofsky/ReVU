@@ -7,7 +7,7 @@ const commentsStyles = StyleSheet.create({
         flexDirection: 'row',
         width: 350,
         alignItems: 'center',
-        marginVertical: 15,
+        marginVertical: 10,
         marginHorizontal: 15,
         alignSelf: 'stretch',
         backgroundColor: '#333',

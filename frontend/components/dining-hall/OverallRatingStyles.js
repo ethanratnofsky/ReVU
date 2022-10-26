@@ -10,7 +10,11 @@ const overallRatingStyles = StyleSheet.create({
         width: 300,
         height: 70,
         borderRadius: 10,
-        backgroundColor: '#222'
+        backgroundColor: '#222',
+        shadowColor: 'black',
+        shadowOffset: { width: 3, height: 5 },
+        shadowOpacity: 0.1,
+        shadowRadius: 1.5,
     },
     starsContainer: {
         flex: 1,
