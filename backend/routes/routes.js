@@ -63,7 +63,7 @@ router.get('/getAll/trafficRatings/:diningHall', async (req, res) => {
     }
 });
 
-router.put('/put/updateRating', async (req, res) => {
+router.patch('/patch/updateRating', async (req, res) => {
     try {
         const result = await RatingModel
             .find(req.params.userId)
@@ -120,7 +120,7 @@ router.get('/getAll/diningComments/:diningHall', async (req, res) => {
     }
 });
 
-router.put('/put/updateComment', async (req, res) => {
+router.patch('/patch/updateComment', async (req, res) => {
     try {
         const result = await CommentModel
             .find(req.params.userId)
@@ -221,9 +221,13 @@ router.get('/getAll/ratings/:diningHall', async (req, res) => {
     }
 });
 
-router.put('/put/getNewRating', async (req, res) => {
+router.patch('/patch/getNewRating', async (req, res) => {
     try {
-        const result = await getRatingHelper(req);
+        const result = await getRatingHelper(req)
+            .find(req.params.userId)
+            .findByIdAndUpdate(req.params.commentId,
+                               req.params.newContent,
+                               {new: true});
         res.send(result);
     }
     catch (error) {
