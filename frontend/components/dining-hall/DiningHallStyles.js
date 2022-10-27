@@ -9,7 +9,7 @@ const diningHallStyles = StyleSheet.create({
         ...THEME_STYLES.blackBackground,
     },
     diningHallName: {
-        marginTop: 25,
+        marginTop: 15,
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonBoldFont,
         fontSize: 20,

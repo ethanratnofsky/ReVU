@@ -4,27 +4,26 @@ import { THEME_STYLES } from '../../constants';
 
 const subratingsStyles = StyleSheet.create({
     container: {
-        marginVertical: 10,
-        flexDirection: 'row',
-    },
-    smallContainer: {
-        marginVertical: 8,
+        marginVertical: 5,
+        marginHorizontal: 30,
         flexDirection: 'row',
     },
     subratingContainer: {
+        flex: 1,
         alignItems: 'center',
         marginVertical: 15,
-        marginHorizontal: 30,
     },
     subratingSmallContainer: {
+        flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         marginVertical: 2,
-        marginHorizontal: 25,
         flexDirection: 'row',
     },
     ratingType: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
+        textAlign: 'center',
         fontSize: 14,
     },
     ratingContainer: {
@@ -38,7 +37,7 @@ const subratingsStyles = StyleSheet.create({
         fontSize: 36,
     },
     smallRating: {
-        marginLeft: 15,
+        marginLeft: 10,
         marginRight: 3,
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,

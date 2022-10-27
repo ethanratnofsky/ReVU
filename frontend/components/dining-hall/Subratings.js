@@ -26,7 +26,7 @@ const Subratings = ({ diningHallId }) => {
     }, []);
 
     return (
-        <View style={isKeyboardShown ? subratingsStyles.smallContainer : subratingsStyles.container}>
+        <View style={subratingsStyles.container}>
             <View style={isKeyboardShown ? subratingsStyles.subratingSmallContainer : subratingsStyles.subratingContainer}>
                 <Text style={subratingsStyles.ratingType}>Food</Text>
                 <View style={subratingsStyles.ratingContainer}>
