@@ -23,7 +23,6 @@ const commentsStyles = StyleSheet.create({
     commentsContainer: {
         flex: 1,
         marginHorizontal: 15,
-        // paddingVertical: 5,
         alignSelf: 'stretch',
     },
     commentContainer: {

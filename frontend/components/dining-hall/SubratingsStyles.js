@@ -7,10 +7,20 @@ const subratingsStyles = StyleSheet.create({
         marginVertical: 10,
         flexDirection: 'row',
     },
+    smallContainer: {
+        marginVertical: 8,
+        flexDirection: 'row',
+    },
     subratingContainer: {
         alignItems: 'center',
         marginVertical: 15,
         marginHorizontal: 30,
+    },
+    subratingSmallContainer: {
+        alignItems: 'center',
+        marginVertical: 2,
+        marginHorizontal: 25,
+        flexDirection: 'row',
     },
     ratingType: {
         ...THEME_STYLES.whiteText,
@@ -27,8 +37,19 @@ const subratingsStyles = StyleSheet.create({
         ...THEME_STYLES.libreCaslonFont,
         fontSize: 36,
     },
+    smallRating: {
+        marginLeft: 15,
+        marginRight: 3,
+        ...THEME_STYLES.whiteText,
+        ...THEME_STYLES.libreCaslonFont,
+        fontSize: 20,
+    },
     star: {
         width: 48,
+        aspectRatio: 1,
+    },
+    smallStar: {
+        width: 24,
         aspectRatio: 1,
     },
     divider: {
