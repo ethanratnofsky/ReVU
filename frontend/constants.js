@@ -32,7 +32,10 @@ export const THEME_STYLES = StyleSheet.create({
     // Font
     libreCaslonFont: {
         fontFamily: 'LibreCaslonText_400Regular',
-    }
+    },
+    libreCaslonBoldFont: {
+        fontFamily: 'LibreCaslonText_700Bold',
+    },
 });
 
 export const SPLASH_SCREEN_TIME = 2000; // milliseconds

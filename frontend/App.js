@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFonts, LibreCaslonText_400Regular } from '@expo-google-fonts/libre-caslon-text'
+import { useFonts, LibreCaslonText_400Regular, LibreCaslonText_700Bold } from '@expo-google-fonts/libre-caslon-text'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -22,6 +22,8 @@ export default function App() {
 
     const [fontsLoaded] = useFonts({
         LibreCaslonText_400Regular,
+        LibreCaslonText_700Bold
+
     });
 
     setTimeout(() => setShowSplashScreen(false), SPLASH_SCREEN_TIME);
