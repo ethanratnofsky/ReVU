@@ -3,7 +3,7 @@ import { Image, Text, View } from 'react-native';
 import overallRatingStyles from './OverallRatingStyles';
 
 const OverallRating = ({ diningHallId }) => {
-    let rating = 4.34; // TODO: use diningHallId to fetch rating from backend
+    let rating = 4.35; // TODO: use diningHallId to fetch rating from backend
     let ratingWhole = 0;
     let ratingDecimal = 0;
 
@@ -32,7 +32,7 @@ const OverallRating = ({ diningHallId }) => {
                                 )
                             }
                             {
-                                index === ratingWhole && ratingDecimal && (
+                                index === ratingWhole && ratingDecimal > 0 && (
                                     <>
                                         <Image 
                                             style={overallRatingStyles.star} 
