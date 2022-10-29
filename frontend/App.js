@@ -12,6 +12,7 @@ import Commons from './components/dininghalls/Commons';
 import Zeppos from './components/dininghalls/Zeppos';
 import Kissam from './components/dininghalls/Kissam';
 import EBI from './components/dininghalls/EBI';
+import MenuDisplay from './components/menus/MenuDisplay';
 
 import { SPLASH_SCREEN_TIME } from './constants';
 
@@ -23,7 +24,6 @@ export default function App() {
     const [fontsLoaded] = useFonts({
         LibreCaslonText_400Regular,
         LibreCaslonText_700Bold
-
     });
 
     setTimeout(() => setShowSplashScreen(false), SPLASH_SCREEN_TIME);
@@ -73,6 +73,11 @@ export default function App() {
                 <Stack.Screen
                     name="Kissam Dining Hall"
                     component={Kissam}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="Menus"
+                    component={MenuDisplay}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>
