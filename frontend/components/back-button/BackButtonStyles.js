@@ -6,7 +6,7 @@ const backButtonStyles = StyleSheet.create({
     container: {
         padding: 10,
         position: 'absolute',
-        left: 10,
+        left: 15,
         top: 50,
     },
     arrow: {

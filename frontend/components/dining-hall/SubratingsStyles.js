@@ -11,7 +11,7 @@ const subratingsStyles = StyleSheet.create({
     subratingContainer: {
         flex: 1,
         alignItems: 'center',
-        marginVertical: 15,
+        marginVertical: 5,
     },
     subratingSmallContainer: {
         flex: 1,

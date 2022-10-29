@@ -5,12 +5,13 @@ import { THEME_STYLES } from '../../constants';
 const overallRatingStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginVertical: 10,
+        marginTop: 15,
+        marginBottom: 10,
         paddingHorizontal: 15,
         width: 300,
         height: 70,
         borderRadius: 10,
-        backgroundColor: '#222',
+        backgroundColor: '#333',
         shadowColor: 'black',
         shadowOffset: { width: 3, height: 5 },
         shadowOpacity: 0.1,
@@ -22,15 +23,33 @@ const overallRatingStyles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
     },
-    star: {
+    starContainer: {
         width: 48,
-        aspectRatio: 1,
+        height: 48,
+        flexDirection: 'row',
+        position: 'relative',
+    },
+    star: {
+        height: '100%',
+        width: '100%',
+    },
+    starMask: {
+        position: 'absolute',
+        right: 0,
+        height: '100%',
+        backgroundColor: '#333',
+    },
+    starOutline: {
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
     },
     ratingContainer: {
         marginVertical: 15,
         marginLeft: 15,
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 0.25,
     },
     rating: {
         ...THEME_STYLES.whiteText,
