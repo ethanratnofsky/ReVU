@@ -26,7 +26,6 @@ const OverallRating = ({ diningHallId }) => {
                             {
                                 index < ratingWhole && (
                                     <Image
-                                        key={index}
                                         style={overallRatingStyles.star}
                                         source={require('../../assets/images/gold-star.png')}
                                     />
@@ -35,12 +34,18 @@ const OverallRating = ({ diningHallId }) => {
                             {
                                 index === ratingWhole && ratingDecimal && (
                                     <>
-                                        <Image style={overallRatingStyles.star} source={require('../../assets/images/gold-star.png')} />
+                                        <Image 
+                                            style={overallRatingStyles.star} 
+                                            source={require('../../assets/images/gold-star.png')} 
+                                        />
                                         <View style={{...overallRatingStyles.starMask, width: `${(1 - ratingDecimal) * 100}%`}} />
                                     </>
                                 )
                             }
-                            <Image style={overallRatingStyles.starOutline} source={require('../../assets/images/outline-star.png')} />
+                            <Image 
+                                style={overallRatingStyles.starOutline} 
+                                source={require('../../assets/images/outline-star.png')} 
+                            />
                         </View>
                     ))
                 }
