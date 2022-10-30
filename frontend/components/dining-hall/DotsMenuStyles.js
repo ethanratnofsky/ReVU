@@ -43,8 +43,8 @@ const dotsMenuStyles = StyleSheet.create({
     },
     menuText: {
         ...THEME_STYLES.whiteText,
-        fontWeight: 'bold',
-        fontSize: 16,
+        // fontWeight: 'bold',
+        fontSize: 14,
         marginLeft: 8,
     }
 });
