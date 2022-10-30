@@ -41,11 +41,11 @@ const Home = ({navigation}) => {
     const renderDiningHallButton = ({ item }) => (
         <DiningHallButton {...item} />
     );
-
+    const currDate = new Date().toDateString();
     return (
         <SafeAreaView style={homeStyles.container}>
             <Image style={homeStyles.logo} source={require('../../assets/images/revu-logo.png')} />
-            <Text style={homeStyles.date}>Friday, Semptember 31, 2022</Text>
+            <Text style={homeStyles.date}>{currDate}</Text>
             <FlatList 
                 data={DINING_HALLS} 
                 renderItem={renderDiningHallButton} 
