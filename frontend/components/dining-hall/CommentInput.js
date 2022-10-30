@@ -3,7 +3,7 @@ import { Alert, Image, Keyboard, KeyboardAvoidingView, Pressable, TextInput, Vie
 
 import commentInputStyles from './CommentInputStyles';
 
-const CommentInput = () => {
+const CommentInput = ({ diningHallId }) => {
     const [comment, setComment] = useState('');
 
     const handleSubmit = () => {
