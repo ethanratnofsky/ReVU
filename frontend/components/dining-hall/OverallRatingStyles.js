@@ -4,18 +4,26 @@ import { THEME_STYLES } from '../../constants';
 
 const overallRatingStyles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
         marginTop: 15,
         marginBottom: 10,
+        paddingVertical: 5,
         paddingHorizontal: 15,
         width: 300,
-        height: 70,
+        alignItems: 'center',
         borderRadius: 10,
         backgroundColor: '#333',
         shadowColor: 'black',
         shadowOffset: { width: 3, height: 5 },
         shadowOpacity: 0.1,
         shadowRadius: 1.5,
+    },
+    tapText: {
+        ...THEME_STYLES.whiteText,
+        fontSize: 10,
+        opacity: 0.5,
+    },
+    rowContainer: {
+        flexDirection: 'row',
     },
     starsContainer: {
         flex: 1,
@@ -44,7 +52,6 @@ const overallRatingStyles = StyleSheet.create({
         position: 'absolute',
     },
     ratingContainer: {
-        marginVertical: 15,
         marginLeft: 15,
         justifyContent: 'center',
         alignItems: 'center',
@@ -58,8 +65,13 @@ const overallRatingStyles = StyleSheet.create({
     starsText: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
-        fontSize: 11,
+        fontSize: 12,
     },
+    numRatings: {
+        ...THEME_STYLES.whiteText,
+        ...THEME_STYLES.libreCaslonFont,
+        fontSize: 10,
+    }
 });
 
 export default overallRatingStyles;
