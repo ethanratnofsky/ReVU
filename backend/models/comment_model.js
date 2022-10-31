@@ -5,9 +5,9 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: Number
     },
-    diningHall: {
+    diningHallId: {
         requied: true,
-        type: String,
+        type: Number,
     },
     content: {
         required: true,

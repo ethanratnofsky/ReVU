@@ -5,6 +5,10 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: Number,
     },
+    diningHallId: {
+        required: true,
+        type: Number
+    },
     contact: {
         required: true,
         type: String
@@ -12,6 +16,10 @@ const dataSchema = new mongoose.Schema({
     content: {
         required: true,
         type: String,
+    },
+    urgency: {
+        required: true,
+        type: Number,
     },
     timestamp: {
         required: true,
