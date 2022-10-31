@@ -73,3 +73,4 @@ export const THEME_STYLES = StyleSheet.create({
 });
 
 export const SPLASH_SCREEN_TIME = 1000; // milliseconds
+export const TERMS_AND_CONDITIONS = "By using this application, you agree to posting appropriate content with proper language or risk having your comments/complaints removed."
