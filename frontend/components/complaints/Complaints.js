@@ -8,6 +8,7 @@ import complaintStyles from './ComplaintStyles';
 import  SelectDropdown from 'react-native-select-dropdown';
 import Dropdown from './Dropdown';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
+import { DINING_HALLS } from '../../constants';
 
 const Filter = require('bad-words');
 
@@ -21,8 +22,6 @@ const Complaints = () => {
     const [dining, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
     const height = useHeaderHeight();
-    const navigation = useNavigation();
-
 
     const filter = new Filter({'placeHolder': '*'});
 
