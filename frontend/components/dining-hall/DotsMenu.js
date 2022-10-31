@@ -1,8 +1,11 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import dotsMenuStyles from './DotsMenuStyles';
 
 const DotsMenu = ({ diningHallId, isMenuVisible, toggleMenu }) => {
+
+    const navigation = useNavigation();
     return (
         <View style={dotsMenuStyles.container}>
             <TouchableOpacity style={dotsMenuStyles.dotsContainer} onPress={toggleMenu}>
@@ -12,7 +15,7 @@ const DotsMenu = ({ diningHallId, isMenuVisible, toggleMenu }) => {
             </TouchableOpacity>
             {isMenuVisible && (
                 <View style={dotsMenuStyles.menu}>
-                    <TouchableOpacity style={dotsMenuStyles.menuItem} onPress={() => alert('omw to menus')} >
+                    <TouchableOpacity style={dotsMenuStyles.menuItem} onPress={() => navigation.navigate("Menus", { diningHallId })} >
                         <Image style={dotsMenuStyles.menuIcon} source={require('../../assets/images/white-food.png')} />
                         <Text style={dotsMenuStyles.menuText}>Menu</Text>
                     </TouchableOpacity>

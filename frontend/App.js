@@ -7,6 +7,7 @@ import SplashScreen from './components/splashscreen/SplashScreen';
 import Main from './components/homepage/Main';
 import DiningHall from './components/dining-hall/DiningHall';
 import Complaints from './components/complaints/Complaints';
+import MenuDisplay from './components/menus/MenuDisplay';
 
 import { SPLASH_SCREEN_TIME } from './constants';
 
@@ -42,6 +43,11 @@ export default function App() {
                 <Stack.Screen
                     name="Complaints"
                     component={Complaints}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="Menus"
+                    component={MenuDisplay}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>
