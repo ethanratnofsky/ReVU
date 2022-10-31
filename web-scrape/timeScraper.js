@@ -17,10 +17,7 @@ const scraperObject = {
                         cur_table = [];
                         table.querySelectorAll('tr')
                              .forEach((cur_row) => {
-                                row = []
-                                cur_row.childNodes.forEach((x) => {
-                                    row.push(x.textContent)
-                                })
+                                row = Array.from(cur_row.childNodes).map(x => x.textContent).filter(x => x[0] != '\n')
                                 cur_table.push(row);
                     });
                         tables.push(cur_table);
@@ -34,7 +31,7 @@ const scraperObject = {
             });
             return results;
         });
-        console.log(contents[0]['table_body'])
+        console.log(contents)
     }
 }
 
