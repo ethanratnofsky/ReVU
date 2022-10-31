@@ -1,14 +1,15 @@
-import { View, Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native';
-import { StyleSheet, Keyboard } from 'react-native';
-import { THEME_STYLES, VU_BLACK, VU_GOLD, VU_METALLIC_GOLD_START, VU_WHITE } from '../../constants';
+import { Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native';
+import { Keyboard } from 'react-native';
+import { VU_BLACK, VU_WHITE } from '../../constants';
 import { useState } from 'react';
 import { useHeaderHeight } from '@react-navigation/elements';
-import { useNavigation } from '@react-navigation/native';
 import complaintStyles from './ComplaintStyles';
-import  SelectDropdown from 'react-native-select-dropdown';
 import Dropdown from './Dropdown';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 import { DINING_HALLS } from '../../constants';
+import { useNavigation } from '@react-navigation/native';
+
+import BackButton from '../back-button/BackButton';
 
 const Filter = require('bad-words');
 
@@ -22,6 +23,12 @@ const Complaints = () => {
     const [dining, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
     const height = useHeaderHeight();
+
+    const navigation = useNavigation();
+
+    const handleBackButtonPress = () => {
+        navigation.goBack();
+    }
 
     const filter = new Filter({'placeHolder': '*'});
 
@@ -94,6 +101,7 @@ const Complaints = () => {
             </SafeAreaView>
         </TouchableWithoutFeedback> 
         </ScrollView>
+        <BackButton onPress={handleBackButtonPress} />
         </KeyboardAvoidingView>
     );
 }

@@ -7,7 +7,7 @@ const navbarStyles = StyleSheet.create({
         position: 'absolute',
         bottom: 40,
         alignSelf: 'center',
-        width: 350,
+        width: 250,
         height: 62,
         padding: 3,
         borderRadius: 30,

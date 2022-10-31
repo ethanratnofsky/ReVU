@@ -3,6 +3,8 @@ import menuPageStyles from './MenuStyles';
 import FoodList from './FoodList';
 import { DINING_HALLS } from '../../constants';
 
+import BackButton from '../back-button/BackButton';
+
 const MENU = [
     {"time": "Breakfast", "items": ["Tater Tots", "Scrambeled Eggs", "Maple Syrup Infused Waffles", "Vegan Chipotle Eggs"]},
     {"time": "Lunch", "items": ["Glazed Pork", "Vegan Pot Pie", "Green Beans", "Potato Wedges"]},
@@ -25,6 +27,7 @@ const MenuDisplay = ({navigation, route}) => {
                     )
                 })}
             </ScrollView>
+            <BackButton onPress={() => navigation.goBack()} />
         </SafeAreaView>
     );
 

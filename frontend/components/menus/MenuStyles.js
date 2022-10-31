@@ -1,16 +1,14 @@
 import { StyleSheet } from "react-native";
-import { THEME_STYLES, VU_BLACK, VU_GOLD, VU_METALLIC_GOLD_START, VU_WHITE } from '../../constants';
+import { THEME_STYLES, VU_GOLD } from '../../constants';
 
 const menuPageStyles = StyleSheet.create({
     container: {
         ...THEME_STYLES.blackBackground,
         height: '100%',
         alignItems: 'center',
-        // flexDirection: 'column',
-        // alignContent: 'center'
     },
     titleText: {
-        marginTop: 25,
+        marginTop: 15,
         marginBottom: 15,
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonBoldFont,

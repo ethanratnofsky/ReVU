@@ -16,14 +16,8 @@ const Navbar = () => {
                 <Pressable onPress={() => Alert.alert("Terms & Conditions", TERMS_AND_CONDITIONS)}>
                     <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-tc.png')} />
                 </Pressable>
-                <Pressable onPress={() => alert('Menus')}>
-                    <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-menus.png')} />
-                </Pressable>
                 <Pressable onPress={() => navigation.navigate("Main")}>
                     <Image style={navbarStyles.icon} source={require('../../assets/images/gold-icon-home.png')} />
-                </Pressable>
-                <Pressable onPress={() => alert('Hours')}>
-                    <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-hours.png')} />
                 </Pressable>
                 <Pressable onPress={() => navigation.navigate('Complaints')}>
                     <Image style={navbarStyles.icon} source={require('../../assets/images/black-icon-complaints.png')} />

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { THEME_STYLES, VU_BLACK, VU_GOLD, VU_METALLIC_GOLD_START, VU_WHITE } from '../../constants';
+import { THEME_STYLES, VU_GOLD, VU_WHITE } from '../../constants';
 
 
 const complaintStyles = StyleSheet.create({
@@ -66,7 +66,7 @@ const complaintStyles = StyleSheet.create({
         alignItems: 'center'
     },
     titleText: {
-        marginTop: 25,
+        marginTop: 15,
         marginBottom: 10,
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonBoldFont,
