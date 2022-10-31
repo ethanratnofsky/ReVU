@@ -2,75 +2,30 @@ import { FlatList, Text, View } from 'react-native';
 
 import commentsStyles from './CommentsStyles';
 
-const Comment = ({ comment }) => {
+import { COMMENTS, USERS } from '../../demo.js';
+
+const Comment = ({ userId, content, timestamp }) => {
+    const author = USERS.find(user => user.id === userId);
+    const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
     return (
         <View style={commentsStyles.commentContainer} onStartShouldSetResponder={() => true}>
             <View style={commentsStyles.commentHeader}>
-                <Text style={commentsStyles.commentAuthor}>{comment.author}</Text>
-                <Text style={commentsStyles.commentTime}>{comment.time}</Text>
+                <Text style={commentsStyles.commentAuthor}>{author.name}</Text>
+                <Text style={commentsStyles.commentTime}>{time}</Text>
             </View>
-            <Text style={commentsStyles.commentContent}>{comment.content}</Text>
+            <Text style={commentsStyles.commentContent}>{content}</Text>
         </View>
     )
 };
 
 const Comments = ({ diningHallId }) => {
-    // TODO: use diningHallId to fetch comments from backend
-    const comments = [
-        {
-            id: 1,
-            userID: 1,
-            diningID: 5,
-            content: 'This is a comment',
-            timestamp: 1132,
-        },
-        {
-            id: 2,
-            userID: 2,
-            diningID: 3,
-            content: 'This is another comment',
-            timestamp: 1132,
-        },
-        {
-            id: 3,
-            userID: 3,
-            diningID: 2,
-            content: 'This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment',
-            timestamp: 1139,
-        },
-        {
-            id: 4,
-            userID: 4,
-            diningID: 1,
-            content: 'This is another comment',
-            timestamp: 1149,
-        },
-        {
-            id: 5,
-            userID: 5,
-            diningID: 3,
-            content: 'This is another comment',
-            timestamp: 1132,
-        },
-        {
-            id: 6,
-            userID: 6,
-            diningID: 0,
-            content: 'This is another comment',
-            timestamp: 1133,
-        },
-        {
-            id: 7,
-            userID: 7,
-            diningID: 4,
-            content: 'This is another comment',
-            timestamp: 1134,
-        },
-    ];
+    // TODO: Get comments from backend
+    const comments = COMMENTS.filter(comment => comment.diningHallId === diningHallId);
 
-    const renderItem = ({ item }) => (
-        <Comment comment={item} />
-    );
+    const renderComment = ({ item }) => {
+        return <Comment {...item} />
+    };
 
     return (
         <View style={commentsStyles.container}>
@@ -79,7 +34,7 @@ const Comments = ({ diningHallId }) => {
             <FlatList
                 style={commentsStyles.commentsContainer}
                 data={comments}
-                renderItem={renderItem}
+                renderItem={renderComment}
                 keyExtractor={comment => comment.id}
             />
         </View>

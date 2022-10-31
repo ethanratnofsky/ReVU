@@ -1,9 +1,8 @@
-
 export const DINING_HALLS = [
     {
         id: 0,
         name: 'Rand Dining Hall',
-        overallRating: 5.0,
+        overallRating: 5,
     },
     {
         id: 1,
@@ -13,7 +12,7 @@ export const DINING_HALLS = [
     {
         id: 2,
         name: 'Rothschild Dining Hall',
-        overallRating: 3.0,
+        overallRating: 3,
     },
     {
         id: 3,
@@ -31,10 +30,11 @@ export const DINING_HALLS = [
         overallRating: null,
     }
 ]
+
 export const COMPLAINTS = [
     {
         id: 1,
-        userID: 1,
+        userId: 1,
         diningHallId: 4,
         contact: "arjun@yahoo.com",
         content: 'This is a complaint',
@@ -43,7 +43,7 @@ export const COMPLAINTS = [
     },
     {
         id: 2,
-        userID: 2,
+        userId: 2,
         diningHallId: 2,
         contact: "ethan@yahoo.com",
         content: 'This is a complaint',
@@ -52,7 +52,7 @@ export const COMPLAINTS = [
     },
     {
         id: 3,
-        userID: 3,
+        userId: 3,
         diningHallId: 1,
         contact: "shivam@yahoo.com",
         content: 'This is a complaint',
@@ -61,7 +61,7 @@ export const COMPLAINTS = [
     },
     {
         id: 4,
-        userID: 4,
+        userId: 4,
         diningHallId: 2,
         contact: "othergroupmember@yahoo.com",
         content: 'This is a complaint',
@@ -70,7 +70,7 @@ export const COMPLAINTS = [
     },
     {
         id: 5,
-        userID: 5,
+        userId: 5,
         diningHallId: 3,
         contact: "vikash@yahoo.com",
         content: 'This is a complaint',
@@ -79,7 +79,7 @@ export const COMPLAINTS = [
     },
     {
         id: 6,
-        userID: 6,
+        userId: 6,
         diningHallId: 5,
         contact: "pablo@yahoo.com",
         content: 'This is a complaint',
@@ -88,98 +88,180 @@ export const COMPLAINTS = [
     }
     
 ]
+
 export const RATINGS = [
     {
         id: 1,
-        userID: 1,
+        userId: 1,
         diningHallId: 5,
         type: 'food',
         rating: 5,
     },
     {
         id: 2,
-        userID: 2,
+        userId: 2,
         diningHallId: 3,
         type: 'traffic',
         rating: 1,
     },
     {
         id: 3,
-        userID: 3,
+        userId: 3,
         diningHallId: 2,
         type: 'food',
         rating: 0,
     },
     {
         id: 4,
-        userID: 4,
+        userId: 4,
         diningHallId: 1,
         type: 'food',
         rating: 4,
     },
     {
         id: 5,
-        userID: 5,
+        userId: 5,
         diningHallId: 3,
         type: 'traffic',
         rating: 3,
     },
     {
         id: 6,
-        userID: 6,
+        userId: 6,
         diningHallId: 0,
         type: 'food',
         rating: 0,
     },
 ]
+
 export const COMMENTS = [
     {
         id: 1,
-        userID: 1,
+        userId: 1,
         diningHallId: 5,
-        content: 'This is a comment',
-        timestamp: 1132,
+        content: 'food was mid and dining hall is far away',
+        timestamp: Date.now(),
     },
     {
         id: 2,
-        userID: 2,
+        userId: 2,
         diningHallId: 3,
-        content: 'This is another comment',
-        timestamp: 1132,
+        content: 'E',
+        timestamp: Date.now(),
     },
     {
         id: 3,
-        userID: 3,
+        userId: 3,
         diningHallId: 2,
-        content: 'This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment',
-        timestamp: 1139,
+        content: 'This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment about Rothschild',
+        timestamp: Date.now(),
     },
     {
         id: 4,
-        userID: 4,
+        userId: 4,
         diningHallId: 1,
-        content: 'This is another comment',
-        timestamp: 1149,
+        content: 'wow acai bowls are so good',
+        timestamp: Date.now(),
     },
     {
         id: 5,
-        userID: 5,
+        userId: 5,
         diningHallId: 3,
-        content: 'This is another comment',
-        timestamp: 1132,
+        content: 'B',
+        timestamp: Date.now(),
     },
     {
         id: 6,
-        userID: 6,
+        userId: 6,
         diningHallId: 0,
-        content: 'This is another comment',
-        timestamp: 1133,
+        content: 'Rand is such a great dining hall!',
+        timestamp: Date.now(),
     },
     {
         id: 7,
-        userID: 7,
+        userId: 7,
         diningHallId: 4,
-        content: 'This is another comment',
-        timestamp: 1134,
+        content: 'zeppos is cool',
+        timestamp: Date.now(),
     },
-];
+    {
+        id: 8,
+        userId: 7,
+        diningHallId: 3,
+        content: 'I',
+        timestamp: Date.now(),
+    },
+    {
+        id: 9,
+        userId: 6,
+        diningHallId: 3,
+        content: '<3',
+        timestamp: Date.now(),
+    },
+    {
+        id: 10,
+        userId: 3,
+        diningHallId: 3,
+        content: 'vandy',
+        timestamp: Date.now(),
+    },
+    {
+        id: 11,
+        userId: 3,
+        diningHallId: 3,
+        content: 'student',
+        timestamp: Date.now(),
+    },
+    {
+        id: 12,
+        userId: 4,
+        diningHallId: 3,
+        content: 'gov',
+        timestamp: Date.now(),
+    },
+    {
+        id: 13,
+        userId: 1,
+        diningHallId: 3,
+        content: 'and dining!',
+        timestamp: Date.now(),
+    },
+]
+
+export const USERS = [
+    {
+        id: 1,
+        name: 'User 1',
+        email: 'user1@yahoo.com',
+    },
+    {
+        id: 2,
+        name: 'User 2',
+        email: 'user2@yahoo.com',
+    },
+    {
+        id: 3,
+        name: 'User 3',
+        email: 'user3@yahoo.com',
+    },
+    {
+        id: 4,
+        name: 'User 4',
+        email: 'user4@yahoo.com',
+    },
+    {
+        id: 5,
+        name: 'User 5',
+        email: 'user5@yahoo.com',
+    },
+    {
+        id: 6,
+        name: 'User 6',
+        email: 'user6@yahoo.com',
+    },
+    {
+        id: 7,
+        name: 'User 7',
+        email: 'user7@yahoo.com',
+    },
+]
