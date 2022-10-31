@@ -5,31 +5,24 @@ const scraperObject = {
 		console.log(`Navigating to ${this.url}...`);
 		// Navigate to the selected page
 		await page.goto(this.url); 
-        title = await page.evaluate(() => {
-            return Array.from(document.querySelectorAll('#accordion')).map(x => x.textContent)
+        contents = await page.evaluate(() => {
+            let accordions = document.querySelectorAll('#accordion')
+            let results = []
+            
+            accordions.forEach((item) => {
+                results.push({
+                    title : Array.from(item.querySelectorAll('h4.panel-title')).map(x => x.textContent),
+                    table_header : Array.from(item.querySelector('thead').querySelectorAll('th')).map(x => x.textContent),
+                    table_body : Array.from(item.querySelector('tbody').querySelectorAll('th,td')).map(x => x.textContent) // DAY BREAKFAST LUNCH DINNER
+                                                                                                    // Day time        time   time
+                })
+                
+            });
+            
+            return results;
         });
-        console.log(title)
-        //headings = await page.evaluate(() => {
-          
-            //headings_elements = document.querySelectorAll("h2 .mw-headline");
-          //headings_array = Array.from(headings_elements);
-          //return headings_array.map(heading => heading.textContent);
-        //});
-        // console.log(headings);
-        await browser.close();
-        /*
-		// Wait for the required DOM to be rendered
-		await page.waitForSelector('.page_inner');
-		// Get the link to all the required books
-		let urls = await page.$$eval('section ol > li', links => {
-			// Make sure the book to be scraped is in stock
-			links = links.filter(link => link.querySelector('.instock.availability > i').textContent !== "In stock")
-			// Extract the links from the data
-			links = links.map(el => el.querySelector('h3 > a').href)
-			return links;
-		});
-		console.log(urls);
-        */
+
+        console.log(contents)
     }
 }
 
