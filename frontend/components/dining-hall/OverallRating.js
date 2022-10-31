@@ -1,8 +1,8 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import overallRatingStyles from './OverallRatingStyles';
 
-const OverallRating = ({ diningHallId }) => {
+const OverallRating = ({ diningHallId, onPress }) => {
     let rating = 4.35; // TODO: use diningHallId to fetch rating from backend
     let ratingWhole = 0;
     let ratingDecimal = 0;
@@ -18,7 +18,7 @@ const OverallRating = ({ diningHallId }) => {
     }
 
     return (
-        <View style={overallRatingStyles.container}>
+        <TouchableOpacity style={overallRatingStyles.container} onPress={onPress}>
             <View style={overallRatingStyles.starsContainer}>
                 {
                     [...Array(5)].map((_, index) => (
@@ -54,7 +54,7 @@ const OverallRating = ({ diningHallId }) => {
                 <Text style={overallRatingStyles.rating}>{rating}</Text>
                 <Text style={overallRatingStyles.starsText}>stars</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 };
 

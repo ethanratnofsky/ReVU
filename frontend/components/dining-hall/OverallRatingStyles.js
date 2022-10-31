@@ -26,7 +26,6 @@ const overallRatingStyles = StyleSheet.create({
     starContainer: {
         width: 48,
         height: 48,
-        flexDirection: 'row',
         position: 'relative',
     },
     star: {

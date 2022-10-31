@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import dotsMenuStyles from './DotsMenuStyles';
 
 const DotsMenu = ({ diningHallId, isMenuVisible, toggleMenu }) => {
-
     return (
         <View style={dotsMenuStyles.container}>
             <TouchableOpacity style={dotsMenuStyles.dotsContainer} onPress={toggleMenu}>
