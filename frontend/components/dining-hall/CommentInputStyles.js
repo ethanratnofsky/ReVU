@@ -21,10 +21,13 @@ const commentsStyles = StyleSheet.create({
         ...THEME_STYLES.whiteText,
         alignSelf: 'flex-end',
     },
+    sendContainer: {
+        marginRight: 5,
+        padding: 5,
+    },
     send: {
         width: 25,
         height: 25,
-        marginRight: 10,
     }
 });
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Image, Keyboard, KeyboardAvoidingView, Pressable, TextInput, View } from 'react-native';
+import { Alert, Image, Keyboard, KeyboardAvoidingView, TouchableOpacity, TextInput, View } from 'react-native';
 
 import commentInputStyles from './CommentInputStyles';
 
@@ -24,9 +24,9 @@ const CommentInput = ({ diningHallId }) => {
                     value={comment}
                     onChangeText={setComment}
                 />
-                <Pressable onPress={handleSubmit} disabled={!comment}>
+                <TouchableOpacity style={commentInputStyles.sendContainer} onPress={handleSubmit} disabled={!comment}>
                     <Image style={commentInputStyles.send} source={comment ? require('../../assets/images/gold-send.png') : require('../../assets/images/gray-send.png')} />
-                </Pressable>
+                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )
