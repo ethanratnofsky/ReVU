@@ -79,7 +79,7 @@ const RatingInput = ({ diningHallId, onClose }) => {
                     <Text style={ratingInputStyles.ratingDescription}>Empty</Text>
                 </View>
             </View>
-            <TouchableOpacity style={{...ratingInputStyles.submitButtonContainer, opacity: foodRating || trafficRating ? 1 : 0.25 }} onPress={handleSubmit} disabled={!(foodRating || trafficRating)}>
+            <TouchableOpacity style={{...ratingInputStyles.submitButtonContainer, opacity: foodRating && trafficRating ? 1 : 0.25 }} onPress={handleSubmit} disabled={!(foodRating && trafficRating)}>
                 <LinearGradient colors={[VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END]} start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }} style={ratingInputStyles.gradient}>
                     <View style={ratingInputStyles.submitButton}>
                         <Text style={ratingInputStyles.submitButtonText}>Submit</Text>
