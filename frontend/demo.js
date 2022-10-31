@@ -35,6 +35,7 @@ export const COMPLAINTS = [
     {
         id: 1,
         userID: 1,
+        diningHallId: 4,
         contact: "arjun@yahoo.com",
         content: 'This is a complaint',
         urgency: 5,
@@ -43,6 +44,7 @@ export const COMPLAINTS = [
     {
         id: 2,
         userID: 2,
+        diningHallId: 2,
         contact: "ethan@yahoo.com",
         content: 'This is a complaint',
         urgency: 3,
@@ -51,6 +53,7 @@ export const COMPLAINTS = [
     {
         id: 3,
         userID: 3,
+        diningHallId: 1,
         contact: "shivam@yahoo.com",
         content: 'This is a complaint',
         urgency: 4,
@@ -59,6 +62,7 @@ export const COMPLAINTS = [
     {
         id: 4,
         userID: 4,
+        diningHallId: 2,
         contact: "othergroupmember@yahoo.com",
         content: 'This is a complaint',
         urgency: 2,
@@ -67,6 +71,7 @@ export const COMPLAINTS = [
     {
         id: 5,
         userID: 5,
+        diningHallId: 3,
         contact: "vikash@yahoo.com",
         content: 'This is a complaint',
         urgency: 1,
@@ -75,6 +80,7 @@ export const COMPLAINTS = [
     {
         id: 6,
         userID: 6,
+        diningHallId: 5,
         contact: "pablo@yahoo.com",
         content: 'This is a complaint',
         urgency: 3,
