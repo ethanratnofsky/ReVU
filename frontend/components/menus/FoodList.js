@@ -6,9 +6,9 @@ const FoodList = ({timeOfDay, list}) => {
     return (
         <View>
             <Text style={menuPageStyles.foodTimeHeader}>{timeOfDay}</Text>
-            {list.map((foodItem) => {
+            {list.map((foodItem, index) => {
                 return (
-                    <FoodItem item={foodItem} />
+                    <FoodItem key={index} item={foodItem} />
                 )
             })}
         </View>

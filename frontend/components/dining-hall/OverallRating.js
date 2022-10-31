@@ -2,21 +2,30 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import overallRatingStyles from './OverallRatingStyles';
 
+import { RATINGS } from '../../demo.js';
+
 const OverallRating = ({ diningHallId, onPress }) => {
-    let rating = 4.35; // TODO: use diningHallId to fetch rating from backend
-    const numRatings = 123; // TODO: use diningHallId to fetch numRatings from backend
+    // TODO: Get ratings from backend
+    const ratings = RATINGS.filter(rating => rating.diningHallId === diningHallId);
+    const numRatings = ratings.length;
+
+    // Calculate overall rating
+    let overallRating = null;
+    if (ratings.length !== 0) {
+        overallRating = ratings.reduce((acc, rating) => acc + rating.rating, 0) / numRatings;
+    }
 
     let ratingWhole = 0;
     let ratingDecimal = 0;
 
-    // Process rating
-    if (rating < 0 || rating > 5) {
-        console.error('Invalid overall rating: ' + rating);
-        rating = 'N/A';
+    // Validate rating
+    if (overallRating < 0 || overallRating > 5 || !overallRating) {
+        console.log('[ Dining Hall ID ' + diningHallId + ' ] ' + 'Invalid overall rating: ' + overallRating);
+        overallRating = 'N/A';
     } else {
-        ratingWhole = Math.floor(rating);
-        ratingDecimal = rating - ratingWhole;
-        rating = rating.toFixed(1);
+        ratingWhole = Math.floor(overallRating);
+        ratingDecimal = overallRating - ratingWhole;
+        overallRating = overallRating.toFixed(1);
     }
 
     return (
@@ -55,8 +64,8 @@ const OverallRating = ({ diningHallId, onPress }) => {
                     }
                 </View>
                 <View style={overallRatingStyles.ratingContainer}>
-                    <Text style={overallRatingStyles.rating}>{rating}</Text>
-                    <Text style={overallRatingStyles.starsText}>star{rating != 1 && 's'}</Text>
+                    <Text style={overallRatingStyles.rating}>{overallRating}</Text>
+                    <Text style={overallRatingStyles.starsText}>star{overallRating != 1 && 's'}</Text>
                 </View>
             </View>
             <Text style={overallRatingStyles.numRatings}>{numRatings} rating{numRatings != 1 && 's'}</Text>

@@ -28,13 +28,14 @@ const subratingsStyles = StyleSheet.create({
     },
     ratingContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
     },
     rating: {
-        marginTop: 5,
+        marginTop: 2,
         marginHorizontal: 5,
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
-        fontSize: 36,
+        fontSize: 30,
     },
     smallRating: {
         marginLeft: 10,
@@ -44,7 +45,7 @@ const subratingsStyles = StyleSheet.create({
         fontSize: 20,
     },
     star: {
-        width: 48,
+        width: 36,
         aspectRatio: 1,
     },
     smallStar: {

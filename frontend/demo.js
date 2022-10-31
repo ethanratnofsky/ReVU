@@ -2,32 +2,26 @@ export const DINING_HALLS = [
     {
         id: 0,
         name: 'Rand Dining Hall',
-        overallRating: 5,
     },
     {
         id: 1,
         name: 'Kissam Dining Hall',
-        overallRating: 4.3,
     },
     {
         id: 2,
         name: 'Rothschild Dining Hall',
-        overallRating: 3,
     },
     {
         id: 3,
         name: 'E. B. I. Dining Hall',
-        overallRating: 4.2,
     },
     {
         id: 4,
         name: 'Zeppos Dining Hall',
-        overallRating: 2.5,
     },
     {
         id: 5,
         name: 'Commons Dining Hall',
-        overallRating: null,
     }
 ]
 
@@ -109,7 +103,7 @@ export const RATINGS = [
         userId: 3,
         diningHallId: 2,
         type: 'food',
-        rating: 0,
+        rating: 2,
     },
     {
         id: 4,
@@ -130,7 +124,14 @@ export const RATINGS = [
         userId: 6,
         diningHallId: 0,
         type: 'food',
-        rating: 0,
+        rating: 3,
+    },
+    {
+        id: 7,
+        userId: 6,
+        diningHallId: 0,
+        type: 'food',
+        rating: 4,
     },
 ]
 

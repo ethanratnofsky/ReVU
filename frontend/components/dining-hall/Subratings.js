@@ -3,9 +3,15 @@ import { Keyboard, Image, Text, View } from 'react-native';
 
 import subratingsStyles from './SubratingsStyles';
 
+import { RATINGS } from '../../demo.js';
+
 const Subratings = ({ diningHallId }) => {
-    const foodRating = 4.7; // TODO: use diningHallId to fetch food rating from backend
-    const trafficRating = 2.3; // TODO: use diningHallId to fetch traffic rating from backend
+    // TODO: Get ratings from backend
+    const foodRatings = RATINGS.filter(rating => rating.diningHallId === diningHallId && rating.type === 'food');
+    const trafficRatings = RATINGS.filter(rating => rating.diningHallId === diningHallId && rating.type === 'traffic');
+
+    const foodRating = foodRatings.length === 0 ? 'N/A' : (foodRatings.reduce((acc, rating) => acc + rating.rating, 0) / foodRatings.length).toFixed(1);
+    const trafficRating = trafficRatings.length === 0 ? 'N/A' : (trafficRatings.reduce((acc, rating) => acc + rating.rating, 0) / trafficRatings.length).toFixed(1);
 
     // State for whether keyboard is open or not
     const [isKeyboardShown, setIsKeyboardShown] = useState(undefined);
