@@ -6,15 +6,21 @@ import DiningHallButton from './DiningHallButton';
 
 import { DINING_HALLS } from '../../constants';
 
-const Home = ({navigation}) => {
+const Home = () => {
+    const currDate = new Date();
+    const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(currDate);
+    const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currDate);
+    const date = currDate.getDate();
+    const year = currDate.getFullYear();
+
     const renderDiningHallButton = ({ item }) => (
         <DiningHallButton {...item} />
     );
-    const currDate = new Date().toDateString();
+
     return (
         <SafeAreaView style={homeStyles.container}>
             <Image style={homeStyles.logo} source={require('../../assets/images/revu-logo.png')} />
-            <Text style={homeStyles.date}>{currDate}</Text>
+            <Text style={homeStyles.date}>{weekday}, {month} {date}, {year}</Text>
             <FlatList 
                 data={DINING_HALLS} 
                 renderItem={renderDiningHallButton} 
