@@ -1,7 +1,7 @@
-import {View, ScrollView, Text, SafeAreaView} from 'react-native';
+import {ScrollView, Text, SafeAreaView} from 'react-native';
 import menuPageStyles from './MenuStyles';
 import FoodList from './FoodList';
-import { DINING_MAP } from '../../constants';
+import { DINING_HALLS } from '../../constants';
 
 const MENU = [
     {"time": "Breakfast", "items": ["Tater Tots", "Scrambeled Eggs", "Maple Syrup Infused Waffles", "Vegan Chipotle Eggs"]},
@@ -13,15 +13,15 @@ const MENU = [
 const MenuDisplay = ({navigation, route}) => {
 
     const { diningHallId } = route.params;
-    const diningHall = DINING_MAP[diningHallId];
+    const diningHallName = DINING_HALLS[diningHallId].name;
     // TODO: Fetch
     return (
         <SafeAreaView style={menuPageStyles.container}>
-            <Text style={menuPageStyles.titleText}>{diningHall}</Text>
+            <Text style={menuPageStyles.titleText}>{diningHallName}</Text>
             <ScrollView>
-                {MENU.map((time) => {
+                {MENU.map((time, i) => {
                     return (
-                        <FoodList timeOfDay={time["time"]} list={time["items"]}/>
+                        <FoodList key={i} timeOfDay={time["time"]} list={time["items"]}/>
                     )
                 })}
             </ScrollView>
