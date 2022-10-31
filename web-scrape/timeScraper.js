@@ -9,36 +9,32 @@ const scraperObject = {
             let accordions = document.querySelectorAll('#accordion');
             let results = [];
             
-            accordions.forEach((item) => { //document.querySelector('#accordion').querySelector('tbody').querySelectorAll('tr').forEach((row) => {console.log(row.textContent)})
+            accordions.forEach((item) => {
                 tables = [];
 
                 item.querySelectorAll('tbody')
                     .forEach((table) => {
-                        cur_table = []
+                        cur_table = [];
                         table.querySelectorAll('tr')
-                            .forEach((cur_row) => {
-                                date = cur_row.querySelector('th')
-                                time_slots = cur_row.querySelectorAll('td')
-                                if (date && time_slots) {                                
-                                     cur_table.push({
-                                       day : date.textContent,
-                                       times : Array.from(time_slots).map(x => x.textContent)
-                                     })
-                                }
-                        });
-                        tables.push({
-                            table : cur_table
-                        })
-                    })
+                             .forEach((cur_row) => {
+                                row = []
+                                cur_row.childNodes.forEach((x) => {
+                                    row.push(x.textContent)
+                                })
+                                cur_table.push(row);
+                    });
+                        tables.push(cur_table);
+                    });
+
                 results.push({
-                    title : Array.from(item.querySelectorAll('h4.panel-title')).map(x => x.textContent),
+                    title : Array.from(item.querySelectorAll('h4.panel-title')).map(x => x.textContent.replace(/(^NEW )/, "")),
                     table_header : Array.from(item.querySelector('thead').querySelectorAll('th')).map(x => x.textContent),
                     table_body : tables
                 });
             });
             return results;
         });
-        console.log(contents)
+        console.log(contents[0]['table_body'])
     }
 }
 

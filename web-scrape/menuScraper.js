@@ -6,22 +6,18 @@ const scraperObject = {
 		// Navigate to the selected page
 		await page.goto(this.url); 
         contents = await page.evaluate(() => {
-            //let info = document.querySelector("#cbo_nn_unitImages_18 > div > div > a")
             let block = document.querySelector('#cbo_nn_unitDataList > div');
             let info = block.querySelectorAll('a')
             
             let results = []
             info.forEach((item) => {
                 results.push({
-                    x : Array.from(
-                        info.onclick.call()
-                        ).map(x => x.textContent)
+                    x : Array.from(info.onclick.call()).map(x => x.textContent)
                 });
             });
 
             return results;
         });
-        console.log(contents)
     }
 }
 
