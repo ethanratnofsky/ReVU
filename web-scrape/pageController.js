@@ -1,9 +1,11 @@
-const pageScraper = require('./pageScraper');
+const pageScraper = require('./timeScraper');
+const menuScraper = require('./menuScraper')
 async function scrapeAll(browserInstance){
 	let browser;
 	try{
 		browser = await browserInstance;
 		await pageScraper.scraper(browser);	
+		// await menuScraper.scraper(browser);
 		
 	}
 	catch(err){
