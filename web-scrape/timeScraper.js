@@ -10,6 +10,13 @@ const scraperObject = {
             let results = [];
             
             accordions.forEach((item) => {
+                table_headers = []
+                table_header = item.querySelectorAll('thead')
+                                   .forEach((hdr) => {
+                                        cur = Array.from(hdr.querySelectorAll('th')).map(x => x.textContent)
+                                        table_headers.push(cur)
+                                   })
+
                 tables = [];
 
                 item.querySelectorAll('tbody')
@@ -25,13 +32,18 @@ const scraperObject = {
 
                 results.push({
                     title : Array.from(item.querySelectorAll('h4.panel-title')).map(x => x.textContent.replace(/(^NEW )/, "")),
-                    table_header : Array.from(item.querySelector('thead').querySelectorAll('th')).map(x => x.textContent),
+                    table_header : table_headers,
                     table_body : tables
                 });
             });
             return results;
         });
-        console.log(contents)
+        
+        contents.forEach((item) => {
+            console.log(item['title'])
+            console.log(item['table_header'])
+            console.log(item['table_body'])
+        });
     }
 }
 
