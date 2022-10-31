@@ -10,12 +10,13 @@ import DotsMenu from './DotsMenu';
 import OverallRating from './OverallRating';
 import RatingInput from './RatingInput';
 import Subratings from './Subratings';
+import { DINING_MAP } from '../../constants';
 
 const DiningHall = ({ navigation, route }) => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [isRatingInputVisible, setIsRatingInputVisible] = useState(false);
-
     const { id } = route.params; // TODO: use id to fetch dining hall data
+    const diningHall = DINING_MAP[id]
 
     const closeKeyboardAndMenu = () => {
         Keyboard.dismiss();
@@ -43,7 +44,7 @@ const DiningHall = ({ navigation, route }) => {
     return (
         <TouchableWithoutFeedback onPress={closeKeyboardAndMenu} accessible={false}>
             <SafeAreaView style={diningHallStyles.container}>
-                <Text style={diningHallStyles.diningHallName}>Rothschild Dining Hall</Text>
+                <Text style={diningHallStyles.diningHallName}>{diningHall}</Text>
                 <OverallRating diningHallId={id} onPress={handleOverallRatingPress} />
                 <Subratings diningHallId={id} />
                 <Comments diningHallId={id} />

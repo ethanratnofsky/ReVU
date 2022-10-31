@@ -3,8 +3,6 @@ import menuPageStyles from './MenuStyles';
 import FoodItem from './FoodItem';
 
 const FoodList = ({timeOfDay, list}) => {
-    const diningHall = "Kissam Dining Hall";
-    console.log(list);
     return (
         <View>
             <Text style={menuPageStyles.foodTimeHeader}>{timeOfDay}</Text>

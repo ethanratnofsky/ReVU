@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+export const DINING_MAP = {0: "Rand Dining Hall", 1: "Kissam Dining Hall", 2: "Rothschild Dining Hall", 3: "E. B. I. Dining Hall", 4: "Zeppos Dining Hall", 5: "Commons Dining Hall"}
+
 // TODO: Replace with dynamic values from backend
 export const DINING_HALLS = [
     {
