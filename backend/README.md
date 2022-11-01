@@ -25,7 +25,21 @@ This README file contains instructions and descriptions for how to test the back
 * curl localhost:3000/api/getAll/foodRatings/\<ID\>
 4. /getAll/trafficRatings/:diningHallId
 * curl localhost:3000/api/getAll/trafficRatings/\<ID\>
-5. 
+5. /patch/updateRating
+* ???
+6. /delete/allRatings
+* curl -i -X DELETE http://localhost:3000/api/delete/allRatings
+7. /post/createComment
+* curl -X POST -H 'Content-Type: application/json' -d "{\`"userId\`": \`"\<ID\>\`", \`"diningHallId\`": \`"\<ID\>\`", \`"content\`": \`"\<content\>\`", \`"rating\`": \`"\<num\>\`"}" localhost:3000/api/post/createComment
+8. /getAll/diningComments/:diningHallId
+* curl localhost:3000/api/getAll/diningComments/\<ID\>
+9. /patch/updateComment
+* ???
+10. /delete/delComment
+* curl -i -X DELETE localhost:3000/api/delete/delComment
+11. /post/newComplaint
+* curl -X POST -H 'Content-Type: application/json' -d "{\`"userId\`": \`"\<ID\>\`", \`"diningHallId\`": \`"\<ID\>\`", \`"contact\`": \`"\<contact name\>\`", \`"content\`": \`"\<content str\>\`", \`"urgency\`": \`"\<num\>\`"}" localhost:3000/api/post/newComplaint
+12. 
 
 ## Expected Results
 
