@@ -37,17 +37,6 @@ const CommentInput = ({ diningHallId }) => {
             });
         }
 
-        // if (issue == null || contact == null || dining == null || urgency == null) {
-        //     alert("Please fill out all fields. It seems there are some that were left empty.")
-        // } else if (!(/\S+@\S+\.\S+/.test(contact))) {
-        //     alert("Email does not have proper format. Please re-enter email address.");
-        // } else if (filter.isProfane(issue)) {
-        //     alert("You're issue has inappropriate language. Please re-enter your issue input.");
-        // } else if (filter.isProfane(contact)) {
-        //     alert("Your email has inappropriate language. Please re-enter your email.");
-        // }
-        // Alert.alert('Comment Posted', comment); // TODO: post comment to backend
-
     };
 
     return (
