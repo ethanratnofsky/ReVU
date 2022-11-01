@@ -11,7 +11,7 @@ module.exports = router;
 /**
  * RATINGS
  */
-router.post('/post/newRating', async (req, res) => {
+router.post('/post/createRating', async (req, res) => {
     const data = new RatingModel({
         userId: req.body.userId,
         diningHallId: req.body.diningHallId,
@@ -65,12 +65,13 @@ router.get('/getAll/trafficRatings/:diningHallId', async (req, res) => {
 
 router.patch('/patch/updateRating', async (req, res) => {
     try {
-        const result = await RatingModel
-            .find(req.params.userId)
-            .findByIdAndUpdate(req.params.ratingId,
-                               req.params.rating,
-                               {new: true});
-        res.send(result);
+        const filter = structuredClone(req.body);
+        delete filter['rating'];
+        console.log(filter, req.body);
+        const targetRating = await RatingModel.findOneAndUpdate(filter, { 
+            rating: req.body.rating
+        });
+        res.send(targetRating);
     }
     catch (error) {
         res.status(500).json({ message: error.message })
@@ -117,21 +118,6 @@ router.get('/getAll/diningComments/:diningHallId', async (req, res) => {
     }
     catch(error){
         res.status(500).json({message: error.message})
-    }
-});
-
-router.patch('/patch/updateComment', async (req, res) => {
-    try {
-        const result = await CommentModel
-            .find(req.params.userId)
-            .findByIdAndUpdate(req.params.commentId,
-                               req.params.newContent,
-                               {new: true});
-        
-        res.send(result);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message })
     }
 });
 
@@ -220,19 +206,5 @@ router.get('/getAll/ratings/:diningHallId', async (req, res) => {
         res.json(data)
     } catch(error){
         res.status(500).json({message: error.message});
-    }
-});
-
-router.patch('/patch/getNewRating', async (req, res) => {
-    try {
-        const result = await getRatingHelper(req)
-            .find(req.params.userId)
-            .findByIdAndUpdate(req.params.commentId,
-                               req.params.newContent,
-                               {new: true});
-        res.send(result);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message })
     }
 });
