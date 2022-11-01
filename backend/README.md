@@ -39,7 +39,13 @@ This README file contains instructions and descriptions for how to test the back
 * curl -i -X DELETE localhost:3000/api/delete/delComment
 11. /post/newComplaint
 * curl -X POST -H 'Content-Type: application/json' -d "{\`"userId\`": \`"\<ID\>\`", \`"diningHallId\`": \`"\<ID\>\`", \`"contact\`": \`"\<contact name\>\`", \`"content\`": \`"\<content str\>\`", \`"urgency\`": \`"\<num\>\`"}" localhost:3000/api/post/newComplaint
-12. 
+12. /getAll/complaints
+* curl localhost:3000/api/getAll/complaints
+13. /getAll/ratings/:diningHallId
+* curl localhost:3000/api/getAll/ratings/\<ID\>
+14. /patch/getNewRating
+* ???
+
 
 ## Expected Results
 
