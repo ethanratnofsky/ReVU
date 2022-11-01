@@ -44,22 +44,11 @@ This README file contains instructions and descriptions for how to test the back
 10. /delete/delComment
 * curl -i -X DELETE localhost:3000/api/delete/delComment
 11. /post/newComplaint
-<<<<<<< HEAD
 * curl -X POST -H 'Content-Type: application/json' -d "{\'userId\': \'\<ID\>\', \'diningHallId\': \'\<ID\>\', \'contact\': \'\<contact name\>\', \'content\': \'\<content str\>\', \'urgency\': \'\<num\>\'}" localhost:3000/api/post/newComplaint
 12. /getAll/complaints
 * curl localhost:3000/api/getAll/complaints
 13. /getAll/overallRatings/:diningHallId
 * curl localhost:3000/api/getAll/overallRatings/<ID>
-=======
-* curl -X POST -H 'Content-Type: application/json' -d "{\`"userId\`": \`"\<ID\>\`", \`"diningHallId\`": \`"\<ID\>\`", \`"contact\`": \`"\<contact name\>\`", \`"content\`": \`"\<content str\>\`", \`"urgency\`": \`"\<num\>\`"}" localhost:3000/api/post/newComplaint
-12. /getAll/complaints
-* curl localhost:3000/api/getAll/complaints
-13. /getAll/ratings/:diningHallId
-* curl localhost:3000/api/getAll/ratings/\<ID\>
-14. /patch/getNewRating
-* ???
-
->>>>>>> 55c8995d0cea3628e0511d8bd61c7b62e1e6d95e
 
 ## Expected Results
 
