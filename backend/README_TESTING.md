@@ -72,8 +72,17 @@ This README file contains instructions and descriptions for how to test the back
         -H 'Accept: application/json'
         -d "{\'userId\': \'\<ID\>\', \'diningHallId\': \'\<ID\>\', \'type\': \'\<food or traffic\>\', \'rating\': \'\<num\>\'}" localhost:3000/api/patch/updateRating
     ```
-    Example JSON input (displays previous data): {"userId": 1, "diningHallId": 1, "type": "food", "rating": 2}
-    Expected output: `[{"_id":"6360a7d3c6c6aa128ca27be7","userId":1,"diningHallId":1,"type":"food","rating":5,"__v":0}]`
+    Example
+    ```
+    curl -X PATCH
+    -H 'Content-Type: application/json'
+    -H 'Accept: application/json'
+    -d "{\'userId\': \'\1\', \'diningHallId\': \'\1\', \'type\': \'\food\', \'rating\': \'\2\'}" localhost:3000/api/patch/updateRating
+    ```
+    Expected output: 
+    ```
+    [{"_id":"6360a7d3c6c6aa128ca27be7","userId":1,"diningHallId":1,"type":"food","rating":5,"__v":0}]
+    ```
 6. `/delete/allRatings`
     ```
     curl -i -X DELETE http://localhost:3000/api/delete/allRatings
