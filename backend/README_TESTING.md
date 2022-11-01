@@ -8,7 +8,7 @@ This README file contains instructions and descriptions for how to test the back
 5. Go to http://localhost:3000 and you should be "Hello World" as the display.
 
 ## Endpoint Test Commands
-*  `/post/newRating`
+1. `/post/newRating`
     ```
     curl -X POST -H 'Content-Type: application/json' -d "{\'userId\': \'\<ID\>\', \'diningHallId\': \'\<ID\>\', \'type\': \'\<food or traffic\>\', \'rating\': \'\<num\>\'}" localhost:3000/api/post/newRating
     ```
@@ -43,7 +43,7 @@ This README file contains instructions and descriptions for how to test the back
     ```
     curl localhost:3000/api/getAll/diningComments/\<ID\>
     ```
-9. /patch/updateComment
+9. `/patch/updateComment`
     ```
     curl -X PATCH
         -H 'Content-Type: application/json'
