@@ -31,7 +31,6 @@ const Comments = ({ diningHallId }) => {
         headers: {'Content-Type': 'application/json'}
     };
 
-
     fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/diningComments/${diningHallId}`, requestOptions)
     .then(async response => {
         const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -39,10 +38,9 @@ const Comments = ({ diningHallId }) => {
 
         if (!response.ok) {
             const err = (data && data.message) || response.status;
-            return Promise.reject(error);
+            return Promise.reject(err);
         }
         setComments(data);
-
 
     }).catch(error => {
         console.log(error);
@@ -61,7 +59,7 @@ const Comments = ({ diningHallId }) => {
                 style={commentsStyles.commentsContainer}
                 data={comments}
                 renderItem={renderComment}
-                keyExtractor={comment => comment.id}
+                keyExtractor={comment => comment._id}
             />
         </View>
     )

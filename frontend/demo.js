@@ -131,7 +131,42 @@ export const RATINGS = [
         userId: 6,
         diningHallId: 0,
         type: 'food',
-        rating: 4,
+        rating: 5,
+    },
+    {
+        id: 8,
+        userId: 3,
+        diningHallId: 4,
+        type: 'food',
+        rating: 3,
+    },
+    {
+        id: 9,
+        userId: 2,
+        diningHallId: 0,
+        type: 'traffic',
+        rating: 5,
+    },
+    {
+        id: 10,
+        userId: 2,
+        diningHallId: 0,
+        type: 'traffic',
+        rating: 3,
+    },
+    {
+        id: 11,
+        userId: 2,
+        diningHallId: 0,
+        type: 'food',
+        rating: 5,
+    },
+    {
+        id: 12,
+        userId: 2,
+        diningHallId: 0,
+        type: 'traffic',
+        rating: 5,
     },
 ]
 
