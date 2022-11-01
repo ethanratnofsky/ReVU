@@ -19,4 +19,4 @@ const dataSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('CommentData', dataSchema);
+module.exports = mongoose.model('Comments', dataSchema);

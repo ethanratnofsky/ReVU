@@ -27,4 +27,4 @@ const dataSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('ComplaintData', dataSchema)
+module.exports = mongoose.model('Complaints', dataSchema)
