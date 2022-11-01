@@ -1,10 +1,9 @@
+import { useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 import commentsStyles from './CommentsStyles';
 
 import { COMMENTS, USERS } from '../../demo.js';
-
-import { useState } from 'react';
 
 const Comment = ({ userId, content, timestamp }) => {
     const author = USERS.find(user => user.id === userId);
