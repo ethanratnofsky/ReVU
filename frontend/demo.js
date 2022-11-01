@@ -92,13 +92,6 @@ export const RATINGS = [
         rating: 5,
     },
     {
-        id: 2,
-        userId: 2,
-        diningHallId: 3,
-        type: 'traffic',
-        rating: 1,
-    },
-    {
         id: 3,
         userId: 3,
         diningHallId: 2,
@@ -111,13 +104,6 @@ export const RATINGS = [
         diningHallId: 1,
         type: 'food',
         rating: 4,
-    },
-    {
-        id: 5,
-        userId: 5,
-        diningHallId: 3,
-        type: 'traffic',
-        rating: 3,
     },
     {
         id: 6,
