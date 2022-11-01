@@ -14,7 +14,7 @@ module.exports = router;
 router.post('/post/newRating', async (req, res) => {
     const data = new RatingModel({
         userId: req.body.userId,
-        diningHall: req.body.diningHall,
+        diningHallId: req.body.diningHallId,
         type: req.body.type,
         rating: req.body.rating
     });
@@ -39,10 +39,10 @@ router.get('/getAll/userRatings/:userId', async (req, res) => {
     }
 });
 
-router.get('/getAll/foodRatings/:diningHall', async (req, res) => {
+router.get('/getAll/foodRatings/:diningHallId', async (req, res) => {
     try{
         const data = await RatingModel
-            .find({diningHall: req.params.diningHall})
+            .find({diningHallId: req.params.diningHallId})
             .and([{type: 'food'}]);
         res.json(data)
     }
@@ -51,10 +51,10 @@ router.get('/getAll/foodRatings/:diningHall', async (req, res) => {
     }
 });
 
-router.get('/getAll/trafficRatings/:diningHall', async (req, res) => {
+router.get('/getAll/trafficRatings/:diningHallId', async (req, res) => {
     try {
         const data = await RatingModel
-            .find({diningHall: req.params.diningHall})
+            .find({diningHallId: req.params.diningHallId})
             .and([{type: 'traffic'}]);
         res.json(data)
     }
@@ -95,7 +95,7 @@ router.delete('/delete/allRatings', async (req, res) => {
 router.post('/post/createComment', async (req, res) => {
     const data = new CommentModel({
         userId: req.body.userId,
-        diningHall: req.body.diningHall,
+        diningHallId: req.body.diningHallId,
         content: req.body.content,
         timestamp: Date.now()
     });
@@ -109,10 +109,10 @@ router.post('/post/createComment', async (req, res) => {
     }
 });
 
-router.get('/getAll/diningComments/:diningHall', async (req, res) => {
+router.get('/getAll/diningComments/:diningHallId', async (req, res) => {
     try{
         const data = await CommentModel
-            .find({diningHall: req.params.diningHall});
+            .find({diningHallId: req.params.diningHallId});
         res.json(data)
     }
     catch(error){
@@ -184,7 +184,7 @@ router.get('/getAll/complaints', async (req, res) => {
 
 async function getRatingHelper(req) {
     const foodData = await RatingModel
-        .find({diningHall: req.params.diningHall});
+        .find({diningHallId: req.params.diningHallId});
 
     finFood = 0.0;
     finTraffic = 0.0
@@ -212,7 +212,7 @@ async function getRatingHelper(req) {
     return data;
 }
 
-router.get('/getAll/ratings/:diningHall', async (req, res) => {
+router.get('/getAll/ratings/:diningHallId', async (req, res) => {
     try {
         const data = await getRatingHelper(req);
         res.json(data)
