@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 import commentsStyles from './CommentsStyles';
@@ -31,21 +31,23 @@ const Comments = ({ diningHallId }) => {
         headers: {'Content-Type': 'application/json'}
     };
 
-    fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/diningComments/${diningHallId}`, requestOptions)
-    .then(async response => {
-        const isJson = response.headers.get('content-type')?.includes('application/json');
-        const data = isJson && await response.json();
+    useEffect(() => {
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/diningComments/${diningHallId}`, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
 
-        if (!response.ok) {
-            const err = (data && data.message) || response.status;
-            return Promise.reject(err);
-        }
-        setComments(data);
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(err);
+                }
+                setComments(data);
 
-    }).catch(error => {
-        console.log(error);
-        alert("Comments failed to load. Please try again later.");
-    });
+            }).catch(error => {
+                console.log(error);
+                alert("Comments failed to load. Please try again later.");
+            });
+    }, [comments])
 
     const renderComment = ({ item }) => {
         return <Comment {...item} />

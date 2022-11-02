@@ -3,17 +3,41 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import overallRatingStyles from './OverallRatingStyles';
 
 import { RATINGS } from '../../demo.js';
+import { useEffect, useState } from 'react';
 
 const OverallRating = ({ diningHallId, onPress }) => {
     // TODO: Get ratings from backend
-    const ratings = RATINGS.filter(rating => rating.diningHallId === diningHallId);
-    const numRatings = ratings.length;
+    //const ratings = RATINGS.filter(rating => rating.diningHallId === diningHallId);
+
+    const [ratings, setRatings] = useState([]);
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+
+    useEffect(() => {
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/ratings/${diningHallId}`, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+                setRatings(data);
+                console.log("Did a thing");
+                
+            }).catch(error => {
+                console.log(error);
+                alert("Could not get all ratings for overall rating.");
+            });
+    }, []);
 
     // Calculate overall rating
-    let overallRating = null;
-    if (ratings.length !== 0) {
-        overallRating = ratings.reduce((acc, rating) => acc + rating.rating, 0) / numRatings;
-    }
+    let overallRating = ((0.5) * (ratings.finFood + ratings.finTraffic));
+    const numRatings = ratings.numRatings;
 
     let ratingWhole = 0;
     let ratingDecimal = 0;
@@ -27,6 +51,7 @@ const OverallRating = ({ diningHallId, onPress }) => {
         ratingDecimal = overallRating - ratingWhole;
         overallRating = overallRating.toFixed(1);
     }
+
 
     return (
         <TouchableOpacity style={overallRatingStyles.container} onPress={onPress}>
