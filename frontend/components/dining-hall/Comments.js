@@ -47,7 +47,7 @@ const Comments = ({ diningHallId }) => {
                 console.log(error);
                 alert("Comments failed to load. Please try again later.");
             });
-    }, [comments])
+    }, [])
 
     const renderComment = ({ item }) => {
         return <Comment {...item} />

@@ -27,7 +27,6 @@ const OverallRating = ({ diningHallId, onPress }) => {
                     return Promise.reject(error);
                 }
                 setRatings(data);
-                console.log("Did a thing");
                 
             }).catch(error => {
                 console.log(error);
@@ -44,7 +43,6 @@ const OverallRating = ({ diningHallId, onPress }) => {
 
     // Validate rating
     if (overallRating < 0 || overallRating > 5 || !overallRating) {
-        console.log('[ Dining Hall ID ' + diningHallId + ' ] ' + 'Invalid overall rating: ' + overallRating);
         overallRating = 'N/A';
     } else {
         ratingWhole = Math.floor(overallRating);
