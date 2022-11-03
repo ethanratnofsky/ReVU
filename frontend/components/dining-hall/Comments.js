@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 import commentsStyles from './CommentsStyles';
 
-import { COMMENTS, USERS } from '../../demo.js';
+import { USERS } from '../../demo.js';
 
 const Comment = ({ userId, content, timestamp }) => {
     const author = USERS.find(user => user.id === userId);
@@ -20,35 +19,7 @@ const Comment = ({ userId, content, timestamp }) => {
     )
 };
 
-const Comments = ({ diningHallId }) => {
-    // TODO: Get comments from backend
-    // const comments = COMMENTS.filter(comment => comment.diningHallId === diningHallId);
-    
-    const [comments, setComments] = useState([]);
-
-    const requestOptions = {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-    };
-
-    useEffect(() => {
-        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/diningComments/${diningHallId}`, requestOptions)
-            .then(async response => {
-                const isJson = response.headers.get('content-type')?.includes('application/json');
-                const data = isJson && await response.json();
-
-                if (!response.ok) {
-                    const err = (data && data.message) || response.status;
-                    return Promise.reject(err);
-                }
-                setComments(data);
-
-            }).catch(error => {
-                console.log(error);
-                alert("Comments failed to load. Please try again later.");
-            });
-    }, [])
-
+const Comments = ({ comments }) => {
     const renderComment = ({ item }) => {
         return <Comment {...item} />
     };

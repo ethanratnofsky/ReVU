@@ -4,12 +4,11 @@ import { Alert, Image, Keyboard, KeyboardAvoidingView, TouchableOpacity, TextInp
 import commentInputStyles from './CommentInputStyles';
 const Filter = require('bad-words');
 
-const CommentInput = ({ diningHallId }) => {
+const CommentInput = ({ diningHallId, onSubmit }) => {
     const [comment, setComment] = useState('');
     const filter = new Filter({'placeHolder': '*'});
 
     const handleSubmit = () => {
-
         if (filter.isProfane(comment)) {
             alert("Your comment has inappropriate language. Please resubmit.");
         } else {
@@ -26,9 +25,14 @@ const CommentInput = ({ diningHallId }) => {
 
                 if (!response.ok) {
                     const err = (data && data.message) || response.status;
-                    return Promise.reject(error);
+                    return Promise.reject(err);
                 }
 
+                console.log(`Successfully posted comment: ${comment}`);
+
+                onSubmit();
+
+                // Clear input field and hide keyboard
                 setComment('');
                 Keyboard.dismiss();
             }).catch(error => {
