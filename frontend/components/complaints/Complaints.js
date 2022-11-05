@@ -33,7 +33,7 @@ const Complaints = () => {
     const filter = new Filter({'placeHolder': '*'});
 
     const checkInput = () => {
-        if (issue == null || contact == null || dining == null || urgency == null) {
+        if (issue == null || contact == null || dining == null || urgency == null || contact.length == 0 || issue.length == 0) {
             alert("Please fill out all fields. It seems there are some that were left empty.")
         } else if (!(/\S+@\S+\.\S+/.test(contact))) {
             alert("Email does not have proper format. Please re-enter email address.");

@@ -1,6 +1,6 @@
 import { Image, TouchableOpacity, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import { useState, useEffect } from 'react';
 import diningHallButtonStyles from './DiningHallButtonStyles';
 
 import { RATINGS } from '../../demo.js';
@@ -9,11 +9,40 @@ const DiningHallButton = ({ id, name }) => {
     const navigation = useNavigation();
 
     // TODO: Get ratings from backend
-    const ratings = RATINGS.filter(rating => rating.diningHallId === id);
+    //const ratings = RATINGS.filter(rating => rating.diningHallId === id);
 
-    let overallRating = null;
-    if (ratings.length !== 0) {
-        overallRating = ratings.reduce((acc, rating) => acc + rating.rating, 0) / ratings.length;
+    const [ratings, setRatings] = useState([]);
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+
+    useEffect(() => {
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/ratings/${id}`, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+                setRatings(data);
+            }).catch(error => {
+                console.log(error);
+                alert("Could not get all ratings for overall rating.");
+                console.log("Bad here in dining hall butotn");
+            });
+    }, []);
+
+    // TODO: Get ratings from backend
+    //const ratings = RATINGS.filter(rating => rating.diningHallId === id);
+
+    let overallRating = (0.5 * (ratings.finFood + ratings.finTraffic));
+    // let overallRating = null;
+    if (ratings.numRatings === 0) {
+        overallRating = null;
     }
 
     const handlePress = () => {

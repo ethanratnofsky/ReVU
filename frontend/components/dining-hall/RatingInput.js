@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Image, Text, TouchableOpacity, SafeAreaView, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import { DINING_HALLS } from '../../constants';
 import ratingInputStyles from './RatingInputStyles';
 
 import { VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END } from '../../constants';
@@ -10,13 +10,115 @@ const RatingInput = ({ diningHallId, onClose }) => {
     // TODO: get ratings from backend if user already submitted ratings
     const [foodRating, setFoodRating] = useState(0);
     const [trafficRating, setTrafficRating] = useState(0);
+    const [ratedFood, setRatedFood] = useState(false);
+    const [ratedTraffic, setRatedTraffic] = useState(false);
+    const [submittedRating, setSubmittedRating] = useState(false);
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+
+    useEffect(() => {
+        fetch('https://sleepy-reaches-22563.herokuapp.com/api/getAll/userRatings/1', requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+
+                for (let i = 0; i < data.length; ++i) {
+                    if (data[i].diningHallId == diningHallId) {
+                        if (data[i].type == 'food') {
+                            setFoodRating(data[i].rating);
+                            setRatedFood(true);
+                        } else if (data[i].type == 'traffic') {
+                            setTrafficRating(data[i].rating);
+                            setRatedTraffic(true);
+                        }
+                    }
+                }
+            }).catch(error => {
+                console.log(error);
+                alert("Could not post rating.");
+            });
+    }, [submittedRating]);
 
     // TODO: get dining hall name by id
-    const DINING_HALL_NAME = 'Rothschild Dining Hall';
+    const DINING_HALL_NAME = DINING_HALLS[diningHallId].name
+
+    const updateRating = (ratingType) => {
+        const rating = ratingType == 'food' ? foodRating : trafficRating;
+        const updateRatingOptions = {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: 1 })
+        }
+
+        fetch('https://sleepy-reaches-22563.herokuapp.com/api/patch/updateRating', updateRatingOptions).then(async response => {
+            const isJson = response.headers.get('content-type')?.includes('application/json');
+            const data = isJson && await response.json();
+
+            if (!response.ok) {
+                const err = (data && data.message) || response.status;
+                return Promise.reject(err);
+            }
+            
+        }).catch(error => {
+            console.log(error);
+            alert("Could not get current rating input. Try again later.");
+        });
+
+
+    }
+
+    const createRating = (ratingType) => {
+        const rating = ratingType == 'food' ? foodRating : trafficRating;
+        const createRatingOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: 1 })
+        };
+        fetch('https://sleepy-reaches-22563.herokuapp.com/api/post/newRating', createRatingOptions)
+        .then(async response => {
+            const isJson = response.headers.get('content-type')?.includes('application/json');
+            const data = isJson && await response.json();
+
+            if (!response.ok) {
+                const err = (data && data.message) || response.status;
+                return Promise.reject(err);
+            }
+            
+        }).catch(error => {
+            console.log(error);
+            alert("Could not get current rating input. Try again later.");
+        });
+    }
 
     // TODO: submit ratings to backend
     const handleSubmit = () => {
-        Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+        if (!ratedFood) {
+            console.log("Creating new rating for food.");
+            createRating("food");
+            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+        } else {
+            console.log("Entered update.");
+            updateRating('food');
+            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+        }
+
+        if (!ratedTraffic) {
+            console.log("Creating rating for traffic.")
+            createRating("traffic");
+            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+        } else {
+            console.log("Entered update.");
+            updateRating('traffic');
+            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+        }
     }
 
     return (
