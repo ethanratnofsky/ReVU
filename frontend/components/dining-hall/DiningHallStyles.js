@@ -19,6 +19,11 @@ const diningHallStyles = StyleSheet.create({
         marginHorizontal: 20,
         width: 350,
         height: 40,
+    },
+    statusIcon: {
+        position: 'absolute',
+        top: 60,
+        right: 15,
     }
 });
 
