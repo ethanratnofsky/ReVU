@@ -4,6 +4,7 @@ import { Keyboard, Text, SafeAreaView, TouchableWithoutFeedback } from 'react-na
 import diningHallStyles from './DiningHallStyles';
 
 import BackButton from '../back-button/BackButton';
+import Button from '../button/Button';
 import Comments from './Comments';
 import CommentInput from './CommentInput';
 import DotsMenu from './DotsMenu';
@@ -77,6 +78,7 @@ const DiningHall = ({ navigation, route }) => {
                 <Text style={diningHallStyles.diningHallName}>{diningHallName}</Text>
                 <OverallRating diningHallId={id} onPress={handleOverallRatingPress} />
                 <Subratings diningHallId={id} />
+                <Button fontSize={16} imgSrc={require('../../assets/images/gold-food.png')} onPress={() => navigation.navigate("Menus", { diningHallId: id })} style={diningHallStyles.menuButton} text='View Menu' />
                 <Comments comments={comments} />
                 <CommentInput diningHallId={id} onSubmit={fetchComments} />
                 <BackButton onPress={handleBackButtonPress} />

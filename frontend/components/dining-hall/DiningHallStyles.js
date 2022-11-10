@@ -14,6 +14,12 @@ const diningHallStyles = StyleSheet.create({
         ...THEME_STYLES.libreCaslonBoldFont,
         fontSize: 20,
     },
+    menuButton: {
+        marginVertical: 10,
+        marginHorizontal: 20,
+        width: 350,
+        height: 40,
+    }
 });
 
 export default diningHallStyles;
