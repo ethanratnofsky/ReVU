@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Keyboard, Text, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, Text, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 
 import diningHallStyles from './DiningHallStyles';
 
@@ -70,14 +70,16 @@ const DiningHall = ({ navigation, route }) => {
     return (
         <TouchableWithoutFeedback onPress={closeKeyboardAndMenu} accessible={false}>
             <SafeAreaView style={diningHallStyles.container}>
+                <View style={diningHallStyles.header}>
+                    <BackButton onPress={handleBackButtonPress} />
+                    <StatusIcon isOpen={true} onPress={() => alert('omw to hours')} style={diningHallStyles.statusIcon} />
+                </View>
                 <Text style={diningHallStyles.diningHallName}>{diningHallName}</Text>
                 <OverallRating diningHallId={id} onPress={handleOverallRatingPress} />
                 <Subratings diningHallId={id} />
                 <Button fontSize={16} imgSrc={require('../../assets/images/gold-food.png')} onPress={() => navigation.navigate("Menus", { diningHallId: id })} style={diningHallStyles.menuButton} text='View Menu' />
                 <Comments comments={comments} />
                 <CommentInput diningHallId={id} onSubmit={fetchComments} />
-                <BackButton onPress={handleBackButtonPress} />
-                <StatusIcon isOpen={true} onPress={() => alert('omw to hours')} style={diningHallStyles.statusIcon} />
                 {isRatingInputVisible && <RatingInput diningHallId={id} onClose={handleRatingInputClose} />}
             </SafeAreaView>
         </TouchableWithoutFeedback>

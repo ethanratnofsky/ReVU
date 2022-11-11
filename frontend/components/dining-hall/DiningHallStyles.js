@@ -8,6 +8,14 @@ const diningHallStyles = StyleSheet.create({
         alignItems: 'center',
         ...THEME_STYLES.blackBackground,
     },
+    header: {
+        position: 'absolute',
+        top: 45,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '90%',
+    },
     diningHallName: {
         marginTop: 15,
         ...THEME_STYLES.whiteText,
@@ -17,14 +25,9 @@ const diningHallStyles = StyleSheet.create({
     menuButton: {
         marginVertical: 10,
         marginHorizontal: 20,
-        width: 350,
+        width: '90%',
         height: 40,
     },
-    statusIcon: {
-        position: 'absolute',
-        top: 60,
-        right: 15,
-    }
 });
 
 export default diningHallStyles;

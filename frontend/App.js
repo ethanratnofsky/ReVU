@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { StatusBar } from 'react-native';
 import { useFonts, LibreCaslonText_400Regular, LibreCaslonText_700Bold } from '@expo-google-fonts/libre-caslon-text'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SplashScreen from './components/splashscreen/SplashScreen';
-import Main from './components/homepage/Main';
+import Home from './components/homepage/Home';
 import DiningHall from './components/dining-hall/DiningHall';
 import Complaints from './components/complaints/Complaints';
 import MenuDisplay from './components/menus/MenuDisplay';
@@ -29,10 +30,11 @@ export default function App() {
 
     return (
         <NavigationContainer>
+            <StatusBar barStyle="light-content" />
             <Stack.Navigator>
                 <Stack.Screen
-                    name="Main"
-                    component={Main}
+                    name="Home"
+                    component={Home}
                     options={{headerShown: false}}
                 />
                 <Stack.Screen

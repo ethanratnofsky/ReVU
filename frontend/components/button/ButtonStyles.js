@@ -21,7 +21,7 @@ const buttonStyles = StyleSheet.create({
         borderRadius: 8,
     },
     icon: {
-        marginHorizontal: 10,
+        marginRight: 10,
     },
     text: {
         ...THEME_STYLES.goldText,

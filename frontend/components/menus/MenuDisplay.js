@@ -1,4 +1,4 @@
-import {ScrollView, Text, SafeAreaView} from 'react-native';
+import {ScrollView, Text, SafeAreaView, View} from 'react-native';
 import menuPageStyles from './MenuStyles';
 import FoodList from './FoodList';
 import { DINING_HALLS } from '../../constants';
@@ -19,6 +19,9 @@ const MenuDisplay = ({navigation, route}) => {
     // TODO: Fetch
     return (
         <SafeAreaView style={menuPageStyles.container}>
+            <View style={menuPageStyles.header}>
+                <BackButton onPress={() => navigation.goBack()} />
+            </View>
             <Text style={menuPageStyles.titleText}>{diningHallName}</Text>
             <ScrollView>
                 {MENU.map((time, i) => {
@@ -27,7 +30,6 @@ const MenuDisplay = ({navigation, route}) => {
                     )
                 })}
             </ScrollView>
-            <BackButton onPress={() => navigation.goBack()} />
         </SafeAreaView>
     );
 

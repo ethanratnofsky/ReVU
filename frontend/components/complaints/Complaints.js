@@ -1,30 +1,28 @@
-import { Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, View } from 'react-native';
 import { Keyboard } from 'react-native';
-import { VU_BLACK, VU_WHITE } from '../../constants';
 import { useState } from 'react';
 import { useHeaderHeight } from '@react-navigation/elements';
-import complaintStyles from './ComplaintStyles';
-import Dropdown from './Dropdown';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
-import { DINING_HALLS } from '../../constants';
-import { useNavigation } from '@react-navigation/native';
+
+import complaintStyles from './ComplaintStyles';
 
 import BackButton from '../back-button/BackButton';
+import Dropdown from './Dropdown';
+
+import { VU_BLACK, VU_WHITE } from '../../constants';
 
 const Filter = require('bad-words');
 
 const halls = ["Rand Dining Hall", "Kissam Dining Hall", "Rothschild Dining Hall", "E. B. I. Dining Hall", "Zeppos Dining Hall", "Commons Dining Hall"]
 const urgencies = ["0", "1", "2", "3", "4", "5"]
 
-const Complaints = () => {
+const Complaints = ({ navigation }) => {
     
     const [contact, setContact] = useState(null);
     const [issue, setIssue] = useState(null);
     const [dining, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
     const height = useHeaderHeight();
-
-    const navigation = useNavigation();
 
     const handleBackButtonPress = () => {
         navigation.goBack();
@@ -56,7 +54,7 @@ const Complaints = () => {
 
                 if (!response.ok) {
                     const err = (data && data.message) || response.status;
-                    return Promise.reject(error);
+                    return Promise.reject(err);
                 }
 
                 alert("Complaint successfully submitted!");
@@ -69,39 +67,41 @@ const Complaints = () => {
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={height} style={{backgroundColor: VU_BLACK, flex: 1}} behavior='padding'>
-        <ScrollView style={{backgroundColor: VU_BLACK }}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={{}}>
-            <SafeAreaView style={complaintStyles.container}>
-                <Text style={complaintStyles.titleText}>File a Complaint</Text>
-                <Dropdown options={halls} setVal={setDH} title="Select Dining Halls" />
-                <Dropdown options={urgencies} setVal={setUrgency} title="Select Issue Urgency"/>
-                <TextInput 
-                    style={complaintStyles.emailInput}
-                    placeholder="Enter email"
-                    onChangeText={setContact}
-                    />
-                <TextInput 
-                    multiline={true}
-                    scrollEnabled={true}
-                    style={complaintStyles.issueInput}
-                    placeholder="Enter issue (250 character limit)"
-                    value={issue}
-                    onChangeText={(text) => {
-                        if (text.length <= 250) {
-                            setIssue(text);
-                        }
-                    }}
-                    />
-                <TouchableOpacity 
-                    style={complaintStyles.submitButtonContainer}
-                    onPress={checkInput}
-                    >
-                    <Text style={{fontSize: 20, fontWeight: 'bold', color: VU_WHITE}}>Submit Complaint</Text>
-                </TouchableOpacity>
-            </SafeAreaView>
-        </TouchableWithoutFeedback> 
-        </ScrollView>
-        <BackButton onPress={handleBackButtonPress} />
+            <ScrollView style={{backgroundColor: VU_BLACK }}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <SafeAreaView style={complaintStyles.container}>
+                        <View style={complaintStyles.header}>
+                            <BackButton onPress={handleBackButtonPress} />
+                        </View>
+                        <Text style={complaintStyles.titleText}>File a Complaint</Text>
+                        <Dropdown options={halls} setVal={setDH} title="Select Dining Halls" />
+                        <Dropdown options={urgencies} setVal={setUrgency} title="Select Issue Urgency"/>
+                        <TextInput 
+                            style={complaintStyles.emailInput}
+                            placeholder="Enter email"
+                            onChangeText={setContact}
+                            />
+                        <TextInput 
+                            multiline={true}
+                            scrollEnabled={true}
+                            style={complaintStyles.issueInput}
+                            placeholder="Enter issue (250 character limit)"
+                            value={issue}
+                            onChangeText={(text) => {
+                                if (text.length <= 250) {
+                                    setIssue(text);
+                                }
+                            }}
+                            />
+                        <TouchableOpacity 
+                            style={complaintStyles.submitButtonContainer}
+                            onPress={checkInput}
+                            >
+                            <Text style={{fontSize: 20, fontWeight: 'bold', color: VU_WHITE}}>Submit Complaint</Text>
+                        </TouchableOpacity>
+                    </SafeAreaView>
+                </TouchableWithoutFeedback> 
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 }

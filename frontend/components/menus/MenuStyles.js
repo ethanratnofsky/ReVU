@@ -7,6 +7,14 @@ const menuPageStyles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
     },
+    header: {
+        position: 'absolute',
+        top: 45,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '90%',
+    },
     titleText: {
         marginTop: 15,
         marginBottom: 15,
