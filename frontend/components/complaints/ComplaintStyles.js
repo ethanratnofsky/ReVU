@@ -8,6 +8,14 @@ const complaintStyles = StyleSheet.create({
         height: '100%',
         alignItems: 'center'
     },
+    header: {
+        position: 'absolute',
+        top: 45,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '90%',
+    },
     infoContainer: {
         ...THEME_STYLES.whiteBackground,
         width: 220,
