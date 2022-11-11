@@ -1,11 +1,11 @@
-import { Alert, FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
 import homeStyles from './HomeStyles';
 
 import DiningHallButton from './DiningHallButton';
 import Button from '../button/Button';
 
-import { DINING_HALLS, TERMS_AND_CONDITIONS } from '../../constants';
+import { DINING_HALLS } from '../../constants';
 
 const Home = ({ navigation }) => {
     const currDate = new Date();
@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
                 />
             </View>
             <View style={homeStyles.footer}>
-                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => Alert.alert("Terms & Conditions", TERMS_AND_CONDITIONS)}>
+                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false })}>
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>
