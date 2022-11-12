@@ -10,6 +10,7 @@ import Complaints from './components/complaints/Complaints';
 import MenuDisplay from './components/menus/MenuDisplay';
 
 import { SPLASH_SCREEN_TIME } from './constants';
+import Login from './components/login/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{headerShown: false}}
+                />
                 <Stack.Screen
                     name="Main"
                     component={Main}
