@@ -3,9 +3,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
 import diningHallButtonStyles from './DiningHallButtonStyles';
 
-import { RATINGS } from '../../demo.js';
+import { ANONYMOUS_NAMES } from '../../constants';
 
-const DiningHallButton = ({ id, name }) => {
+const DiningHallButton = ({ id, name, userId }) => {
     const navigation = useNavigation();
 
     // TODO: Get ratings from backend
@@ -46,7 +46,7 @@ const DiningHallButton = ({ id, name }) => {
     }
 
     const handlePress = () => {
-        navigation.navigate('Dining Hall', { id, name });
+        navigation.navigate('Dining Hall', { id, name, userId });
     }
 
     return (

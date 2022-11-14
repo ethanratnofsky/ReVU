@@ -1,30 +1,30 @@
 import { useEffect, useState } from 'react';
-import { Keyboard, Text, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, Text, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 
 import diningHallStyles from './DiningHallStyles';
 
 import BackButton from '../back-button/BackButton';
+import Button from '../button/Button';
 import Comments from './Comments';
 import CommentInput from './CommentInput';
-import DotsMenu from './DotsMenu';
 import OverallRating from './OverallRating';
 import RatingInput from './RatingInput';
+import StatusIcon from './StatusIcon';
 import Subratings from './Subratings';
+
 import { DINING_HALLS } from '../../constants';
 
 const DiningHall = ({ navigation, route }) => {
-    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [isRatingInputVisible, setIsRatingInputVisible] = useState(false);
     const [comments, setComments] = useState([]);
 
-    const { id } = route.params;
+    const { id, userId } = route.params;
 
     // TODO: fetch name from backend
     const diningHallName = DINING_HALLS[id].name
 
     const closeKeyboardAndMenu = () => {
         Keyboard.dismiss();
-        setIsMenuVisible(false);
     }
 
     const handleOverallRatingPress = () => {
@@ -34,10 +34,6 @@ const DiningHall = ({ navigation, route }) => {
 
     const handleBackButtonPress = () => {
         navigation.goBack();
-    }
-
-    const handleDotsMenuPress = () => {
-        setIsMenuVisible(prev => !prev)
     }
 
     const handleRatingInputClose = () => {
@@ -74,14 +70,17 @@ const DiningHall = ({ navigation, route }) => {
     return (
         <TouchableWithoutFeedback onPress={closeKeyboardAndMenu} accessible={false}>
             <SafeAreaView style={diningHallStyles.container}>
+                <View style={diningHallStyles.header}>
+                    <BackButton onPress={handleBackButtonPress} />
+                    <StatusIcon isOpen={true} onPress={() => alert('omw to hours')} style={diningHallStyles.statusIcon} />
+                </View>
                 <Text style={diningHallStyles.diningHallName}>{diningHallName}</Text>
                 <OverallRating diningHallId={id} onPress={handleOverallRatingPress} />
                 <Subratings diningHallId={id} />
+                <Button fontSize={16} imgSrc={require('../../assets/images/gold-food.png')} onPress={() => navigation.navigate("Menus", { diningHallId: id })} style={diningHallStyles.menuButton} text='View Menu' />
                 <Comments comments={comments} />
-                <CommentInput diningHallId={id} onSubmit={fetchComments} />
-                <BackButton onPress={handleBackButtonPress} />
-                <DotsMenu diningHallId={id} isMenuVisible={isMenuVisible} toggleMenu={handleDotsMenuPress} />
-                {isRatingInputVisible && <RatingInput diningHallId={id} onClose={handleRatingInputClose} />}
+                <CommentInput diningHallId={id} onSubmit={fetchComments} userId={userId} />
+                {isRatingInputVisible && <RatingInput diningHallId={id} onClose={handleRatingInputClose} userId={userId}/>}
             </SafeAreaView>
         </TouchableWithoutFeedback>
     );  

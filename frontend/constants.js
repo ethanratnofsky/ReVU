@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
 
+export const ANONYMOUS_NAMES = ["Anonymous Mouse", "Anonymous Turtle", "Anonymous Kangaroo", "Anonymous Rabbit", "Anonymous Koala", "Anonymous Snake", "Anonymous Hawk", "Anonymous Hippo",
+    "Anonymous Tiger", "Anonymous Whale", "Anonymous Serpent", "Anonymous Dragon", "Anonymous Pineapple", "Anonymous Tomato", "Anonymous Grape", "Anonymous Watermelon", "Anonymous Puppy", "Anonymous Wolf",
+    "Anonymous Suit Jacket", "Anonymous Boots", "Anonymous Tie", "Anonymous Dog", "Anonymous Turkey", "Anonymous Chicken", "Anonymous Lizard"
+]
+
 // TODO: Replace with dynamic values from backend
 export const DINING_HALLS = [
     {
