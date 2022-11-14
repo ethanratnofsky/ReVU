@@ -18,7 +18,7 @@ const DiningHall = ({ navigation, route }) => {
     const [isRatingInputVisible, setIsRatingInputVisible] = useState(false);
     const [comments, setComments] = useState([]);
 
-    const { id } = route.params;
+    const { id, userId } = route.params;
 
     // TODO: fetch name from backend
     const diningHallName = DINING_HALLS[id].name
@@ -79,8 +79,8 @@ const DiningHall = ({ navigation, route }) => {
                 <Subratings diningHallId={id} />
                 <Button fontSize={16} imgSrc={require('../../assets/images/gold-food.png')} onPress={() => navigation.navigate("Menus", { diningHallId: id })} style={diningHallStyles.menuButton} text='View Menu' />
                 <Comments comments={comments} />
-                <CommentInput diningHallId={id} onSubmit={fetchComments} />
-                {isRatingInputVisible && <RatingInput diningHallId={id} onClose={handleRatingInputClose} />}
+                <CommentInput diningHallId={id} onSubmit={fetchComments} userId={userId} />
+                {isRatingInputVisible && <RatingInput diningHallId={id} onClose={handleRatingInputClose} userId={userId}/>}
             </SafeAreaView>
         </TouchableWithoutFeedback>
     );  

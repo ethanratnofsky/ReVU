@@ -5,17 +5,18 @@ import homeStyles from './HomeStyles';
 import DiningHallButton from './DiningHallButton';
 import Button from '../button/Button';
 
-import { DINING_HALLS } from '../../constants';
+import { DINING_HALLS, ANONYMOUS_NAMES } from '../../constants';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
     const currDate = new Date();
     const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(currDate);
     const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currDate);
     const date = currDate.getDate();
     const year = currDate.getFullYear();
+    const uid = route.params.id;
 
-    const renderDiningHallButton = ({ item }) => (
-        <DiningHallButton {...item} />
+    const renderDiningHallButton = ({item}) => (
+        <DiningHallButton id={item.id} name={item.name} userId={uid}/>
     );
 
     return (
@@ -37,7 +38,7 @@ const Home = ({ navigation }) => {
                 />
             </View>
             <View style={homeStyles.footer}>
-                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false })}>
+                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false, id: id })}>
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>

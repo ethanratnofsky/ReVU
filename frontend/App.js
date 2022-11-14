@@ -13,6 +13,7 @@ import MenuDisplay from './components/menus/MenuDisplay';
 import TermsAndConditions from './components/terms-and-conditions/TermsAndConditions';
 
 import { SPLASH_SCREEN_TIME } from './constants';
+import Login from './components/login/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,8 +62,13 @@ export default function App() {
         <NavigationContainer>
             <StatusBar barStyle="light-content" />
             <Stack.Navigator
-                initialRouteName={firstTime ? 'Terms and Conditions' : 'Home'}
+                initialRouteName={firstTime ? 'Terms and Conditions' : 'Login'}
             >
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{headerShown: false}}
+                />
                 <Stack.Screen
                     name="Home"
                     component={Home}

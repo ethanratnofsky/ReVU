@@ -2,16 +2,16 @@ import { FlatList, Text, View } from 'react-native';
 
 import commentsStyles from './CommentsStyles';
 
-import { USERS } from '../../demo.js';
+import { ANONYMOUS_NAMES } from '../../constants';
 
-const Comment = ({ userId, content, timestamp }) => {
-    const author = USERS.find(user => user.id === userId);
+const Comment = ({ content, timestamp}) => {
+    const author = ANONYMOUS_NAMES[Math.floor(Math.random() * ANONYMOUS_NAMES.length)];
     const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
         <View style={commentsStyles.commentContainer} onStartShouldSetResponder={() => true}>
             <View style={commentsStyles.commentHeader}>
-                <Text style={commentsStyles.commentAuthor}>{author.name}</Text>
+                <Text style={commentsStyles.commentAuthor}>{author}</Text>
                 <Text style={commentsStyles.commentTime}>{time}</Text>
             </View>
             <Text style={commentsStyles.commentContent}>{content}</Text>

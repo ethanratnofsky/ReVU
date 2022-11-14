@@ -4,7 +4,7 @@ import { Alert, Image, Keyboard, KeyboardAvoidingView, TouchableOpacity, TextInp
 import commentInputStyles from './CommentInputStyles';
 const Filter = require('bad-words');
 
-const CommentInput = ({ diningHallId, onSubmit }) => {
+const CommentInput = ({ diningHallId, onSubmit, userId }) => {
     const [comment, setComment] = useState('');
     const filter = new Filter({'placeHolder': '*'});
 
@@ -15,7 +15,7 @@ const CommentInput = ({ diningHallId, onSubmit }) => {
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ diningHallId: diningHallId, userId: 1,  content: comment })
+                body: JSON.stringify({ diningHallId: diningHallId, userId: userId,  content: comment })
             };
 
             fetch('https://sleepy-reaches-22563.herokuapp.com/api/post/createComment', requestOptions)

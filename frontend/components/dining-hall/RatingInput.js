@@ -6,7 +6,7 @@ import ratingInputStyles from './RatingInputStyles';
 
 import { VU_METALLIC_GOLD_START, VU_METALLIC_GOLD_END } from '../../constants';
 
-const RatingInput = ({ diningHallId, onClose }) => {
+const RatingInput = ({ diningHallId, onClose, userId }) => {
     // TODO: get ratings from backend if user already submitted ratings
     const [foodRating, setFoodRating] = useState(0);
     const [trafficRating, setTrafficRating] = useState(0);
@@ -20,7 +20,7 @@ const RatingInput = ({ diningHallId, onClose }) => {
     };
 
     useEffect(() => {
-        fetch('https://sleepy-reaches-22563.herokuapp.com/api/getAll/userRatings/1', requestOptions)
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/userRatings/${userId}`, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();
@@ -55,7 +55,7 @@ const RatingInput = ({ diningHallId, onClose }) => {
         const updateRatingOptions = {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: 1 })
+            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: userId })
         }
 
         fetch('https://sleepy-reaches-22563.herokuapp.com/api/patch/updateRating', updateRatingOptions).then(async response => {
@@ -80,7 +80,7 @@ const RatingInput = ({ diningHallId, onClose }) => {
         const createRatingOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: 1 })
+            body: JSON.stringify({ diningHallId: diningHallId, type : ratingType, rating: rating, userId: userId })
         };
         fetch('https://sleepy-reaches-22563.herokuapp.com/api/post/newRating', createRatingOptions)
         .then(async response => {
@@ -100,25 +100,28 @@ const RatingInput = ({ diningHallId, onClose }) => {
 
     // TODO: submit ratings to backend
     const handleSubmit = () => {
+        let rated = false;
         if (!ratedFood) {
             console.log("Creating new rating for food.");
             createRating("food");
-            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+            rated = true;
         } else {
             console.log("Entered update.");
             updateRating('food');
-            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+            rated = true;
         }
 
         if (!ratedTraffic) {
             console.log("Creating rating for traffic.")
             createRating("traffic");
-            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+            rated = true;
         } else {
             console.log("Entered update.");
             updateRating('traffic');
-            Alert.alert('Ratings Submitted', `You rated ${DINING_HALL_NAME} ${foodRating} stars for food and ${trafficRating} stars for traffic.`);
+            rated = true;
         }
+
+        Alert.alert("Successfully Rated!")
     }
 
     return (

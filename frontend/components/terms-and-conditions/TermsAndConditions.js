@@ -12,9 +12,10 @@ const TermsAndConditions = ({ navigation, route }) => {
     const [isAccepted, setIsAccepted] = useState(false);
 
     const firstTime = route?.params?.firstTime || false;
+    const id = route.params.id;
 
     const handleButtonPress = () => {
-        navigation.navigate('Home');
+        navigation.navigate("Home", {id: id});
     };
 
     return (
