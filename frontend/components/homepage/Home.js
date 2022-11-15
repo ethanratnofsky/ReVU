@@ -38,7 +38,7 @@ const Home = ({ navigation, route }) => {
                 />
             </View>
             <View style={homeStyles.footer}>
-                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false, id: id })}>
+                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false, id: uid })}>
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>
