@@ -2,41 +2,59 @@ const { TimeoutError } = require("puppeteer");
 
 const scraperObject = {
     url: 'https://netnutrition.cbord.com/nn-prod/vucampusdining',
-    async scraper(browser){
+    async scraper(browser) {
         let page = await browser.newPage();
 		console.log(`Navigating to ${this.url}...`);
 		// Navigate to the selected page
-		await page.goto(this.url); 
+		await page.goto(this.url);
 
-        // info = await page.evaluate(async (page) => {
-        //     NetNutrition.UI.unitsSelectUnit(11)
-        //     //fn = page.window['javascript:NetNutrition.UI.unitsSelectUnit']
-        //     //fn = ['NetNutrition.UI.unitsSelectUnit(16)']
-        //     //return typeof(fn)
-        //     return 1
-        // });
+        await page.exposeFunction('delay', async () => {
+            await page.waitForNavigation({waitUntil: 'networkidle2'})
+        });
+
+        await page.exposeFunction('waitForSelector', async (x) => {
+            await page.waitForSelector(x)
+        });
+
+        page.on('dialog', async dialog => {
+            console.log(dialog.message())
+            await dialog.dismiss()
+        })
 
         info = await page.evaluate(async () => {
-            dining_hall_links = Array.from(Array(20)).map((_, i) => document.querySelector(`#cbo_nn_unitImages_${i + 1} > div > div > a`));
+            dining_halls = ["Rand Dining Center",
+            "The Kitchen at Kissam",
+            "Rothschild Dining Center - Contains Peanuts and Treenuts",
+            "E. Bronson Ingram Dining Center",
+            "Zeppos Dining",
+            "The Commons Dining Center"]
+            dining_hall_links = Array.from(Array(20))
+                        .map((_, i) => document.querySelector(`#cbo_nn_unitImages_${i + 1} > div > div > a`))
+                        .filter(ele => dining_halls.includes(ele.textContent))
             ret = []
+
             dining_hall_links.forEach(async (hall) => {
                 await hall.click()
-                const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-                await delay(1000)
+                await window.waitForSelector("#cbo_nn_menuTableDiv")
+                
+                menus = await document.querySelector("#cbo_nn_menuTableDiv")
+                alert(hall.textContent)
+                alert(menus.textContent)
 
-                menus = document.querySelector("#cbo_nn_menuTableDiv")
 
-                menus.childNodes.forEach((menu) => {
-                    blocks = menu.querySelector('div > div')
+                menus.childNodes.forEach(async (menu) => {
+                    blocks = await menu.querySelector('div > div')
                     blocks.childNodes.forEach(async (block) => {
-                        info = block.querySelector('div:nth-child(1) > a')
-                        await info.click();
-                        await delay(1000)
 
-                        options = document.querySelector("#itemPanel > section > div.table-responsive.pt-3 > table > tbody")
+                        info = await block.querySelector('div:nth-child(1) > a')
+                        
+                        await info.click();
+                        await window.waitForSelector("#itemPanel > section > div.table-responsive.pt-3 > table > tbody")
+
+                        options = await document.querySelector("#itemPanel > section > div.table-responsive.pt-3 > table > tbody")
                         menu_items = []
 
-                        options.childNodes.forEach((option) => {
+                        options.childNodes.forEach(async (option) => {
                             tmp = option.textContent
                             start = tmp.indexOf(".")
                             end = tmp.search(/[0-9]/)
@@ -44,17 +62,20 @@ const scraperObject = {
                             if (fin_str.length == 0) {
                                 fin_str = tmp
                             }
-
                             menu_items.push(fin_str)
-                        })
-
-                        ret.push({tmp : menu_items})
-                    });
-
-                })
+                        });
+                        ret.push(menu_items)
+                        alert(ret)
+                    })
+                });
             });
             return ret
         });
+        console.log("START")
+        info.forEach((ele) => {
+            console.log(ele.textContent)
+        })
+        console.log("DONE")
     }
 }
 
