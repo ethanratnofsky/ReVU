@@ -39,10 +39,10 @@ const scraperObject = {
                 menus = await document.querySelector("#cbo_nn_menuTableDiv").querySelector('div')
                 console.log("POST MENU")
                 
-                menus.childNodes.forEach(async (menu) => {
+                await menus.childNodes.forEach(async (menu) => {
                     blocks = await menu.querySelector('div > div')
-                    blocks.childNodes.forEach(async (inner) => {
-                        blocks.childNodes.forEach(async (block) => {
+                    await blocks.childNodes.forEach(async (inner) => {
+                        await blocks.childNodes.forEach(async (block) => {
                             inner = block.querySelector('a')
                             console.log("PRE OPTIONS")
                             await inner.click()
@@ -52,17 +52,20 @@ const scraperObject = {
                             await window.waitForSelector("#itemPanel > section > div.table-responsive.pt-3 > table > tbody")
                             table = document.querySelector("#itemPanel > section > div.table-responsive.pt-3 > table > tbody")
                             console.log("PRE OPTIONS")
-                            table.childNodes.forEach((row) => {
-                                ret.push({dining_hall : row.textContent})
+                            await table.childNodes.forEach((row) => {
+                                ret.push(row.textContent)
                             })
                             console.log("POST OPTIONS")
                         });
                     });
                 });
+                alert(ret)
                 return ret
             });
             return info;
         }
+        // Rand: 1, Commons: 2, Kissam: 3, EBI: 10, Zeppos: 18, Rothschild: 19
+        halls = [1, 2, 3, 10, 18, 19]
         console.log("Start")
         val = await helper(1)
         console.log(val)
