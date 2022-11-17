@@ -44,13 +44,14 @@ const userProfileStyles = StyleSheet.create({
         width: "100%",
     },
     contentContainer: {
-        marginTop: 20,
+        marginTop: 5,
         alignItems: "center",
     },
     sectionHeader: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonBoldFont,
         fontSize: 16,
+        marginTop: 20,
     },
     divider: {
         height: 1,

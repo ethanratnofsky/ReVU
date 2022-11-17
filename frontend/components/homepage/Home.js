@@ -14,6 +14,7 @@ const Home = ({ navigation, route }) => {
     const date = currDate.getDate();
     const year = currDate.getFullYear();
     const uid = route.params.id;
+    const email = route.params.email;
 
     const renderDiningHallButton = ({item}) => (
         <DiningHallButton id={item.id} name={item.name} userId={uid}/>
@@ -23,7 +24,7 @@ const Home = ({ navigation, route }) => {
         <SafeAreaView style={homeStyles.container}>
             <View style={homeStyles.header}>
                 <Image style={homeStyles.logo} source={require('../../assets/images/revu-logo.png')} />
-                <TouchableOpacity style={homeStyles.userContainer} onPress={() => navigation.navigate("User Profile")}>
+                <TouchableOpacity style={homeStyles.userContainer} onPress={() => navigation.navigate("User Profile", { id: uid, email })}>
                     <Text style={homeStyles.userName}>My Profile</Text>
                     <Image style={homeStyles.userIcon} source={require('../../assets/images/white-user.png')} />
                 </TouchableOpacity>
@@ -38,7 +39,7 @@ const Home = ({ navigation, route }) => {
                 />
             </View>
             <View style={homeStyles.footer}>
-                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false, id: uid })}>
+                <TouchableOpacity style={homeStyles.termsContainer} onPress={() => navigation.navigate('Terms and Conditions', { firstTime: false, id: uid, email })}>
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>

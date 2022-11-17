@@ -37,7 +37,7 @@ const Login = () => {
             const user = userCredentials.user;
             console.log("Logging in");
             console.log(user.uid);
-            navigation.navigate('Home', {id: user.uid});
+            navigation.navigate('Home', {id: user.uid, email});
         }).catch(error => alert(error.message));
     }
 
