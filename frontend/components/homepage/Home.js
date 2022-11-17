@@ -23,8 +23,8 @@ const Home = ({ navigation, route }) => {
         <SafeAreaView style={homeStyles.container}>
             <View style={homeStyles.header}>
                 <Image style={homeStyles.logo} source={require('../../assets/images/revu-logo.png')} />
-                <TouchableOpacity style={homeStyles.userContainer} onPress={() => alert("user")}>
-                    <Text style={homeStyles.userName}>User</Text>
+                <TouchableOpacity style={homeStyles.userContainer} onPress={() => navigation.navigate("User Profile")}>
+                    <Text style={homeStyles.userName}>My Profile</Text>
                     <Image style={homeStyles.userIcon} source={require('../../assets/images/white-user.png')} />
                 </TouchableOpacity>
             </View>
@@ -42,7 +42,7 @@ const Home = ({ navigation, route }) => {
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>
-                <Button fontSize={12} imgSrc={require('../../assets/images/gold-complaints.png')} onPress={() => navigation.navigate("Complaints")} style={homeStyles.complaintsButton} text='File a Complaint' />
+                <Button fontSize={14} imgSrc={require('../../assets/images/gold-complaints.png')} onPress={() => navigation.navigate("Complaints")} style={homeStyles.complaintsButton} text='File a Complaint' />
             </View>
         </SafeAreaView>
     );

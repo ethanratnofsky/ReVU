@@ -11,9 +11,10 @@ import DiningHall from './components/dining-hall/DiningHall';
 import Complaints from './components/complaints/Complaints';
 import MenuDisplay from './components/menus/MenuDisplay';
 import TermsAndConditions from './components/terms-and-conditions/TermsAndConditions';
+import Login from './components/login/Login';
+import UserProfile from './components/user-profile/UserProfile';
 
 import { SPLASH_SCREEN_TIME } from './constants';
-import Login from './components/login/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -72,6 +73,11 @@ export default function App() {
                 <Stack.Screen
                     name="Home"
                     component={Home}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="User Profile"
+                    component={UserProfile}
                     options={{headerShown: false}}
                 />
                 <Stack.Screen
