@@ -121,6 +121,17 @@ router.get('/getAll/diningComments/:diningHallId', async (req, res) => {
     }
 });
 
+router.get('/get/commentsById/:userId', async (req, res) => {
+    try{
+        const data = await CommentModel
+            .find({userId: req.params.userId});
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+});
+
 router.delete('/delete/delComment', async (req, res) => {
     try {
         const data = await CommentModel
@@ -165,6 +176,16 @@ router.get('/getAll/complaints', async (req, res) => {
     }
 });
 
+router.get('/get/complaintsById/:userId', async (req, res) => {
+    try{
+        const data = await ComplaintModel
+            .find({userId: req.params.userId});
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+});
 
 /**
  * DINING HALLS
