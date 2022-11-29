@@ -2,7 +2,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import overallRatingStyles from './OverallRatingStyles';
 
-import { RATINGS } from '../../demo.js';
+import { RATINGS } from '../homepage/demo';
 import { useEffect, useState } from 'react';
 
 const OverallRating = ({ diningHallId, onPress }) => {

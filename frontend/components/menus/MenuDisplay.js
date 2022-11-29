@@ -14,8 +14,9 @@ const MENU = [
 
 const MenuDisplay = ({navigation, route}) => {
 
-    const { diningHallId } = route.params;
-    const diningHallName = DINING_HALLS[diningHallId].name;
+    //const { diningHallId } = 0;//route.params;
+    //const diningHallName = DINING_HALLS[diningHallId].name;
+    const diningHallName = "Rand Dining Hall";
     // TODO: Fetch
     return (
         <SafeAreaView style={menuPageStyles.container}>

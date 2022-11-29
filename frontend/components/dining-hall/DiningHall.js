@@ -18,7 +18,10 @@ const DiningHall = ({ navigation, route }) => {
     const [isRatingInputVisible, setIsRatingInputVisible] = useState(false);
     const [comments, setComments] = useState([]);
 
-    const { id, userId } = route.params;
+    // const { id, userId } = route.params;
+
+    const id = 0;
+    const userId = "dahsjkdhashdoi";
 
     // TODO: fetch name from backend
     const diningHallName = DINING_HALLS[id].name

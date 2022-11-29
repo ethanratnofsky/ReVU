@@ -13,7 +13,7 @@ const Home = ({ navigation, route }) => {
     const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currDate);
     const date = currDate.getDate();
     const year = currDate.getFullYear();
-    const uid = route.params.id;
+    const uid = "hdehnasoijdioa78973bxan"//route.params.id;
 
     const renderDiningHallButton = ({item}) => (
         <DiningHallButton id={item.id} name={item.name} userId={uid}/>

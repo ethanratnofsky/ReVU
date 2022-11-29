@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#CFAE70",
+      "borderRadius": 6,
+      "borderStyle": "solid",
+      "borderWidth": 2,
+      "flexDirection": "row",
+      "height": 55,
+      "justifyContent": "space-between",
+      "margin": 10,
+      "opacity": 1,
+      "padding": 15,
+      "width": 300,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#1C1C1C",
+        "fontSize": 16,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Rand Dining Hall
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#1C1C1C",
+          "fontFamily": "LibreCaslonText_400Regular",
+          "fontSize": 16,
+        }
+      }
+    >
+      NaN
+    </Text>
+    <Image
+      source={1}
+      style={
+        Object {
+          "aspectRatio": 1,
+          "bottom": 1,
+          "left": 1,
+          "position": "relative",
+          "width": 24,
+        }
+      }
+    />
+  </View>
+</View>
+`;

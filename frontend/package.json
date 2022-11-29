@@ -6,18 +6,29 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ]
   },
   "dependencies": {
     "@expo-google-fonts/libre-caslon-text": "^0.2.2",
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.0",
     "bad-words": "^3.0.4",
     "email-existence": "^0.1.6",
     "expo": "~46.0.9",
+    "expo-checkbox": "~2.2.0",
     "expo-linear-gradient": "~11.4.0",
     "expo-status-bar": "~1.4.0",
     "firebase": "^8.2.3",
+    "jest": "^26.6.3",
+    "jest-expo": "^47.0.1",
     "react": "18.0.0",
     "react-native": "0.69.6",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
@@ -25,8 +36,7 @@
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-select-dropdown": "^3.0.0",
-    "expo-checkbox": "~2.2.0",
-    "@react-native-async-storage/async-storage": "~1.17.3"
+    "react-test-renderer": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

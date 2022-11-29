@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Object {
+      "paddingBottom": 0,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "backgroundColor": "#333",
+        "borderRadius": 5,
+        "color": "#FFFFFF",
+        "flexDirection": "row",
+        "marginHorizontal": 15,
+        "marginVertical": 10,
+        "width": 350,
+      }
+    }
+  >
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Write a comment..."
+      placeholderTextColor="#999"
+      style={
+        Object {
+          "alignSelf": "flex-end",
+          "color": "#FFFFFF",
+          "flex": 1,
+          "marginHorizontal": 10,
+          "paddingVertical": 12,
+        }
+      }
+      value=""
+    />
+    <View
+      accessibilityState={
+        Object {
+          "disabled": true,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginRight": 5,
+          "opacity": 1,
+          "padding": 5,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Object {
+            "height": 25,
+            "width": 25,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

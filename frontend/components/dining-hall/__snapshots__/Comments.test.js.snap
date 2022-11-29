@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontFamily": "LibreCaslonText_700Bold",
+        "fontSize": 16,
+      }
+    }
+  >
+    Comments • 
+    3
+  </Text>
+  <View
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#D9D9D9",
+        "height": 1,
+        "marginHorizontal": 30,
+        "marginVertical": 10,
+      }
+    }
+  />
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "content": "food was mid and dining hall is far away",
+          "diningHallId": 5,
+          "id": 1,
+          "timestamp": 1668579823824,
+          "userId": 1,
+        },
+        Object {
+          "content": "E",
+          "diningHallId": 3,
+          "id": 2,
+          "timestamp": 1668579823824,
+          "userId": 2,
+        },
+        Object {
+          "content": "This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment about Rothschild",
+          "diningHallId": 2,
+          "id": 3,
+          "timestamp": 1668579823824,
+          "userId": 3,
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "flex": 1,
+        "marginHorizontal": 15,
+      }
+    }
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#222",
+              "borderRadius": 3,
+              "margin": 2,
+              "padding": 10,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 1.5,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 3,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Anonymous Dragon
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#444",
+                  "fontSize": 11,
+                }
+              }
+            >
+              12:23 AM
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "#FFFFFF",
+              }
+            }
+          >
+            food was mid and dining hall is far away
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#222",
+              "borderRadius": 3,
+              "margin": 2,
+              "padding": 10,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 1.5,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 3,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Anonymous Hippo
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#444",
+                  "fontSize": 11,
+                }
+              }
+            >
+              12:23 AM
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "#FFFFFF",
+              }
+            }
+          >
+            E
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#222",
+              "borderRadius": 3,
+              "margin": 2,
+              "padding": 10,
+              "shadowColor": "black",
+              "shadowOffset": Object {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 1.5,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 3,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Anonymous Tomato
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#444",
+                  "fontSize": 11,
+                }
+              }
+            >
+              12:23 AM
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "#FFFFFF",
+              }
+            }
+          >
+            This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment about Rothschild
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

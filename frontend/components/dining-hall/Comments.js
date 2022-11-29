@@ -24,6 +24,30 @@ const Comments = ({ comments }) => {
         return <Comment {...item} />
     };
 
+    comments = [
+        {
+            id: 1,
+            userId: 1,
+            diningHallId: 5,
+            content: 'food was mid and dining hall is far away',
+            timestamp: Date.now(),
+        },
+        {
+            id: 2,
+            userId: 2,
+            diningHallId: 3,
+            content: 'E',
+            timestamp: Date.now(),
+        },
+        {
+            id: 3,
+            userId: 3,
+            diningHallId: 2,
+            content: 'This is a really, really, really, really, really, really, really, really, really, really, really, really, really, really, really long comment about Rothschild',
+            timestamp: Date.now(),
+        }
+    ]
+
     return (
         <View style={commentsStyles.container}>
             <Text style={commentsStyles.commentsHeader}>Comments • {comments.length}</Text>

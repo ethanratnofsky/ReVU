@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#1C1C1C",
+      "height": "100%",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "height": 50,
+        "marginBottom": 20,
+        "marginTop": 10,
+        "width": 172,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontFamily": "LibreCaslonText_400Regular",
+        "fontSize": 18,
+        "marginBottom": 10,
+      }
+    }
+  >
+    Terms & Conditions
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontSize": 14,
+        "marginBottom": 20,
+        "opacity": 0.5,
+      }
+    }
+  >
+    Updated November 11, 2022
+  </Text>
+  <RCTScrollView
+    style={
+      Object {
+        "flex": 1,
+        "width": "85%",
+      }
+    }
+  >
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "#FFFFFF",
+          }
+        }
+      >
+        By using this application, you agree to posting appropriate content with proper language or risk having your comments/complaints removed.
+      </Text>
+    </View>
+  </RCTScrollView>
+  <View
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 45,
+        "opacity": 1,
+        "width": 165,
+      }
+    }
+  >
+    <ViewManagerAdapter_ExpoLinearGradient
+      proxiedProperties={
+        Object {
+          "colors": Array [
+            4294897334,
+            4290024008,
+          ],
+          "endPoint": Array [
+            1,
+            0,
+          ],
+          "locations": undefined,
+          "startPoint": Array [
+            0,
+            1,
+          ],
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 10,
+          "padding": 3,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "height": "100%",
+            "justifyContent": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#CFAE70",
+              "fontSize": 14,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Ah, yes, I remember!
+        </Text>
+      </View>
+    </ViewManagerAdapter_ExpoLinearGradient>
+  </View>
+</RCTSafeAreaView>
+`;

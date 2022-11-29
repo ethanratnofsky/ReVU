@@ -1,5 +1,5 @@
 import { Text, SafeAreaView, TextInput, TouchableWithoutFeedback, TouchableOpacity, ScrollView, View } from 'react-native';
-import { Keyboard } from 'react-native';
+//import { Keyboard } from 'react-native';
 import { useState } from 'react';
 import { useHeaderHeight } from '@react-navigation/elements';
 import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
@@ -22,7 +22,7 @@ const Complaints = ({ navigation }) => {
     const [issue, setIssue] = useState(null);
     const [dining, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
-    const height = useHeaderHeight();
+    // const height = useHeaderHeight();
 
     const handleBackButtonPress = () => {
         navigation.goBack();
@@ -66,16 +66,16 @@ const Complaints = ({ navigation }) => {
     }
 
     return (
-        <KeyboardAvoidingView keyboardVerticalOffset={height} style={{backgroundColor: VU_BLACK, flex: 1}} behavior='padding'>
+        //<KeyboardAvoidingView keyboardVerticalOffset={47} style={{backgroundColor: VU_BLACK, flex: 1}} behavior='padding'>
             <ScrollView style={{backgroundColor: VU_BLACK }}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <TouchableWithoutFeedback>
                     <SafeAreaView style={complaintStyles.container}>
                         <View style={complaintStyles.header}>
                             <BackButton onPress={handleBackButtonPress} />
                         </View>
                         <Text style={complaintStyles.titleText}>File a Complaint</Text>
-                        <Dropdown options={halls} setVal={setDH} title="Select Dining Halls" />
-                        <Dropdown options={urgencies} setVal={setUrgency} title="Select Issue Urgency"/>
+                        <Dropdown setVal={setDH} title="Select Dining Halls" />
+                        <Dropdown setVal={setUrgency} title="Select Issue Urgency"/>
                         <TextInput 
                             style={complaintStyles.emailInput}
                             placeholder="Enter email"
@@ -102,7 +102,7 @@ const Complaints = ({ navigation }) => {
                     </SafeAreaView>
                 </TouchableWithoutFeedback> 
             </ScrollView>
-        </KeyboardAvoidingView>
+        //</KeyboardAvoidingView>
     );
 }
  

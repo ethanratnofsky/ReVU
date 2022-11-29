@@ -1,5 +1,5 @@
 import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { auth } from '../../firebase';
+//import { auth } from './firebase';
 import loginStyles from './LoginStyles';
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -8,7 +8,7 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [pswd, setPswd] = useState('');
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
     // useEffect(() => {
     //     auth.onAuthStateChanged(user => {
@@ -20,25 +20,25 @@ const Login = () => {
 
 
     const handleSignUp = () => {
-        if (!(/@vanderbilt.edu\s*$/).test(email)) {
-            alert("Email is not a valid Vanderbilt University email.");
-        } else {
-            auth.createUserWithEmailAndPassword(email, pswd).then(userCredentials => {
-                const user = userCredentials.user;
-                console.log("Registering");
-                console.log(user.uid);
-                navigation.navigate("Terms and Conditions", {id: user.uid});
-            }).catch(error => alert(error.message));
-        }
+        // if (!(/@vanderbilt.edu\s*$/).test(email)) {
+        //     alert("Email is not a valid Vanderbilt University email.");
+        // } else {
+        //     auth.createUserWithEmailAndPassword(email, pswd).then(userCredentials => {
+        //         const user = userCredentials.user;
+        //         console.log("Registering");
+        //         console.log(user.uid);
+        //         navigation.navigate("Terms and Conditions", {id: user.uid});
+        //     }).catch(error => alert(error.message));
+        // }
     }
 
     const handleLogin = () => {
-        auth.signInWithEmailAndPassword(email, pswd).then(userCredentials => {
-            const user = userCredentials.user;
-            console.log("Logging in");
-            console.log(user.uid);
-            navigation.navigate('Home', {id: user.uid});
-        }).catch(error => alert(error.message));
+        // auth.signInWithEmailAndPassword(email, pswd).then(userCredentials => {
+        //     const user = userCredentials.user;
+        //     console.log("Logging in");
+        //     console.log(user.uid);
+        //     navigation.navigate('Home', {id: user.uid});
+        // }).catch(error => alert(error.message));
     }
 
     return (

@@ -3,7 +3,7 @@ import { Keyboard, Image, Text, View } from 'react-native';
 
 import subratingsStyles from './SubratingsStyles';
 
-import { RATINGS } from '../../demo.js';
+import { RATINGS } from '../homepage/demo';
 
 const Subratings = ({ diningHallId }) => {
     // TODO: Get ratings from backend
