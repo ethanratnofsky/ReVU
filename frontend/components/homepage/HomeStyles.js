@@ -31,8 +31,8 @@ const homeStyles = StyleSheet.create({
         fontSize: 16,
     },
     userIcon: {
-        width: 24,
-        height: 24,
+        width: 28,
+        height: 28,
         marginLeft: 10,
     },
     contentContainer: {
@@ -68,8 +68,8 @@ const homeStyles = StyleSheet.create({
         fontSize: 12,
     },
     complaintsButton: {
-        width: 150,
-        height: 40,
+        width: 160,
+        height: 50,
     },
 });
  

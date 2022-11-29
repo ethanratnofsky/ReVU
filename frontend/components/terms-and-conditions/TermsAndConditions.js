@@ -13,9 +13,10 @@ const TermsAndConditions = ({ navigation, route }) => {
 
     const firstTime = route?.params?.firstTime || false;
     const id = route.params.id;
+    const email = route.params.email;
 
     const handleButtonPress = () => {
-        navigation.navigate("Home", {id: id});
+        navigation.navigate("Home", {id: id, email});
     };
 
     return (

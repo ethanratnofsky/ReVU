@@ -33,7 +33,7 @@ export const COMPLAINTS = [
         contact: "arjun@yahoo.com",
         content: 'This is a complaint',
         urgency: 5,
-        timestamp: 1132,
+        timestamp: Date.now(),
     },
     {
         id: 2,
@@ -42,7 +42,7 @@ export const COMPLAINTS = [
         contact: "ethan@yahoo.com",
         content: 'This is a complaint',
         urgency: 3,
-        timestamp: 1132,
+        timestamp: Date.now(),
     },
     {
         id: 3,
@@ -51,7 +51,7 @@ export const COMPLAINTS = [
         contact: "shivam@yahoo.com",
         content: 'This is a complaint',
         urgency: 4,
-        timestamp: 1132,
+        timestamp: Date.now(),
     },
     {
         id: 4,
@@ -60,7 +60,7 @@ export const COMPLAINTS = [
         contact: "othergroupmember@yahoo.com",
         content: 'This is a complaint',
         urgency: 2,
-        timestamp: 1132,
+        timestamp: Date.now(),
     },
     {
         id: 5,
@@ -69,7 +69,7 @@ export const COMPLAINTS = [
         contact: "vikash@yahoo.com",
         content: 'This is a complaint',
         urgency: 1,
-        timestamp: 1132,
+        timestamp: Date.now(),
     },
     {
         id: 6,
@@ -78,7 +78,7 @@ export const COMPLAINTS = [
         contact: "pablo@yahoo.com",
         content: 'This is a complaint',
         urgency: 3,
-        timestamp: 1132,
+        timestamp: Date.now(),
     }
     
 ]

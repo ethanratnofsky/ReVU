@@ -1,0 +1,112 @@
+import { useEffect, useState } from "react";
+import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
+
+import userProfileStyles from "./UserProfileStyles";
+import commentsStyles from '../dining-hall/CommentsStyles';
+
+import BackButton from "../back-button/BackButton";
+
+import { DINING_HALLS } from '../../constants';
+import { COMMENTS, COMPLAINTS } from '../../demo';
+
+const Comment = ({ content, timestamp}) => {
+    const author = "Me";
+    const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    return (
+        <View style={commentsStyles.commentContainer}>
+            <View style={commentsStyles.commentHeader}>
+                <Text style={commentsStyles.commentAuthor}>{author}</Text>
+                <Text style={commentsStyles.commentTime}>{time}</Text>
+            </View>
+            <Text style={commentsStyles.commentContent}>{content}</Text>
+        </View>
+    )
+};
+
+const Complaint = ({diningHallId, contact, content, urgency, timestamp }) => {
+    const diningHall = DINING_HALLS.find(diningHall => diningHall.id === diningHallId);
+    const time = new Date(timestamp).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+
+    return (
+        <View style={commentsStyles.commentContainer}>
+            <View style={commentsStyles.commentHeader}>
+                <Text style={userProfileStyles.itemTitle}>{diningHall.name}</Text>
+                <Text style={commentsStyles.commentTime}>{time}</Text>
+            </View>
+            <View style={commentsStyles.commentHeader}>
+                <Text style={userProfileStyles.itemSubtitle}>Contact: {contact}</Text>
+                <Text style={userProfileStyles.itemLevel}>Level {urgency}</Text>
+            </View>
+            <Text style={userProfileStyles.itemContent}>{content}</Text>
+        </View>
+    );
+}
+
+const UserProfile = ({ navigation, route }) => {
+    const [comments, setComments] = useState([]);
+    const [complaints, setComplaints] = useState([]);
+
+    const userName = "Me";
+    const { email } = route.params;
+
+    // Back button navigation
+    const handleBackButtonPress = () => {
+        navigation.goBack();
+    }
+    
+    // Logout
+    const handleLogout = () => {
+        alert("You have been logged out.");
+    }
+
+    // On initial render...
+    useEffect(() => {
+        // TODO: Fetch comments and complaints from the backend
+        setComments(COMMENTS);
+        setComplaints(COMPLAINTS);
+    }, []);
+
+    return (
+        <SafeAreaView style={userProfileStyles.container}>
+            <View style={userProfileStyles.header}>
+                <BackButton onPress={handleBackButtonPress} />
+                <TouchableOpacity style={userProfileStyles.logoutContainer} onPress={handleLogout}>
+                    <Text style={userProfileStyles.logoutText}>Logout</Text>
+                </TouchableOpacity>
+            </View>
+            <Image style={userProfileStyles.userIcon} source={require("../../assets/images/gold-gradient-person.png")} />
+            <Text style={userProfileStyles.userName}>{userName}</Text>
+            <Text style={userProfileStyles.userEmail}>{email}</Text>
+            <ScrollView style={userProfileStyles.scrollView} contentContainerStyle={userProfileStyles.contentContainer}>
+                <Text style={userProfileStyles.sectionHeader}>My Comments • {comments.length}</Text>
+                <View style={userProfileStyles.divider}/>
+                {
+                    DINING_HALLS.map((diningHall, index) => {
+                        const diningHallComments = comments.filter(comment => comment.diningHallId === diningHall.id);
+
+                        return (
+                            <View style={userProfileStyles.itemsContainer} key={index}>
+                                <Text style={userProfileStyles.diningHallName}>{diningHall.name} ({diningHallComments.length})</Text>
+                                <View>
+                                    {
+                                        diningHallComments.map((comment, index) => <Comment {...comment} key={index} />)
+                                    }
+                                </View>
+                            </View>
+                        );
+                    })
+                }
+                <Text style={userProfileStyles.sectionHeader}>My Complaints • {complaints.length}</Text>
+                <View style={userProfileStyles.divider}/>
+                <View style={userProfileStyles.itemsContainer}>
+                    {
+                        complaints.map((complaint, index) => <Complaint {...complaint} key={index} />)
+                    }
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
+};
+
+export default UserProfile;
