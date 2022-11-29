@@ -24,14 +24,14 @@ const Comment = ({ content, timestamp}) => {
     )
 };
 
-const Complaint = ({diningHallId, contact, content, urgency, timestamp }) => {
-    const diningHall = DINING_HALLS.find(diningHall => diningHall.id === diningHallId);
+const Complaint = ({diningHall, contact, content, urgency, timestamp }) => {
+    //const diningHall = DINING_HALLS.find(diningHall => diningHall.id === diningHallId);
     const time = new Date(timestamp).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
 
     return (
         <View style={commentsStyles.commentContainer}>
             <View style={commentsStyles.commentHeader}>
-                <Text style={userProfileStyles.itemTitle}>{diningHall.name}</Text>
+                <Text style={userProfileStyles.itemTitle}>{diningHall}</Text>
                 <Text style={commentsStyles.commentTime}>{time}</Text>
             </View>
             <View style={commentsStyles.commentHeader}>
@@ -48,7 +48,7 @@ const UserProfile = ({ navigation, route }) => {
     const [complaints, setComplaints] = useState([]);
 
     const userName = "Me";
-    const { email } = route.params;
+    const { id, email } = route.params;
 
     // Back button navigation
     const handleBackButtonPress = () => {
@@ -62,9 +62,42 @@ const UserProfile = ({ navigation, route }) => {
 
     // On initial render...
     useEffect(() => {
-        // TODO: Fetch comments and complaints from the backend
-        setComments(COMMENTS);
-        setComplaints(COMPLAINTS);
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/get/commentsById/${id}`, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(err);
+                }
+                setComments(data);
+            
+            }).catch(error => {
+                console.log(error);
+                alert("Failed to load user comments.");
+            });
+
+        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/get/complaintsById/${id}`, requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+
+                if (!response.ok) {
+                    const err = (data && data.message) || response.status;
+                    return Promise.reject(err);
+                }
+                setComplaints(data);
+            
+            }).catch(error => {
+                console.log(error);
+                alert("Failed to load user complaints.");
+            });
     }, []);
 
     return (

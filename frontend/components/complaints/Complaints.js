@@ -16,13 +16,14 @@ const Filter = require('bad-words');
 const halls = ["Rand Dining Hall", "Kissam Dining Hall", "Rothschild Dining Hall", "E. B. I. Dining Hall", "Zeppos Dining Hall", "Commons Dining Hall"]
 const urgencies = ["0", "1", "2", "3", "4", "5"]
 
-const Complaints = ({ navigation }) => {
+const Complaints = ({ navigation, route }) => {
     
     const [contact, setContact] = useState(null);
     const [issue, setIssue] = useState(null);
     const [dining, setDH] = useState(null);
     const [urgency, setUrgency] = useState(null);
     const height = useHeaderHeight();
+    const uid = route.params.id;
 
     const handleBackButtonPress = () => {
         navigation.goBack();
@@ -44,7 +45,7 @@ const Complaints = ({ navigation }) => {
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ diningHall: dining, urgency: urgency, content: issue, contact: contact })
+                body: JSON.stringify({ userId: uid, diningHall: dining, urgency: urgency, content: issue, contact: contact })
             };
 
             fetch('https://sleepy-reaches-22563.herokuapp.com/api/post/newComplaint', requestOptions)
