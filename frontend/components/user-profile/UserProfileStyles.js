@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from "../../constants";
+import { THEME_STYLES, VU_GOLD } from "../../constants";
 
 const userProfileStyles = StyleSheet.create({
     container: {
@@ -25,8 +25,8 @@ const userProfileStyles = StyleSheet.create({
         fontSize: 14,
     },
     userIcon: {
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
         marginTop: 20,
     },
     userName: {
@@ -59,6 +59,40 @@ const userProfileStyles = StyleSheet.create({
         marginHorizontal: 30,
         marginVertical: 10,
         backgroundColor: '#D9D9D9',
+    },
+    diningHallName: {
+        ...THEME_STYLES.whiteText,
+        ...THEME_STYLES.libreCaslonBoldFont,
+        fontSize: 14,
+        marginTop: 18,
+        marginBottom: 2,
+        marginLeft: 5,
+    },
+    itemsContainer: {
+        marginHorizontal: 15,
+        alignSelf: 'stretch',
+    },
+    itemTitle: {
+        ...THEME_STYLES.whiteText,
+        ...THEME_STYLES.libreCaslonBoldFont,
+    },
+    itemSubtitle: {
+        ...THEME_STYLES.whiteText,
+        ...THEME_STYLES.libreCaslonFont,
+        fontSize: 12,
+    },
+    itemLevel: {
+        ...THEME_STYLES.goldText,
+        fontSize: 12,
+        borderWidth: 1.5,
+        borderColor: VU_GOLD,
+        paddingHorizontal: 3,
+        paddingVertical: 1,
+        borderRadius: 5,
+    },
+    itemContent: {
+        ...THEME_STYLES.whiteText,
+        marginVertical: 5,
     },
 });
 

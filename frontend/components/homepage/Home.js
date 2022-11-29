@@ -5,14 +5,10 @@ import homeStyles from './HomeStyles';
 import DiningHallButton from './DiningHallButton';
 import Button from '../button/Button';
 
-import { DINING_HALLS, ANONYMOUS_NAMES } from '../../constants';
+import { DINING_HALLS } from '../../constants';
 
 const Home = ({ navigation, route }) => {
-    const currDate = new Date();
-    const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(currDate);
-    const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currDate);
-    const date = currDate.getDate();
-    const year = currDate.getFullYear();
+    const currDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const uid = route.params.id;
     const email = route.params.email;
 
@@ -30,7 +26,7 @@ const Home = ({ navigation, route }) => {
                 </TouchableOpacity>
             </View>
             <View style={homeStyles.contentContainer}>
-                <Text style={homeStyles.date}>{weekday}, {month} {date}, {year}</Text>
+                <Text style={homeStyles.date}>{currDate}</Text>
                 <FlatList 
                     data={DINING_HALLS} 
                     renderItem={renderDiningHallButton} 
