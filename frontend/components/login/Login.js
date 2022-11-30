@@ -26,7 +26,13 @@ const Login = () => {
                     const user = userCredentials.user;
                     console.log("Registering");
                     console.log(user.uid);
-                    navigation.navigate("Terms and Conditions", { id: user.uid, email, firstTime: true });
+                    navigation.navigate("Terms and Conditions", {
+                        id: user.uid,
+                        email,
+                        firstTime: true,
+                    });
+                    setEmail("");
+                    setPswd("");
                 })
                 .catch((error) => alert(error.message));
         }
@@ -39,6 +45,8 @@ const Login = () => {
                 console.log("Logging in");
                 console.log(user.uid);
                 navigation.navigate("Home", { id: user.uid, email });
+                setEmail("");
+                setPswd("");
             })
             .catch((error) => alert(error.message));
     };
@@ -49,13 +57,13 @@ const Login = () => {
             <View style={loginStyles.inputContainer}>
                 <TextInput
                     placeholder="Email"
-                    // value={ }
+                    value={email}
                     onChangeText={(text) => setEmail(text)}
                     style={loginStyles.input}
                 />
                 <TextInput
                     placeholder="Password"
-                    // value={ }
+                    value={pswd}
                     onChangeText={(text) => setPswd(text)}
                     style={loginStyles.input}
                     secureTextEntry

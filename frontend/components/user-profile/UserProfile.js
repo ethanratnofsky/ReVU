@@ -6,8 +6,9 @@ import commentsStyles from "../dining-hall/CommentsStyles";
 
 import BackButton from "../back-button/BackButton";
 
+import { auth } from "../../firebase";
+
 import { DINING_HALLS } from "../../constants";
-import { COMMENTS, COMPLAINTS } from "../../demo";
 
 const Comment = ({ content, timestamp }) => {
     const author = "Me";
@@ -25,7 +26,6 @@ const Comment = ({ content, timestamp }) => {
 };
 
 const Complaint = ({ diningHall, contact, content, urgency, timestamp }) => {
-    //const diningHall = DINING_HALLS.find(diningHall => diningHall.id === diningHallId);
     const time = new Date(timestamp).toLocaleDateString("en-US", {
         weekday: "long",
         year: "numeric",
@@ -62,7 +62,12 @@ const UserProfile = ({ navigation, route }) => {
 
     // Logout
     const handleLogout = () => {
-        alert("You have been logged out.");
+        auth.signOut()
+            .then(() => {
+                console.log("Logging out");
+                navigation.navigate("Login", { gestureEnabled: false });
+            })
+            .catch((error) => alert(error.message));
     };
 
     // On initial render...
