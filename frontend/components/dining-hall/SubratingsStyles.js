@@ -1,34 +1,34 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const subratingsStyles = StyleSheet.create({
     container: {
         marginVertical: 5,
         marginHorizontal: 30,
-        flexDirection: 'row',
+        flexDirection: "row",
     },
     subratingContainer: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: "center",
         marginVertical: 5,
     },
     subratingSmallContainer: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         marginVertical: 2,
-        flexDirection: 'row',
+        flexDirection: "row",
     },
     ratingType: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: 14,
     },
     ratingContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
     rating: {
         marginTop: 2,
@@ -54,9 +54,9 @@ const subratingsStyles = StyleSheet.create({
     },
     divider: {
         width: 1,
-        height: '100%',
-        backgroundColor: '#D9D9D9'
-    }
+        height: "100%",
+        backgroundColor: "#D9D9D9",
+    },
 });
 
 export default subratingsStyles;

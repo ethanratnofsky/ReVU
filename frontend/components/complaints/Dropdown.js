@@ -1,7 +1,7 @@
-import complaintStyles from './ComplaintStyles';
-import  SelectDropdown from 'react-native-select-dropdown';
+import complaintStyles from "./ComplaintStyles";
+import SelectDropdown from "react-native-select-dropdown";
 
-const Dropdown = ({options, setVal, title}) => {
+const Dropdown = ({ options, setVal, title }) => {
     return (
         <SelectDropdown
             data={options}
@@ -12,13 +12,13 @@ const Dropdown = ({options, setVal, title}) => {
                 setVal(selectedItem);
             }}
             buttonTextAfterSelection={(selectedItem, index) => {
-                return selectedItem
+                return selectedItem;
             }}
             rowTextForSelection={(item, index) => {
-                return item
+                return item;
             }}
         />
-    )
-}
+    );
+};
 
 export default Dropdown;

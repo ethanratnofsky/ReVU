@@ -1,20 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const termsAndConditionsStyles = StyleSheet.create({
     container: {
         ...THEME_STYLES.blackBackground,
-        height: '100%',
-        alignItems: 'center',
+        height: "100%",
+        alignItems: "center",
     },
     header: {
-        position: 'absolute',
+        position: "absolute",
         top: 55,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '90%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "90%",
     },
     logo: {
         width: 172,
@@ -35,15 +35,15 @@ const termsAndConditionsStyles = StyleSheet.create({
         marginBottom: 20,
     },
     scrollContainer: {
-        width: '85%',
+        width: "85%",
         flex: 1,
     },
     text: {
         ...THEME_STYLES.whiteText,
     },
     acceptInputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         marginVertical: 25,
     },
     checkbox: {

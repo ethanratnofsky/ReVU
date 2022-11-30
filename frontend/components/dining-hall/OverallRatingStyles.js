@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const overallRatingStyles = StyleSheet.create({
     container: {
@@ -9,10 +9,10 @@ const overallRatingStyles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 15,
         width: 300,
-        alignItems: 'center',
+        alignItems: "center",
         borderRadius: 10,
-        backgroundColor: '#333',
-        shadowColor: 'black',
+        backgroundColor: "#333",
+        shadowColor: "black",
         shadowOffset: { width: 3, height: 5 },
         shadowOpacity: 0.1,
         shadowRadius: 1.5,
@@ -23,38 +23,38 @@ const overallRatingStyles = StyleSheet.create({
         opacity: 0.5,
     },
     rowContainer: {
-        flexDirection: 'row',
+        flexDirection: "row",
     },
     starsContainer: {
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
     },
     starContainer: {
         width: 48,
         height: 48,
-        position: 'relative',
+        position: "relative",
     },
     star: {
-        height: '100%',
-        width: '100%',
+        height: "100%",
+        width: "100%",
     },
     starMask: {
-        position: 'absolute',
+        position: "absolute",
         right: 0,
-        height: '100%',
-        backgroundColor: '#333',
+        height: "100%",
+        backgroundColor: "#333",
     },
     starOutline: {
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
+        height: "100%",
+        width: "100%",
+        position: "absolute",
     },
     ratingContainer: {
         marginLeft: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         flex: 0.25,
     },
     rating: {
@@ -71,7 +71,7 @@ const overallRatingStyles = StyleSheet.create({
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
         fontSize: 10,
-    }
+    },
 });
 
 export default overallRatingStyles;

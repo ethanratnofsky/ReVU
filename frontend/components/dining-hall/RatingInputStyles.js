@@ -1,21 +1,21 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const ratingInputStyles = StyleSheet.create({
     container: {
-        position: 'absolute',
+        position: "absolute",
         ...THEME_STYLES.blackBackground,
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
         zIndex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     infoContainer: {
-        position: 'absolute',
+        position: "absolute",
         top: 150,
-        alignItems: 'center',
+        alignItems: "center",
     },
     infoTextSmall: {
         ...THEME_STYLES.whiteText,
@@ -28,7 +28,7 @@ const ratingInputStyles = StyleSheet.create({
         fontSize: 22,
     },
     ratingContainer: {
-        alignItems: 'center',
+        alignItems: "center",
         marginVertical: 30,
     },
     ratingType: {
@@ -37,37 +37,37 @@ const ratingInputStyles = StyleSheet.create({
         fontSize: 18,
     },
     starsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
         marginTop: 5,
     },
     starContainer: {
         width: 55,
         height: 55,
-        position: 'relative',
+        position: "relative",
         marginHorizontal: 2,
     },
     star: {
-        height: '100%',
-        width: '100%',
+        height: "100%",
+        width: "100%",
     },
     starOutline: {
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
+        height: "100%",
+        width: "100%",
+        position: "absolute",
     },
     ratingDescriptionContainer: {
         marginTop: 5,
-        flexDirection: 'row',
+        flexDirection: "row",
         width: 310,
-        justifyContent: 'space-between',
+        justifyContent: "space-between",
     },
     ratingDescription: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
         fontSize: 12,
-        textAlign: 'center',
+        textAlign: "center",
         width: 75,
     },
     gradient: {
@@ -75,7 +75,7 @@ const ratingInputStyles = StyleSheet.create({
         borderRadius: 10,
     },
     submitButtonContainer: {
-        position: 'absolute',
+        position: "absolute",
         bottom: 75,
     },
     submitButton: {
@@ -86,11 +86,11 @@ const ratingInputStyles = StyleSheet.create({
     },
     submitButtonText: {
         ...THEME_STYLES.goldText,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         fontSize: 14,
     },
     closeButtonContainer: {
-        position: 'absolute',
+        position: "absolute",
         top: 65,
         right: 25,
     },

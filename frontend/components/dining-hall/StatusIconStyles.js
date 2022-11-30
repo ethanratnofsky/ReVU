@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const statusIconStyles = StyleSheet.create({
     icon: {

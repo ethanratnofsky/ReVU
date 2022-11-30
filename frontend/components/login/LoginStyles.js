@@ -1,15 +1,15 @@
 import { StyleSheet } from "react-native";
-import { THEME_STYLES, VU_GOLD } from '../../constants';
+import { THEME_STYLES, VU_GOLD } from "../../constants";
 
 const loginStyles = StyleSheet.create({
     container: {
         ...THEME_STYLES.blackBackground,
-        justifyContent: 'center',
+        justifyContent: "center",
         flex: 1,
-        alignItems: 'center'
+        alignItems: "center",
     },
     inputContainer: {
-        width: '80%'
+        width: "80%",
     },
     input: {
         ...THEME_STYLES.whiteBackground,
@@ -17,44 +17,43 @@ const loginStyles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 5,
-        marginBottom: 4
+        marginBottom: 4,
     },
     buttonContainer: {
-        width: '60%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 7
+        width: "60%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 7,
     },
     button: {
         ...THEME_STYLES.goldBackground,
         width: "100%",
         padding: 15,
         borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center",
     },
     buttonOutline: {
         ...THEME_STYLES.whiteBackground,
         marginTop: 5,
         borderColor: VU_GOLD,
-        borderWidth: 2
+        borderWidth: 2,
     },
     buttonText: {
         ...THEME_STYLES.whiteText,
-        fontWeight: '700',
-        fontSize: 16
+        fontWeight: "700",
+        fontSize: 16,
     },
     buttonOutlineText: {
         ...THEME_STYLES.blackText,
-        fontWeight: '700',
-        fontSize: 16
+        fontWeight: "700",
+        fontSize: 16,
     },
     logo: {
         width: 250,
         height: 119,
-        marginBottom: 50
+        marginBottom: 50,
     },
-
-})
+});
 
 export default loginStyles;

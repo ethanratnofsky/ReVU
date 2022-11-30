@@ -1,20 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const diningHallStyles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: "center",
         ...THEME_STYLES.blackBackground,
     },
     header: {
-        position: 'absolute',
+        position: "absolute",
         top: 45,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '90%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "90%",
     },
     diningHallName: {
         marginTop: 15,
@@ -25,7 +25,7 @@ const diningHallStyles = StyleSheet.create({
     menuButton: {
         marginVertical: 10,
         marginHorizontal: 20,
-        width: '90%',
+        width: "90%",
         height: 40,
     },
 });

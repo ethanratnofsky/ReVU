@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const backButtonStyles = StyleSheet.create({
     container: {
@@ -9,7 +9,7 @@ const backButtonStyles = StyleSheet.create({
     arrow: {
         ...THEME_STYLES.whiteText,
         fontSize: 28,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
 });
 

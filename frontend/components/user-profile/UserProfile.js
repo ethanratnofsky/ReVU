@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import userProfileStyles from "./UserProfileStyles";
-import commentsStyles from '../dining-hall/CommentsStyles';
+import commentsStyles from "../dining-hall/CommentsStyles";
 
 import BackButton from "../back-button/BackButton";
 
-import { DINING_HALLS } from '../../constants';
-import { COMMENTS, COMPLAINTS } from '../../demo';
+import { DINING_HALLS } from "../../constants";
+import { COMMENTS, COMPLAINTS } from "../../demo";
 
-const Comment = ({ content, timestamp}) => {
+const Comment = ({ content, timestamp }) => {
     const author = "Me";
-    const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const time = new Date(timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
     return (
         <View style={commentsStyles.commentContainer}>
@@ -21,12 +21,17 @@ const Comment = ({ content, timestamp}) => {
             </View>
             <Text style={commentsStyles.commentContent}>{content}</Text>
         </View>
-    )
+    );
 };
 
-const Complaint = ({diningHall, contact, content, urgency, timestamp }) => {
+const Complaint = ({ diningHall, contact, content, urgency, timestamp }) => {
     //const diningHall = DINING_HALLS.find(diningHall => diningHall.id === diningHallId);
-    const time = new Date(timestamp).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+    const time = new Date(timestamp).toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
 
     return (
         <View style={commentsStyles.commentContainer}>
@@ -41,7 +46,7 @@ const Complaint = ({diningHall, contact, content, urgency, timestamp }) => {
             <Text style={userProfileStyles.itemContent}>{content}</Text>
         </View>
     );
-}
+};
 
 const UserProfile = ({ navigation, route }) => {
     const [comments, setComments] = useState([]);
@@ -53,48 +58,54 @@ const UserProfile = ({ navigation, route }) => {
     // Back button navigation
     const handleBackButtonPress = () => {
         navigation.goBack();
-    }
-    
+    };
+
     // Logout
     const handleLogout = () => {
         alert("You have been logged out.");
-    }
+    };
 
     // On initial render...
     useEffect(() => {
         const requestOptions = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
         };
 
-        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/get/commentsById/${id}`, requestOptions)
-            .then(async response => {
-                const isJson = response.headers.get('content-type')?.includes('application/json');
-                const data = isJson && await response.json();
+        fetch(
+            `https://sleepy-reaches-22563.herokuapp.com/api/get/commentsById/${id}`,
+            requestOptions
+        )
+            .then(async (response) => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && (await response.json());
 
                 if (!response.ok) {
                     const err = (data && data.message) || response.status;
                     return Promise.reject(err);
                 }
                 setComments(data);
-            
-            }).catch(error => {
+            })
+            .catch((error) => {
                 console.log(error);
                 alert("Failed to load user comments.");
             });
 
-        fetch(`https://sleepy-reaches-22563.herokuapp.com/api/get/complaintsById/${id}`, requestOptions)
-            .then(async response => {
-                const isJson = response.headers.get('content-type')?.includes('application/json');
-                const data = isJson && await response.json();
+        fetch(
+            `https://sleepy-reaches-22563.herokuapp.com/api/get/complaintsById/${id}`,
+            requestOptions
+        )
+            .then(async (response) => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && (await response.json());
 
                 if (!response.ok) {
                     const err = (data && data.message) || response.status;
                     return Promise.reject(err);
                 }
                 setComplaints(data);
-            
-            }).catch(error => {
+            })
+            .catch((error) => {
                 console.log(error);
                 alert("Failed to load user complaints.");
             });
@@ -108,34 +119,44 @@ const UserProfile = ({ navigation, route }) => {
                     <Text style={userProfileStyles.logoutText}>Logout</Text>
                 </TouchableOpacity>
             </View>
-            <Image style={userProfileStyles.userIcon} source={require("../../assets/images/gold-gradient-person.png")} />
+            <Image
+                style={userProfileStyles.userIcon}
+                source={require("../../assets/images/gold-gradient-person.png")}
+            />
             <Text style={userProfileStyles.userName}>{userName}</Text>
             <Text style={userProfileStyles.userEmail}>{email}</Text>
-            <ScrollView style={userProfileStyles.scrollView} contentContainerStyle={userProfileStyles.contentContainer}>
+            <ScrollView
+                style={userProfileStyles.scrollView}
+                contentContainerStyle={userProfileStyles.contentContainer}
+            >
                 <Text style={userProfileStyles.sectionHeader}>My Comments • {comments.length}</Text>
-                <View style={userProfileStyles.divider}/>
-                {
-                    DINING_HALLS.map((diningHall, index) => {
-                        const diningHallComments = comments.filter(comment => comment.diningHallId === diningHall.id);
+                <View style={userProfileStyles.divider} />
+                {DINING_HALLS.map((diningHall, index) => {
+                    const diningHallComments = comments.filter(
+                        (comment) => comment.diningHallId === diningHall.id
+                    );
 
-                        return (
-                            <View style={userProfileStyles.itemsContainer} key={index}>
-                                <Text style={userProfileStyles.diningHallName}>{diningHall.name} ({diningHallComments.length})</Text>
-                                <View>
-                                    {
-                                        diningHallComments.map((comment, index) => <Comment {...comment} key={index} />)
-                                    }
-                                </View>
+                    return (
+                        <View style={userProfileStyles.itemsContainer} key={index}>
+                            <Text style={userProfileStyles.diningHallName}>
+                                {diningHall.name} ({diningHallComments.length})
+                            </Text>
+                            <View>
+                                {diningHallComments.map((comment, index) => (
+                                    <Comment {...comment} key={index} />
+                                ))}
                             </View>
-                        );
-                    })
-                }
-                <Text style={userProfileStyles.sectionHeader}>My Complaints • {complaints.length}</Text>
-                <View style={userProfileStyles.divider}/>
+                        </View>
+                    );
+                })}
+                <Text style={userProfileStyles.sectionHeader}>
+                    My Complaints • {complaints.length}
+                </Text>
+                <View style={userProfileStyles.divider} />
                 <View style={userProfileStyles.itemsContainer}>
-                    {
-                        complaints.map((complaint, index) => <Complaint {...complaint} key={index} />)
-                    }
+                    {complaints.map((complaint, index) => (
+                        <Complaint {...complaint} key={index} />
+                    ))}
                 </View>
             </ScrollView>
         </SafeAreaView>

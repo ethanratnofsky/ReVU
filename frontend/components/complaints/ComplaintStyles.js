@@ -1,32 +1,31 @@
 import { StyleSheet } from "react-native";
-import { THEME_STYLES, VU_GOLD, VU_WHITE } from '../../constants';
-
+import { THEME_STYLES, VU_GOLD, VU_WHITE } from "../../constants";
 
 const complaintStyles = StyleSheet.create({
     container: {
         ...THEME_STYLES.blackBackground,
-        height: '100%',
-        alignItems: 'center'
+        height: "100%",
+        alignItems: "center",
     },
     header: {
-        position: 'absolute',
+        position: "absolute",
         top: 45,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '90%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "90%",
     },
     infoContainer: {
         ...THEME_STYLES.whiteBackground,
         width: 220,
         height: 55,
         borderWidth: 2,
-        borderStyle: 'solid',
+        borderStyle: "solid",
         borderColor: VU_GOLD,
         borderRadius: 6,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         padding: 15,
         margin: 12,
     },
@@ -37,7 +36,7 @@ const complaintStyles = StyleSheet.create({
         margin: 15,
         borderWidth: 2,
         borderColor: VU_GOLD,
-        padding: 10
+        padding: 10,
     },
     issueInput: {
         ...THEME_STYLES.whiteBackground,
@@ -46,21 +45,21 @@ const complaintStyles = StyleSheet.create({
         borderWidth: 2,
         margin: 15,
         padding: 10,
-        paddingBottom: 5
+        paddingBottom: 5,
     },
     submitButtonContainer: {
         ...THEME_STYLES.goldBackground,
         width: 300,
         height: 60,
         borderWidth: 2,
-        borderStyle: 'solid',
+        borderStyle: "solid",
         borderColor: VU_GOLD,
         borderRadius: 6,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         margin: 15,
-        padding: 10
+        padding: 10,
     },
     buttonStyle: {
         backgroundColor: VU_GOLD,
@@ -68,10 +67,10 @@ const complaintStyles = StyleSheet.create({
         height: 55,
         padding: 15,
         margin: 12,
-        borderRadius: 10, 
+        borderRadius: 10,
         borderColor: VU_WHITE,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center",
     },
     titleText: {
         marginTop: 15,
@@ -83,20 +82,20 @@ const complaintStyles = StyleSheet.create({
     diningHallOption: {
         ...THEME_STYLES.blackText,
         ...THEME_STYLES.libreCaslonBoldFont,
-        fontSize: 15
+        fontSize: 15,
     },
     inputButton: {
-        backgroundColor: VU_WHITE, 
-        width: 300, 
-        borderStyle: "solid", 
-        borderColor: VU_GOLD, 
-        height: 45, 
-        borderWidth: 2, 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+        backgroundColor: VU_WHITE,
+        width: 300,
+        borderStyle: "solid",
+        borderColor: VU_GOLD,
+        height: 45,
+        borderWidth: 2,
+        alignItems: "center",
+        justifyContent: "center",
         margin: 15,
-        borderRadius: 5
-    }
+        borderRadius: 5,
+    },
 });
 
 export default complaintStyles;

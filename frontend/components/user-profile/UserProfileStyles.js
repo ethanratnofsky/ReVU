@@ -55,10 +55,10 @@ const userProfileStyles = StyleSheet.create({
     },
     divider: {
         height: 1,
-        alignSelf: 'stretch',
+        alignSelf: "stretch",
         marginHorizontal: 30,
         marginVertical: 10,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: "#D9D9D9",
     },
     diningHallName: {
         ...THEME_STYLES.whiteText,
@@ -70,7 +70,7 @@ const userProfileStyles = StyleSheet.create({
     },
     itemsContainer: {
         marginHorizontal: 15,
-        alignSelf: 'stretch',
+        alignSelf: "stretch",
     },
     itemTitle: {
         ...THEME_STYLES.whiteText,

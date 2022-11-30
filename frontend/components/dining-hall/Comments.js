@@ -1,12 +1,12 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View } from "react-native";
 
-import commentsStyles from './CommentsStyles';
+import commentsStyles from "./CommentsStyles";
 
-import { ANONYMOUS_NAMES } from '../../constants';
+import { ANONYMOUS_NAMES } from "../../constants";
 
-const Comment = ({ content, timestamp}) => {
+const Comment = ({ content, timestamp }) => {
     const author = ANONYMOUS_NAMES[Math.floor(Math.random() * ANONYMOUS_NAMES.length)];
-    const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const time = new Date(timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
     return (
         <View style={commentsStyles.commentContainer} onStartShouldSetResponder={() => true}>
@@ -16,12 +16,12 @@ const Comment = ({ content, timestamp}) => {
             </View>
             <Text style={commentsStyles.commentContent}>{content}</Text>
         </View>
-    )
+    );
 };
 
 const Comments = ({ comments }) => {
     const renderComment = ({ item }) => {
-        return <Comment {...item} />
+        return <Comment {...item} />;
     };
 
     return (
@@ -32,10 +32,10 @@ const Comments = ({ comments }) => {
                 style={commentsStyles.commentsContainer}
                 data={comments}
                 renderItem={renderComment}
-                keyExtractor={comment => comment._id}
+                keyExtractor={(comment) => comment._id}
             />
         </View>
-    )
+    );
 };
 
 export default Comments;

@@ -1,33 +1,33 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const homeStyles = StyleSheet.create({
     container: {
         ...THEME_STYLES.blackBackground,
-        height: '100%',
-        alignItems: 'center',
+        height: "100%",
+        alignItems: "center",
     },
     header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '90%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "90%",
         marginTop: 40,
-        marginBottom: '10%',
+        marginBottom: "10%",
     },
     logo: {
         width: 134,
         height: 39,
     },
     userContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     userName: {
         ...THEME_STYLES.whiteText,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         fontSize: 16,
     },
     userIcon: {
@@ -36,26 +36,26 @@ const homeStyles = StyleSheet.create({
         marginLeft: 10,
     },
     contentContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         flex: 1,
     },
     date: {
         ...THEME_STYLES.whiteText,
         ...THEME_STYLES.libreCaslonFont,
-        marginVertical: '5%',
+        marginVertical: "5%",
         fontSize: 16,
     },
     footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        width: '90%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        width: "90%",
         marginBottom: 20,
     },
     termsContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
     termsIcon: {
         width: 20,
@@ -64,7 +64,7 @@ const homeStyles = StyleSheet.create({
     },
     termsText: {
         ...THEME_STYLES.whiteText,
-        textDecorationLine: 'underline',
+        textDecorationLine: "underline",
         fontSize: 12,
     },
     complaintsButton: {
@@ -72,5 +72,5 @@ const homeStyles = StyleSheet.create({
         height: 50,
     },
 });
- 
+
 export default homeStyles;

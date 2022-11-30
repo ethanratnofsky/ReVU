@@ -1,9 +1,9 @@
-import { Image, TouchableOpacity, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useState, useEffect } from 'react';
-import diningHallButtonStyles from './DiningHallButtonStyles';
+import { Image, TouchableOpacity, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useState, useEffect } from "react";
+import diningHallButtonStyles from "./DiningHallButtonStyles";
 
-import { ANONYMOUS_NAMES } from '../../constants';
+import { ANONYMOUS_NAMES } from "../../constants";
 
 const DiningHallButton = ({ id, name, userId }) => {
     const navigation = useNavigation();
@@ -14,22 +14,23 @@ const DiningHallButton = ({ id, name, userId }) => {
     const [ratings, setRatings] = useState([]);
 
     const requestOptions = {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
     };
 
     useEffect(() => {
         fetch(`https://sleepy-reaches-22563.herokuapp.com/api/getAll/ratings/${id}`, requestOptions)
-            .then(async response => {
-                const isJson = response.headers.get('content-type')?.includes('application/json');
-                const data = isJson && await response.json();
+            .then(async (response) => {
+                const isJson = response.headers.get("content-type")?.includes("application/json");
+                const data = isJson && (await response.json());
 
                 if (!response.ok) {
                     const err = (data && data.message) || response.status;
                     return Promise.reject(error);
                 }
                 setRatings(data);
-            }).catch(error => {
+            })
+            .catch((error) => {
                 console.log(error);
                 alert("Could not get all ratings for overall rating.");
                 console.log("Bad here in dining hall butotn");
@@ -39,25 +40,36 @@ const DiningHallButton = ({ id, name, userId }) => {
     // TODO: Get ratings from backend
     //const ratings = RATINGS.filter(rating => rating.diningHallId === id);
 
-    let overallRating = (0.5 * (ratings.finFood + ratings.finTraffic));
+    let overallRating = 0.5 * (ratings.finFood + ratings.finTraffic);
     // let overallRating = null;
     if (ratings.numRatings === 0) {
         overallRating = null;
     }
 
     const handlePress = () => {
-        navigation.navigate('Dining Hall', { id, name, userId });
-    }
+        navigation.navigate("Dining Hall", { id, name, userId });
+    };
 
     return (
-        <TouchableOpacity activeOpacity={0.6} style={diningHallButtonStyles.container} onPress={handlePress}>
+        <TouchableOpacity
+            activeOpacity={0.6}
+            style={diningHallButtonStyles.container}
+            onPress={handlePress}
+        >
             <Text style={diningHallButtonStyles.name}>{name}</Text>
             <View style={diningHallButtonStyles.ratingContainer}>
-                <Text style={diningHallButtonStyles.rating}>{overallRating === null ? 'Unrated' : overallRating.toFixed(1)}</Text>
-                {overallRating !== null && <Image style={diningHallButtonStyles.star} source={require('../../assets/images/gold-star.png')} />}
+                <Text style={diningHallButtonStyles.rating}>
+                    {overallRating === null ? "Unrated" : overallRating.toFixed(1)}
+                </Text>
+                {overallRating !== null && (
+                    <Image
+                        style={diningHallButtonStyles.star}
+                        source={require("../../assets/images/gold-star.png")}
+                    />
+                )}
             </View>
         </TouchableOpacity>
     );
-}
+};
 
 export default DiningHallButton;

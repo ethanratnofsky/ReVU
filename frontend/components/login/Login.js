@@ -1,13 +1,12 @@
-import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { auth } from '../../firebase';
-import loginStyles from './LoginStyles';
-import { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { auth } from "../../firebase";
+import loginStyles from "./LoginStyles";
+import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
-
-    const [email, setEmail] = useState('');
-    const [pswd, setPswd] = useState('');
+    const [email, setEmail] = useState("");
+    const [pswd, setPswd] = useState("");
     const navigation = useNavigation();
 
     // useEffect(() => {
@@ -18,53 +17,53 @@ const Login = () => {
     //     })
     // }, [])
 
-
     const handleSignUp = () => {
-        if (!(/@vanderbilt.edu\s*$/).test(email)) {
+        if (!/@vanderbilt.edu\s*$/.test(email)) {
             alert("Email is not a valid Vanderbilt University email.");
         } else {
-            auth.createUserWithEmailAndPassword(email, pswd).then(userCredentials => {
-                const user = userCredentials.user;
-                console.log("Registering");
-                console.log(user.uid);
-                navigation.navigate("Terms and Conditions", {id: user.uid});
-            }).catch(error => alert(error.message));
+            auth.createUserWithEmailAndPassword(email, pswd)
+                .then((userCredentials) => {
+                    const user = userCredentials.user;
+                    console.log("Registering");
+                    console.log(user.uid);
+                    navigation.navigate("Terms and Conditions", { id: user.uid, email, firstTime: true });
+                })
+                .catch((error) => alert(error.message));
         }
-    }
+    };
 
     const handleLogin = () => {
-        auth.signInWithEmailAndPassword(email, pswd).then(userCredentials => {
-            const user = userCredentials.user;
-            console.log("Logging in");
-            console.log(user.uid);
-            navigation.navigate('Home', {id: user.uid, email});
-        }).catch(error => alert(error.message));
-    }
+        auth.signInWithEmailAndPassword(email, pswd)
+            .then((userCredentials) => {
+                const user = userCredentials.user;
+                console.log("Logging in");
+                console.log(user.uid);
+                navigation.navigate("Home", { id: user.uid, email });
+            })
+            .catch((error) => alert(error.message));
+    };
 
     return (
         <KeyboardAvoidingView style={loginStyles.container} behavior="padding">
-            <Image style={loginStyles.logo} source={require('../../assets/images/revu-logo.png')} />
+            <Image style={loginStyles.logo} source={require("../../assets/images/revu-logo.png")} />
             <View style={loginStyles.inputContainer}>
                 <TextInput
-                    placeholder='Email'
+                    placeholder="Email"
                     // value={ }
-                    onChangeText={text => setEmail(text)}
+                    onChangeText={(text) => setEmail(text)}
                     style={loginStyles.input}
                 />
                 <TextInput
-                    placeholder='Password'
+                    placeholder="Password"
                     // value={ }
-                    onChangeText={text => setPswd(text)}
+                    onChangeText={(text) => setPswd(text)}
                     style={loginStyles.input}
                     secureTextEntry
                 />
             </View>
 
             <View style={loginStyles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={handleLogin}
-                    style={loginStyles.button}
-                >
+                <TouchableOpacity onPress={handleLogin} style={loginStyles.button}>
                     <Text style={loginStyles.buttonText}>Login</Text>
                 </TouchableOpacity>
             </View>
@@ -77,7 +76,7 @@ const Login = () => {
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
-    )
-}
+    );
+};
 
 export default Login;

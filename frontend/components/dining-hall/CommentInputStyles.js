@@ -1,16 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const commentsStyles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: "row",
         width: 350,
-        alignItems: 'center',
+        alignItems: "center",
         marginVertical: 10,
         marginHorizontal: 15,
-        alignSelf: 'stretch',
-        backgroundColor: '#333',
+        alignSelf: "stretch",
+        backgroundColor: "#333",
         borderRadius: 5,
         ...THEME_STYLES.whiteText,
     },
@@ -19,7 +19,7 @@ const commentsStyles = StyleSheet.create({
         marginHorizontal: 10,
         flex: 1,
         ...THEME_STYLES.whiteText,
-        alignSelf: 'flex-end',
+        alignSelf: "flex-end",
     },
     sendContainer: {
         marginRight: 5,
@@ -28,7 +28,7 @@ const commentsStyles = StyleSheet.create({
     send: {
         width: 25,
         height: 25,
-    }
+    },
 });
 
 export default commentsStyles;

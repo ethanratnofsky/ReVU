@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES } from '../../constants';
+import { THEME_STYLES } from "../../constants";
 
 const buttonStyles = StyleSheet.create({
     outterContainer: {
@@ -13,11 +13,11 @@ const buttonStyles = StyleSheet.create({
     },
     innerContainer: {
         ...THEME_STYLES.whiteBackground,
-        width: '100%',
-        height: '100%',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        width: "100%",
+        height: "100%",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 8,
     },
     icon: {
@@ -25,7 +25,7 @@ const buttonStyles = StyleSheet.create({
     },
     text: {
         ...THEME_STYLES.goldText,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
 });
 
