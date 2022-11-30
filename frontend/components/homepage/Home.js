@@ -39,7 +39,7 @@ const Home = ({ navigation, route }) => {
                     <Image style={homeStyles.termsIcon} source={require('../../assets/images/white-terms.png')} />
                     <Text style={homeStyles.termsText}>Terms & Conditions</Text>
                 </TouchableOpacity>
-                <Button fontSize={14} imgSrc={require('../../assets/images/gold-complaints.png')} onPress={() => navigation.navigate("Complaints")} style={homeStyles.complaintsButton} text='File a Complaint' />
+                <Button fontSize={14} imgSrc={require('../../assets/images/gold-complaints.png')} onPress={() => navigation.navigate("Complaints", {id: uid})} style={homeStyles.complaintsButton} text='File a Complaint' />
             </View>
         </SafeAreaView>
     );
