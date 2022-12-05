@@ -34,12 +34,20 @@ const scraper = async (browser) => {
             
             // Push all to resulting array
             const titles = Array.from(item.querySelectorAll('h4.panel-title')).map(x => x.textContent.replace(/(^NEW )/, ""))
-            
+            let days = [];
+            let times = [];
+            tables.forEach((table) => {
+                table.forEach((day) => {
+                    days.push(day[0]);
+                })
+                times.push(table.slice(1))
+            })
             for(let i = 0; i < titles.length; i++) {
                 results.push({
                     title : titles[i],
                     table_header : table_headers[i],
-                    table_body : tables[i]
+                    days : days,
+                    times: times
                 });
             }
         });

@@ -245,6 +245,7 @@ router.post('/post/times', async (req, res) => {
 	try{
 		browser = await browserObject.startBrowser();
 		times = await timeScraper(browser);
+        console.log(times)
 	}
 	catch(err){
 		console.log("Could not resolve the browser instance => ", err);
@@ -259,13 +260,13 @@ router.post('/post/times', async (req, res) => {
                           'Rand Dining Center'];
     console.log(times)
     times.forEach(async (obj) => {
-        console.log(obj['title'])
+        console.log(obj)
         if(dining_halls.includes(obj['title'])) {
             try {
                 const data = new TimeModel({
                     diningHallId: 1,
-                    days: ["a"],
-                    times: ["a"],
+                    days: obj['days'],
+                    times: obj['times'],
                 });
                 const dataToSave = await data.save();
                 res.status(200).json(dataToSave)
