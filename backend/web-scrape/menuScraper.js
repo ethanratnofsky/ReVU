@@ -50,10 +50,10 @@ async function scraper(browser) {
                                     .map(x => x.querySelector('a'))
             
             menu_arr.forEach(async (inner) => {
-                delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-                await delay(1000)
+                //delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+                //await delay(1000)
                 await inner.click();
-                await delay(1000);
+                //await delay(1000);
                 //await window.waitForSelector("tbody")
                 table = document.querySelector("tbody");
                 cur_table = Array.from(table.childNodes)

@@ -1,16 +1,21 @@
 const express = require('express');
 const router = express.Router()
 
+const browserObject = require('../web-scrape/browser');
+const scraperController = require('../web-scrape/pageController');
+
 // Models
 const CommentModel = require('../models/comment_model');
 const ComplaintModel = require('../models/complaint_model');
 const RatingModel = require('../models/rating_model');
+const TimeModel = require('../models/time_model');
+const { init } = require('../models/comment_model');
 
 module.exports = router;
 
 /**
  * RATINGS
- */
+*/
 router.post('/post/createRating', async (req, res) => {
     const data = new RatingModel({
         userId: req.body.userId,
@@ -227,5 +232,59 @@ router.get('/getAll/ratings/:diningHallId', async (req, res) => {
         res.json(data)
     } catch(error){
         res.status(500).json({message: error.message});
+    }
+});
+
+/**
+ * Web scraper
+ */
+router.post('/post/times', async (req, res) => {
+    const timeScraper = require('../web-scrape/timeScraper');
+    let browser;
+    let times;
+	try{
+		browser = await browserObject.startBrowser();
+		times = await timeScraper(browser);
+	}
+	catch(err){
+		console.log("Could not resolve the browser instance => ", err);
+	}
+    await browser.close()
+    // Pass the browser instance to the scraper controller
+    const dining_halls = ['Commons',
+                          'E. Bronson Ingram',
+                          'Nicholas S. Zeppos',
+                          'Rothschild Dining Hall',
+                          'Kitchen at Kissam - Gluten Free',
+                          'Rand Dining Center'];
+    console.log(times)
+    times.forEach(async (obj) => {
+        console.log(obj['title'])
+        if(dining_halls.includes(obj['title'])) {
+            try {
+                const data = new TimeModel({
+                    diningHallId: 1,
+                    days: ["a"],
+                    times: ["a"],
+                });
+                const dataToSave = await data.save();
+                res.status(200).json(dataToSave)
+            }
+            catch (error) {
+                console.log(error)
+                res.status(500).json({message: error.message})
+            }
+        }
+    });
+});
+
+router.get('/get/timesById/:diningHallId', async (req, res) => {
+    try{
+        const data = await TimeModel
+        .find({diningHallId: req.params.diningHallId});
+    res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
     }
 });

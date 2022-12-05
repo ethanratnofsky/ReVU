@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dataSchema = new mongoose.Schema({
     diningHallId: {
         required: true,
-        type: String,
+        type: Number,
     },
     days: {
         required: true,
