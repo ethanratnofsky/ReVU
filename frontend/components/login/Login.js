@@ -17,6 +17,17 @@ const Login = () => {
     //     })
     // }, [])
 
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                navigation.navigate("Home", {id: user.uid, email: user.email});
+            }
+        })
+
+        return unsubscribe;
+    }, []);
+
     const handleSignUp = () => {
         if (!/@vanderbilt.edu\s*$/.test(email)) {
             alert("Email is not a valid Vanderbilt University email.");
@@ -44,7 +55,7 @@ const Login = () => {
                 const user = userCredentials.user;
                 console.log("Logging in");
                 console.log(user.uid);
-                navigation.navigate("Home", { id: user.uid, email });
+                navigation.navigate("Home", { id: user.uid, email, gestureEnabled: false });
                 setEmail("");
                 setPswd("");
             })
