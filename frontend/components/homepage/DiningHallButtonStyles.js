@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { THEME_STYLES, VU_GOLD } from '../../constants';
+import { THEME_STYLES, VU_GOLD } from "../../constants";
 
 const diningHallButtonStyles = StyleSheet.create({
     container: {
@@ -8,23 +8,23 @@ const diningHallButtonStyles = StyleSheet.create({
         width: 300,
         height: 55,
         borderWidth: 2,
-        borderStyle: 'solid',
+        borderStyle: "solid",
         borderColor: VU_GOLD,
         borderRadius: 6,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
         padding: 15,
         margin: 10,
     },
     name: {
         ...THEME_STYLES.blackText,
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
     ratingContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
     rating: {
         ...THEME_STYLES.blackText,
@@ -34,10 +34,10 @@ const diningHallButtonStyles = StyleSheet.create({
     star: {
         width: 24,
         aspectRatio: 1,
-        position: 'relative',
+        position: "relative",
         bottom: 1,
         left: 1,
-    }
+    },
 });
 
 export default diningHallButtonStyles;
