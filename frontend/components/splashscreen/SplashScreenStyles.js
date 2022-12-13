@@ -31,5 +31,3 @@ const splashScreenStyles = StyleSheet.create({
 });
 
 export default splashScreenStyles;
-
-export default splashScreenStyles;
